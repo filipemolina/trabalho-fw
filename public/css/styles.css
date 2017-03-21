@@ -1,0 +1,217 @@
+/*********************** Sobrescrever os estilos principais */
+
+body { color: #7960ab; background-color: #3E276B }
+
+.nav_title { background: #3E276B; }
+
+.left_col { background: #3E276B; }
+
+.nav.side-menu>li.active>a 
+{
+    text-shadow: rgba(0,0,0,0.25) 0 -1px 0;
+    background: linear-gradient(#334556, ##3E276B),#2A3F54;
+    box-shadow: rgba(0,0,0,0.25) 0 1px 0,inset rgba(255,255,255,0.16) 0 1px 0;
+}
+
+.nav.side-menu>li.current-page, .nav.side-menu>li.active 
+{
+    border-right: 5px solid #BFA161;
+}
+
+.nav-md ul.nav.child_menu li:before 
+{
+    background: #BFA161;
+    bottom: auto;
+    content: "";
+    height: 8px;
+    left: 23px;
+    margin-top: 15px;
+    position: absolute;
+    right: auto;
+    width: 8px;
+    z-index: 1;
+    border-radius: 50%;
+}
+
+.nav-md ul.nav.child_menu li:after 
+{
+    border-left: 1px solid #BFA161;
+    bottom: 0;
+    content: "";
+    left: 27px;
+    position: absolute;
+    top: 0;
+}
+
+.toggle a i {
+    color: #3E276B;
+}
+
+.nav.side-menu>li.active>a 
+{
+    text-shadow: rgba(0,0,0,0.25) 0 -1px 0;
+    background: linear-gradient(#52368a, #3E276B),#2A3F54;
+    box-shadow: rgba(0,0,0,0.25) 0 1px 0,inset rgba(255,255,255,0.16) 0 1px 0;
+}
+
+.btn-info 
+{
+    color: #fff;
+    background-color: #8570af;
+    border-color: #3E276B;
+}
+
+.btn-info:hover 
+{
+    color: #fff;
+    background-color: #998cb3;
+    border-color: #3E276B;
+}
+
+.btn-info.active.focus, .btn-info.active:focus, .btn-info.active:hover, .btn-info:active.focus, .btn-info:active:focus, .btn-info:active:hover, .open>.dropdown-toggle.btn-info.focus, .open>.dropdown-toggle.btn-info:focus, .open>.dropdown-toggle.btn-info:hover 
+{
+    color: #fff;
+    background-color: #8570af;
+    border-color: #0a0219;
+}
+
+.btn-success, .btn-success.active.focus, .btn-success.active:focus, .btn-success.active:hover, .btn-success:active.focus, .btn-success:active:focus, .btn-success:active:hover, .open>.dropdown-toggle.btn-success.focus, .open>.dropdown-toggle.btn-success:focus, .open>.dropdown-toggle.btn-success:hover 
+{
+    background: #d8c08e;
+    border: 1px solid #BFA161;
+}
+
+.btn-success:hover, .btn-success:focus, .btn-success:active, .btn-success.active, .open .dropdown-toggle.btn-success {
+    background: #e6d4ad;
+    border-color: #cebe9e;
+}
+
+.brasao-topo
+{
+    width: 47px;
+}
+
+.bg-padrao
+{
+    background: #7960ab !important;
+    border: 1px solid #3E276B !important;
+    color: #fff;
+}
+
+.flot-x-axis .flot-tick-label.tickLabel {
+    margin-left: -80px;
+}
+
+.nav-sm .nav.child_menu li.active, .nav-sm .nav.side-menu li.active-sm {
+    border-right: 5px solid #BFA161;
+}
+
+.nav-sm ul.nav.child_menu
+{
+    background-color: #3E276B;
+}
+
+/*********************** Imagem de Loading */
+
+#img-loading 
+{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -60px;
+    margin-top: -60px;
+    display: none;
+}
+
+/************************** Mensagem de nenhum carro encontrado*/
+
+div.vazio,
+div.inicial
+{
+	text-align: center;
+	margin-top: 150px;
+	display: none;
+}
+
+div.inicial { display: block; }
+
+/**************************** Ajustes no menu lateral */
+
+.profile_info 
+{
+    padding: 25px 10px 10px;
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+
+/***************************** Linha de Botões de cada resultado da busca principal*/
+
+.x_panel .content.botoes
+{
+	margin-top: 130px;
+}
+
+.x_panel.home
+{
+    min-height: 500px;
+}
+
+/****************************** Menu Superior*/
+
+.nav.btn-novo-carro
+{
+	margin-top: 15px;
+	margin-right: 10px;
+	float: right;
+}
+
+.nav.side-menu > li > a { margin-bottom: 0; }
+
+/* Menu Hamburguer */
+
+.toggle { padding: 16px 0; }
+
+ul.msg_list .time { right: 55px !important; }
+.bold { font-weight: bold; }
+
+/****************************** Currículo - Index */
+
+.curriculo-index span.image i
+{
+    -webkit-border-radius: 2px 2px 2px 2px;
+    float: left;
+    margin-right: 25px;
+    width: 11%;
+}
+
+button.btn-cadastrar-curriculo
+{
+    float: right;
+    margin: 12px 20px 12px 0;
+}
+
+/****************************** Currículo - Create */
+
+span.required { color: red; }
+
+form button.btn-success 
+{
+    margin: 0 auto;
+    display: block;
+}
+
+form.edit button.btn-success 
+{
+    margin: -5px 0 0 0;
+    display: inline;
+}
+
+/****************************** Currículo - Edit */
+
+a.btn-editar,
+a.btn-excluir,
+a.btn-ver
+{
+    padding: 0 3px;
+}

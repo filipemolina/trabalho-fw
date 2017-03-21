@@ -1,0 +1,10 @@
+/* Esse arquivo deve permanecer com o menor tamanho possível para evitar lentidão
+no momento em que o PDF é gerado. */
+
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+}
