@@ -197,7 +197,7 @@ class HomeController extends Controller
         // mais procuradas
 
         $top_areas = DB::table('area_curriculo')
-                        ->select(DB::raw('area_id, COUNT(area_id)'))
+                        ->select(DB::raw('area_id, COUNT(area_id) as count'))
                         ->groupBy('area_id')
                         ->orderBy(DB::raw('COUNT(area_id)'), "DESC")
                         ->limit('4')

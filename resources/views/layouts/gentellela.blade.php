@@ -6,6 +6,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--[if IE]><link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}"><![endif]-->
+    <link rel="shortcut icon" href="{{ asset('img/favicon.ico') }}">
 
     <title>Banco de Empregos | 
       @section('title')
@@ -51,7 +53,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="{{ url('/') }}" class="site_title"><img class="brasao-topo" src="/img/brasao.png" alt=""> <span style="margin-left: 20px; font-size: 17px">Banco de Empregos</span></a>
+              <a href="{{ url('/') }}" class="site_title"><img class="brasao-topo" src="/img/brasao.png" alt=""> <span style="margin-left: -2px; width: 100px; font-size: 18px;">Banco de Empregos</span></a>
             </div>
 
             <div class="clearfix"></div>
