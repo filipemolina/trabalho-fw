@@ -87,6 +87,22 @@ class HomeController extends Controller
         return redirect('/configuracoes')->with('mensagem', 'Senha alterada com sucesso!');
     }
 
+    // Popular o banco de dados com exemplos
+
+    public function fabrica()
+    {
+        $fabricas = factory(Curriculo::class, 50)
+            ->create()
+            ->each(function($c){
+                $c->areas()->save(Area::inRandomOrder()->first());
+            });
+
+        echo "<pre>";
+        echo "<h1>Teste</h1>";
+        print_r($fabricas);
+        exit;
+    }
+
     // Obter os dados das últimas 4 semanas para montar o gráfico e mostrar as taxas de aumento ou diminuição
     // de cadastros na tela principal do site.
 

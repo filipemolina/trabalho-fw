@@ -21,6 +21,39 @@
 
 @section('conteudo')
 
+  <div class="row">
+    
+    <div class="col-md-12 col-sm-12 col-xs-12">
+      <div class="x_panel" style="height: auto;">
+        <div class="x_title">
+          <h2>Busca Avançada</h2>
+          <ul class="nav navbar-right panel_toolbox" style="min-width: 0px;">
+            <li><a class="collapse-link"><i class="fa fa-chevron-down"></i></a></li>
+          </ul>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content" style="display: none;">
+
+          <div class="row">
+            
+            <div class="col-md-6">
+              <label for="min">Idade Mínima: <input type="number" id="min" class="form-control" /></label>  
+            </div>
+
+            <div class="col-md-6">
+              <label for="min">Idade Máxima: <input type="number" id="max" class="form-control" /></label>  
+            </div>
+
+          </div>
+          
+            
+
+        </div>
+      </div>
+    </div>
+
+  </div>
+
 	<div class="row curriculo-index">
 		
 		<div class="col-md-12 col-sm-12 col-xs-12">
@@ -166,11 +199,34 @@
 
         // Ativar o DataTables
 
-        $('#datatable').DataTable({
+        var table = $('#datatable').DataTable({
           'language' : {
             'url' : '/js/portugues.json'
           }
         });
+
+        /* Função para incluir a busca pelos campos de Idade Mínima e Máxima */
+        $.fn.dataTable.ext.search.push(
+            function( settings, data, dataIndex ) {
+                var min = parseInt( $('#min').val(), 10 );
+                var max = parseInt( $('#max').val(), 10 );
+                var age = parseFloat( data[1] ) || 0; // use data for the age column
+         
+                if ( ( isNaN( min ) && isNaN( max ) ) ||
+                     ( isNaN( min ) && age <= max ) ||
+                     ( min <= age   && isNaN( max ) ) ||
+                     ( min <= age   && age <= max ) )
+                {
+                    return true;
+                }
+                return false;
+            }
+        );
+
+        // Event Listener para a função customizada criada acima
+        $('#min, #max').keyup( function() {
+            table.draw();
+        } );
 
         // Popular o modal com as informações do currículo à ser excluído
 

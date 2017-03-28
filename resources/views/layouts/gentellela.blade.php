@@ -44,7 +44,7 @@
 
     {{-- Css Customizado --}}
 
-    <link rel="stylesheet" href="/css/styles.css">
+    <link rel="stylesheet" href="{{ asset('/css/styles.css') }}">
   </head>
 
   <body class="nav-md">
@@ -53,7 +53,7 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="{{ url('/') }}" class="site_title"><img class="brasao-topo" src="/img/brasao.png" alt=""> <span style="margin-left: -2px; width: 100px; font-size: 18px;">Banco de Empregos</span></a>
+              <a href="{{ url('/') }}" class="site_title"><img class="brasao-topo" src="{{ asset('/img/brasao.png') }}" alt=""> <span style="margin-left: -2px; width: 100px; font-size: 18px;">Banco de Empregos</span></a>
             </div>
 
             <div class="clearfix"></div>

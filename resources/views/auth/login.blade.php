@@ -19,7 +19,7 @@
     <link href="{{ asset('vendors/animate.css/animate.min.css')}}" rel="stylesheet">
 
     <!-- Custom Theme Style -->
-    <link href="/css/custom.min.css" rel="stylesheet">
+    <link href="{{ asset('/css/custom.min.css') }}" rel="stylesheet">
   </head>
 
   <body class="login">

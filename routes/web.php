@@ -10,18 +10,24 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Auth::routes();
 
-Route::get('/', 'HomeController@index');
-Route::get('/configuracoes', 'HomeController@configuracoes');
-Route::post('/trocarsenha', 'HomeController@trocarSenha');
+// Definir um prefixo para todas as rotas pois a aplicação se encontra no subdiretório '/trabalho' do servidor
 
-///////////////////////////////////////////////////// Rotas para gerar PDF
+//Route::group(['prefix' => 'trabalho'], function(){
 
-Route::get('curriculos/pdf/{id}', 'CurriculosController@pdf');
+	Auth::routes();
 
-///////////////////////////////////////////////////// Registro de Resourceful Routes
+	Route::get('/', 'HomeController@index');
+	Route::get('/configuracoes', 'HomeController@configuracoes');
+	Route::post('/trocarsenha', 'HomeController@trocarSenha');
 
-Route::resource('curriculos', 'CurriculosController');
-Route::resource('areas', 'AreasController');
-Route::resource('usuarios', 'UsersController');
+	///////////////////////////////////////////////////// Rotas para gerar PDF
+
+	Route::get('curriculos/pdf/{id}', 'CurriculosController@pdf');
+
+	///////////////////////////////////////////////////// Registro de Resourceful Routes
+
+	Route::resource('curriculos', 'CurriculosController');
+	Route::resource('areas', 'AreasController');
+	Route::resource('usuarios', 'UsersController');
+//});
