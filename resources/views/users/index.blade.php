@@ -145,7 +145,7 @@
 
         $('#datatable').DataTable({
           'language' : {
-            'url' : '/js/portugues.json'
+            'url' : '{{ asset('/js/portugues.json') }}'
           }
         });
 
