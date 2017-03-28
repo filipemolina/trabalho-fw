@@ -277,6 +277,12 @@
 
                           </select>
                         </div>
+
+                        {{-- Botão para cadastro da área de atuação --}}
+
+                        <div class="col-md-3">
+                        	<a href="#" data-toggle="modal" data-target=".modal-cadastra-area" class="btn btn-info"> <i class="fa fa-plus"></i> </a>
+                        </div>
                     </div>
 
                     {{-- Comentários --}}
@@ -302,10 +308,140 @@
 		</div>
 	</div>
 
+	{{-- Modal --}}
+
+	<div class="modal fade bs-example-modal-sm modal-cadastra-area" tabindex="-1" role="dialog" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
+					</button>
+					<h4 class="modal-title" style="text-align: center;">Insira a nova Área de Atuação: </h4>
+				</div>
+				<div class="modal-body">
+
+					{{-- Formulário de cadastro da área de atuação --}}
+
+					<form id="cadastrar-area" action="{{ url('areas') }}" method="post" id="cadastro-curriculo" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
+
+						<div class="form-group">
+							<label class="control-label col-md-3 col-sm-3 col-xs-12" for="descricao">Descrição <span class="required">*</span>
+							</label>
+							<div class="col-md-6 col-sm-6 col-xs-12">
+								<input value="" type="text" id="descricao" name="descricao" required="required" class="form-control col-md-7 col-xs-12">
+							</div>
+						</div>
+
+					</form>
+				</div>
+				<div class="modal-footer">
+					<input type="hidden" value="" id="curriculo_id">
+					<button type="button" class="btn btn-info" data-dismiss="modal">Fechar</button>
+					<button type="button" class="btn btn-success btn-confirmar-modal">Cadastrar</button>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
+    {{-- /Modal --}}
+
 @endsection
 
 @section('js')
 
+	{{-- DateRangePicker --}}
+	<script src="{{ asset('vendors/moment/min/moment.min.js') }}"></script>
+    <script src="{{ asset('vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 
+	<script>
+		
+	$(function(){
+
+		$(":input").inputmask();
+
+			$(".date-picker").daterangepicker({
+				"showDropdowns": true,
+				"singleDatePicker": true,
+				"locale": {
+					"format": "DD/MM/YYYY",
+					"separator": " - ",
+					"applyLabel": "Apply",
+					"cancelLabel": "Cancel",
+					"fromLabel": "From",
+					"toLabel": "To",
+					"customRangeLabel": "Custom",
+					"weekLabel": "W",
+					"daysOfWeek": [
+					"Dom",
+					"Seg",
+					"Ter",
+					"Qua",
+					"Qui",
+					"Sex",
+					"Sab"
+					],
+					"monthNames": [
+					"Janeiro",
+					"Fevereiro",
+					"Março",
+					"Abril",
+					"Maio",
+					"Junho",
+					"Julho",
+					"Agosto",
+					"Setembro",
+					"Outubro",
+					"Novembro",
+					"Dezembro"
+					],
+					"firstDay": 1
+				}
+			});
+
+			// Realizar o cadastro de área de atuação e atualizar o select com a opção que acabou de ser cadastrada
+
+			$(".btn-confirmar-modal").click(function(event){
+
+				event.preventDefault();
+
+				$.post('{{ url('areas/') }}', {
+					_token    : "{{ csrf_token() }}",
+					descricao : $("input#descricao").val()
+				}, function(data){
+
+					// Transformar o retorno em um objeto JSON
+
+					data = JSON.parse(data);
+
+					// Apagar o valor digitado
+
+					$("#input#descricao").val("");
+
+					// Fechar o modal
+
+					$(".modal-cadastra-area").modal('toggle');
+
+					// Limpar a opção selecionada, se houver
+
+					$("select#area").find('option:selected').removeAttr('selected');
+
+					// Inserir a nova opção e selecioná-la
+
+					$("select#area").append($('<option>', {
+						value : data.id,
+						text  : data.descricao
+					}).attr('selected', 'selected'));
+
+				});
+
+				return false;
+
+			});
+
+	});
+
+	</script>
 
 @endsection

@@ -37,22 +37,13 @@
 
         @if ($resultados['sinal-porcentagem-total'])
 
-            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>{{ $resultados['porcentagem-total'] }}% </i> nesta semana.</span>
+            <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>{{ $resultados['porcentagem-total'] }}% </i> </span>
 
         @else
 
-            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>{{ $resultados['porcentagem-total'] }}% </i> nesta semana..
-
+            <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>{{ $resultados['porcentagem-total'] }}% </i>
+            </span>
         @endif
-    </div>
-
-    {{-- Currículos Encaminhados --}}
-
-    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-        <span class="count_top"><i class="fa fa-arrow-right"></i> Currículos Encaminhados</span>
-        <div class="count">{{ $resultados['encaminhados'] }}</div>
-
-        <span class="count_bottom"><i class="green">{{ $resultados['porcentagem-encaminhados'] }}% </i> do total.</span>
     </div>
     
     {{-- Total de Mulheres --}}
@@ -60,7 +51,7 @@
     <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
         <span class="count_top"><i class="fa fa-venus"></i> Total de Mulheres</span>
         <div class="count">{{ $resultados['femininos'] }}</div>
-        <span class="count_bottom"><i class="green">{{ $resultados['porcentagem-f'] }}% </i> do total..</span>
+        <span class="count_bottom"><i class="green">{{ $resultados['porcentagem-f'] }}% </i> do total</span>
 
     </div>
 
