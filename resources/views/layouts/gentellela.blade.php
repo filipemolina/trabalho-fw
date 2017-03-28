@@ -218,7 +218,7 @@
     <script src="{{ asset('vendors/nprogress/nprogress.js') }}"></script>
     {{-- Input Mask --}}
     <script src="{{ asset('vendors/jquery.inputmask/dist/jquery.inputmask.bundle.js') }}"></script>
-    <!-- iCheck -->
+    {{-- iCheck --}}
     <script src="{{ asset('vendors/iCheck/icheck.min.js')  }}"></script>
 
     @section('js')
