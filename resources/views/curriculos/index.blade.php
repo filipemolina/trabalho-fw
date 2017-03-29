@@ -200,7 +200,7 @@
 
         // Ativar o DataTables
 
-        $('#datatable').DataTable({
+        var table = $('#datatable').DataTable({
           'language' : {
             'url' : '{{ asset('/js/portugues.json') }}'
           }
