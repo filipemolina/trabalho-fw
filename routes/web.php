@@ -13,6 +13,7 @@
 Auth::routes();
 
 Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 Route::get('/configuracoes', 'HomeController@configuracoes');
 Route::post('/trocarsenha', 'HomeController@trocarSenha');
 Route::get('/fabrica', 'HomeController@fabrica');

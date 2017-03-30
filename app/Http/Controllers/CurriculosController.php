@@ -73,16 +73,16 @@ class CurriculosController extends Controller
 
         $this->validate($request, [
             'nome' => 'required|alpha_spaces',
-            'cpf' => 'required|unique:curriculos|cpf',
+            'cpf' => 'unique:curriculos|cpf',
             'rua' => 'required',
             'numero' => 'required',
             'bairro' => 'required',
-            'titulo' => 'required|documento',
-            'area' => 'required',
-            'sexo' => 'required',
-            'rg' => 'documento',
-            'pis' => 'documento',
-            'ctps' => 'documento'
+            // 'titulo' => 'required|documento',
+            // 'area' => 'required',
+            // 'sexo' => 'required',
+            // 'rg' => 'documento',
+            // 'pis' => 'documento',
+            // 'ctps' => 'documento'
         ], $this->mensagens);
 
         $curriculo = new Curriculo($request->all());
@@ -141,12 +141,12 @@ class CurriculosController extends Controller
 
         $this->validate($request, [
             'nome' => 'required',
-            'cpf' => 'required',
+            // 'cpf' => 'required',
             'rua' => 'required',
             'numero' => 'required',
             'bairro' => 'required',
-            'titulo' => 'required',
-            'area' => 'required',
+            // 'titulo' => 'required',
+            // 'area' => 'required',
             'sexo' => 'required',
         ], $this->mensagens);
 

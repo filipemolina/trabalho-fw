@@ -82,8 +82,8 @@ Cadastrar Currículo
 						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="sexo">Sexo <span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							Masculino <input type="radio" class="flat" name="sexo" id="genderM" value="M" @if(old('sexo') == "M") selected="selected" @endif required />
-                        	 Feminino <input type="radio" class="flat" name="sexo" id="genderF" value="F" @if(old('sexo') == "F") selected="selected" @endif />
+							Masculino <input type="radio" class="flat" name="sexo" id="genderM" value="M" @if(old('sexo') == "M") checked="checked" @endif required />
+                        	 Feminino <input type="radio" class="flat" name="sexo" id="genderF" value="F" @if(old('sexo') == "F") checked="checked" @endif />
 						</div>
 					</div>
 
@@ -270,7 +270,7 @@ Cadastrar Currículo
 
 								@foreach($areas as $area)
 
-									<option value="{{ $area->id }}" @if (old('area') == $area->id) selecte="selected" @endif>{{ $area->descricao }}</option>
+									<option value="{{ $area->id }}" @if (old('area') == $area->id) selected="selected" @endif>{{ $area->descricao }}</option>
 
 								@endforeach
 

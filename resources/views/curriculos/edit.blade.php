@@ -83,8 +83,8 @@
 						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="sexo">Sexo <span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							Masculino <input type="radio" class="flat" name="sexo" id="genderM" value="M" @if($curriculo->sexo == "M") checked="checked" @endif required />
-                        	 Feminino <input type="radio" class="flat" name="sexo" id="genderF" value="F" @if($curriculo->sexo == "F") checked="checked" @endif />
+							Masculino <input type="radio" class="flat" name="sexo" id="genderM" value="M" @if($curriculo->sexo == "M") checked @endif required />
+                        	 Feminino <input type="radio" class="flat" name="sexo" id="genderF" value="F" @if($curriculo->sexo == "F") checked @endif />
 						</div>
 					</div>
 

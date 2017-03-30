@@ -258,7 +258,7 @@
             id : id
           }, function(data){
 
-            window.location = "/curriculos";
+            window.location = "{{ url('curriculos/') }}";
 
           });
 

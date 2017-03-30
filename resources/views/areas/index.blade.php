@@ -159,7 +159,7 @@
 
           }, function(data){
 
-            window.location = '/areas';
+            window.location = '{{ url('/areas') }}';
 
           });
 

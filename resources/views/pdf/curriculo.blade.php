@@ -98,7 +98,13 @@
 
 		<p> <span style="font-weight: bold; margin-right: 10px;">Formação: </span> {{ $curriculo->formacao }} </p>
 
-		<p> <span style="font-weight: bold; margin-right: 10px;"> Área de Atuação Desejada: </span>  {{ $curriculo->areas()->first()->descricao }} </p>
+		{{-- Verificar se o usuário possui áreas de atuação cadastradas --}}
+
+		@if($curriculo->areas()->count())
+
+			<p> <span style="font-weight: bold; margin-right: 10px;"> Área de Atuação Desejada: </span> {{ $curriculo->areas()->first()->descricao }} </p>
+
+		@endif
 
 		<p> <span style="font-weight: bold; margin-right: 10px;"> Comentários: </span></p>
 
@@ -110,6 +116,6 @@
 		<br><br><br>	
 
 		<p style="text-align: center; font-weight: bold;">___________________________________________________</p>
-		<p style="text-align: center">Secretário Municipal de Trabalho</p>
+		<p style="text-align: center">Secretaria Municipal de Trabalho</p>
 
 @endsection

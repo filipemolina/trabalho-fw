@@ -23,10 +23,10 @@ class CreateCurriculosTable extends Migration
 
             $table->string('nome', 100);
             $table->string('rg', 30)->nullable();
-            $table->string('cpf', 30)->unique();
+            $table->string('cpf', 30)->nullable();
             $table->string('pis', 30)->nullable();
             $table->string('ctps', 30)->nullable();
-            $table->string('titulo', 30);
+            $table->string('titulo', 30)->nullable();
 
             // Endereço
 
@@ -46,6 +46,7 @@ class CreateCurriculosTable extends Migration
             // Miscelânia
             
             $table->boolean('indicacao_politica');
+            $table->string('quem_indicou')->nullable();
             $table->text('comentarios')->nullable();
 
             // Data de criação e modificação

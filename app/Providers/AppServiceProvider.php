@@ -39,9 +39,11 @@ class AppServiceProvider extends ServiceProvider
 
         Validator::extend('cpf', function($atributo, $valor, $parametros, $validador){
 
-            // Verifica se um número foi informado
+            // Verifica se um número foi informado,
+            // retorna true nesse caso, pois o campo CPF não é 
+            // obrigatório
             if(empty($valor)) {
-                return false;
+                return true;
             }
          
             // Elimina possivel mascara
