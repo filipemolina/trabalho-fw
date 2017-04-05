@@ -159,10 +159,7 @@ Cadastrar Currículo
 					<div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Indicação Política</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select id="indicacao_politica" name="indicacao_politica" class="select2_group col-md-7 col-xs-12 form-control">
-                            <option value="0" @if (old('indicacao_politica') == "0") selected="selected" @endif>Não</option>
-                            <option value="1" @if (old('indicacao_politica') == "1") selected="selected" @endif>Sim</option>
-                          </select>
+                          <input type="text" class="form-control col-md-7 col-xs-12" name="indicacao_politica" id="indicacao_politica" value="{{ old('indicacao_politica') }}">
                         </div>
                      </div>
 
@@ -260,10 +257,10 @@ Cadastrar Currículo
 
 					{{-- Área de Atuação --}}
 
-					<div class="form-group">
+					<div class="form-group areas">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Área de Atuação</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select id="area" name="area" class="select2_group col-md-7 col-xs-12 form-control">
+                        <div class="col-md-6 col-sm-6 col-xs-12 div-select">
+                          <select id="area" name="area[]" class="select2_group col-md-7 col-xs-12 form-control">
                           	<option value="">Selecione...</option>
 
                           		{{-- Iterar pelar áreas de atuação --}}
@@ -280,8 +277,14 @@ Cadastrar Currículo
 						{{-- Botão para cadastro da área de atuação --}}
 
                         <div class="col-md-3">
-                        	<a href="#" data-toggle="modal" data-target=".modal-cadastra-area" class="btn btn-info"> <i class="fa fa-plus"></i> </a>
+                        	<a href="#" class="btn btn-info btn-nova-linha"> <i class="fa fa-plus"></i> </a>
                         </div>
+                    </div>
+
+                    {{-- Botão para inserir mais uma linha no formulario para cadastro de outra área de atuação --}}
+
+                    <div class="form-group" style="text-align: center;">
+                    	<a href="#" data-toggle="modal" data-target=".modal-cadastra-area" class="btn btn-info"> Nova Área de Atuação </a>
                     </div>
 
                     {{-- Comentários --}}
@@ -354,6 +357,9 @@ Cadastrar Currículo
     <script src="{{ asset('vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 
 	<script>
+
+		var incremento = 0;
+
 		$(function(){
 
 			$(":input").inputmask();
@@ -397,6 +403,23 @@ Cadastrar Currículo
 				}
 			});
 
+			// Criar uma nova linha para cadastro de outra área de atuação
+
+			$("a.btn-nova-linha").click(function(e){
+
+				e.preventDefault();
+
+				// Clona o select, atribui um id começando com 0, coloca uma margem de 10 pixels e adiciona
+				// à div
+
+				$("select#area").clone().attr('id', incremento).css('margin-top', '10px').appendTo('div.div-select'); 
+
+				// Incrementa a variável utilizada para gerar os idsyyy
+
+				incremento++;
+
+			});
+
 			// Realizar o cadastro de área de atuação e atualizar o select com a opção que acabou de ser cadastrada
 
 			$(".btn-confirmar-modal").click(function(event){
@@ -424,12 +447,28 @@ Cadastrar Currículo
 
 					$("select#area").find('option:selected').removeAttr('selected');
 
-					// Inserir a nova opção e selecioná-la
+					// Decidir em qual select será incluida a nova opção
 
-					$("select#area").append($('<option>', {
-						value : data.id,
-						text  : data.descricao
-					}).attr('selected', 'selected'));
+					if(incremento > 0)
+					{
+						// Inserir a nova opção e selecioná-la
+
+						$("select#"+(incremento-1)).append($('<option>', {
+							value : data.id,
+							text  : data.descricao
+						}).attr('selected', 'selected'));	
+					}
+					else
+					{
+						// Inserir a nova opção e selecioná-la
+
+						$("select#area").append($('<option>', {
+							value : data.id,
+							text  : data.descricao
+						}).attr('selected', 'selected'));
+					}
+
+					
 
 				});
 

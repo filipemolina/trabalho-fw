@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddEncaminhadoField extends Migration
+class AddEmpresasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,10 @@ class AddEncaminhadoField extends Migration
      */
     public function up()
     {
-        Schema::table('curriculos', function (Blueprint $table) {
-            $table->integer('encaminhado')->nullable();
+        Schema::create('empresas', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('descricao', 100);
+            $table->timestamps();
         });
     }
 
@@ -25,8 +27,6 @@ class AddEncaminhadoField extends Migration
      */
     public function down()
     {
-        Schema::table('curriculos', function (Blueprint $table) {
-            $table->dropColumn('encaminhado');
-        });
+        Schema::dropIfExists('empresas');
     }
 }

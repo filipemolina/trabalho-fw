@@ -29,7 +29,7 @@ $factory->define(App\Curriculo::class, function(Faker\Generator $faker){
 
 	return [
 		'nome'               => $faker->name,
-		'nascimento'         => $faker->date('d/m/Y', 'now'),
+		'nascimento'         => $faker->date('d/m/Y', '-18 years'),
 		'cpf'                => $faker->numerify('###.###.###-##'),
 		'rg'                 => $faker->numerify('##.###.###-#'),
 		'pis'                => $faker->numerify('########'),

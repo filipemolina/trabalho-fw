@@ -53,7 +53,9 @@
         <div class="col-md-3 left_col">
           <div class="left_col scroll-view">
             <div class="navbar nav_title" style="border: 0;">
-              <a href="{{ url('/') }}" class="site_title"><img class="brasao-topo" src="{{ asset('/img/brasao.png') }}" alt=""> <span style="margin-left: -2px; width: 100px; font-size: 18px;">Banco de Empregos</span></a>
+              <a href="{{ url('/') }}" class="site_title">
+                <img src="{{ asset('/img/logo-balcao.png') }}" alt="">
+              </a>
             </div>
 
             <div class="clearfix"></div>
@@ -91,6 +93,16 @@
                     <ul class="nav child_menu">
                       <li><a href="{{ url('/curriculos') }}">Lista de Currículos</a></li>
                       <li><a href="{{ url('/curriculos/create') }}">Cadastrar Currículos</a></li>
+
+                      {{-- Link para currículos excluídos apenas para o Administrador  --}}
+  
+                      @if (Auth::user()->is_admin)
+
+                        <li><a href="{{ url('/curriculos-encaminhados') }}"> Encaminhados</a></li>
+                        <li><a href="{{ url('/curriculos-excluidos') }}"> Excluídos</a></li>
+
+                      @endif
+
                     </ul>
 
                   </li>
@@ -150,7 +162,17 @@
               </div>
             </div>
             <!-- /sidebar menu -->
+
+            {{-- Logotipo Branco --}}
+
+            {{-- <div id="logo-rodape">
+              <img src="{{ asset('img/logo-branca.png') }}" alt="">
+            </div> --}}
+            
           </div>
+
+          
+
         </div>
 
         <!-- top navigation -->

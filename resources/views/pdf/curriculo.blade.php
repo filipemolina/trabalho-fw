@@ -17,7 +17,7 @@
 		<br><br>
 
 		<div style="display: block; float: left; width: 86%; text-align: center; font-size: 20px; margin-left: -100px;">
-			Secretaria Municipal de Trabalho
+			Secretaria Municipal de Trabalho, Desenvolvimento<br> Econômico e Agricultura
 		</div>
 
 		<div style="clear: both;"></div>
@@ -25,6 +25,8 @@
 	</div>
 
 	{{-------------------------- Campos do Currículo --------------------------}}
+
+	<h2 style="text-align:center;">ENCAMINHAMENTO</h2>
 
 	{{-- Nome --}}
 
@@ -116,6 +118,6 @@
 		<br><br><br>	
 
 		<p style="text-align: center; font-weight: bold;">___________________________________________________</p>
-		<p style="text-align: center">Secretaria Municipal de Trabalho</p>
+		<p style="text-align: center">Secretaria Municipal de Trabalho, Desenvolvimento<br> Econômico e Agricultura</p>
 
 @endsection

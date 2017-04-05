@@ -45,12 +45,14 @@ class CreateCurriculosTable extends Migration
 
             // Miscelânia
             
-            $table->boolean('indicacao_politica');
-            $table->string('quem_indicou')->nullable();
+            $table->string('indicacao_politica')->nullable();
+
+            // O usuário que delelar o currículo será gravado neste campo (softDelete)
+            $table->integer('user_id')->unsigned()->nullable();
             $table->text('comentarios')->nullable();
 
             // Data de criação e modificação
-
+            $table->softDeletes();
             $table->timestamps();
         });
     }

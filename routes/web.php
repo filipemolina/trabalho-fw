@@ -17,6 +17,12 @@ Route::get('/home', 'HomeController@index');
 Route::get('/configuracoes', 'HomeController@configuracoes');
 Route::post('/trocarsenha', 'HomeController@trocarSenha');
 Route::get('/fabrica', 'HomeController@fabrica');
+Route::get('/curriculos-excluidos', 'CurriculosController@excluidos');
+Route::post('/curriculos/{id}/restaurar', 'CurriculosController@restaurar');
+Route::delete('/curriculos-excluidos/{id}', 'CurriculosController@excluir');
+Route::post('/curriculos/encaminhar/', 'CurriculosController@encaminhar');
+Route::get('/curriculos-encaminhados', 'CurriculosController@encaminhados');
+Route::post('/curriculos/retornar/{id}', 'CurriculosController@retornar');
 
 ///////////////////////////////////////////////////// Rotas para gerar PDF
 

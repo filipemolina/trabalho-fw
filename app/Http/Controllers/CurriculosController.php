@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use PDF;
 use App\Curriculo;
 use App\Area;
+use App\Empresa;
 
 class CurriculosController extends Controller
 {
@@ -32,19 +34,54 @@ class CurriculosController extends Controller
         // Obter todos os curriculos cadastrados
 
         $curriculos = Curriculo::all()->load('areas');
-        $idades = [];
+        
+        // Criar um vetor associativo com o id do currículo e a idade da pessoa
+        // Necessário para montar a tabela na view
 
-        // Criar um vetor associativo no formato [ 'id do curriculo' => 'idade']
-
-        foreach($curriculos as $curriculo)
-        {
-            $nascimento = date('Y', strtotime(implode(array_reverse(explode('/',$curriculo->nascimento)))));
-            $idade = date('Y') - $nascimento;
-
-            $idades[$curriculo->id] = $idade;
-        }
+        $idades = $this->calcularIdades($curriculos);
 
         return view('curriculos.index', compact(['curriculos', 'idades']));
+    }
+
+    /**
+     * Mostra uma lista de currículos que já foram excluídos
+     * usando SoftDeletes
+     * 
+     * @return \Illuminate\Http\Response
+     */
+
+    public function excluidos()
+    {
+        // Obter todos os currículos excluídos
+
+        $excluidos = Curriculo::onlyTrashed()->get();
+        $idades = $this->calcularIdades($excluidos);
+
+        return view('curriculos.excluidos', compact(['excluidos', 'idades']));
+    }
+
+    /**
+     * Mostra uma lista de currículos que já foram encaminhados
+     * para empresas
+     * 
+     * @return \Illuminate\Http\Response
+     */
+
+    public function encaminhados()
+    {
+        // A função reject executa a closure e retira da coleção todos os objetos
+        // para os quais ela retorna true.
+        // Dessa forma, apenas os currículos que já foram encaminhados são retornados
+
+        $curriculos = Curriculo::all()->reject(function($objeto, $chave){ 
+
+            // Condição para que o objeto seja retirado da coleção
+
+            return $objeto->encaminhado == null; 
+
+        });
+
+        return view('curriculos.encaminhados', compact(['curriculos']));
     }
 
     /**
@@ -73,16 +110,10 @@ class CurriculosController extends Controller
 
         $this->validate($request, [
             'nome' => 'required|alpha_spaces',
-            'cpf' => 'unique:curriculos|cpf',
+            'cpf' => 'cpf',
             'rua' => 'required',
             'numero' => 'required',
             'bairro' => 'required',
-            // 'titulo' => 'required|documento',
-            // 'area' => 'required',
-            // 'sexo' => 'required',
-            // 'rg' => 'documento',
-            // 'pis' => 'documento',
-            // 'ctps' => 'documento'
         ], $this->mensagens);
 
         $curriculo = new Curriculo($request->all());
@@ -91,11 +122,34 @@ class CurriculosController extends Controller
 
         $curriculo->save();
 
-        $curriculo->areas()->attach($request->input('area'));
+        // Eliminar as posições vazias do vetor de áreas de atuação
+
+        $areas_selecionadas = array_filter($request->input('area'));
+
+        // Realizar o cadastro das áreas apenas se ainda houver alguma posição no vetor
+
+        if(count($areas_selecionadas))
+
+            $curriculo->areas()->attach($areas_selecionadas);
 
         // Retornar para o formulário de cadastro com mensagem de sucesso
 
         return redirect('curriculos/create')->with('mensagem', 'Currículo cadastrado com sucesso!');
+    }
+
+    /**
+     * Restaurar currículo com softdelete
+     * @param  int  $id
+     * @return \Illuminate\Http\Response 
+     */
+
+    public function restaurar($id)
+    {
+        $curriculo = Curriculo::withTrashed()->find($id);
+
+        $curriculo->restore();
+
+        return redirect('/curriculos-excluidos');
     }
 
     /**
@@ -152,7 +206,19 @@ class CurriculosController extends Controller
 
         $curriculo->update($request->all());
 
-        $curriculo->areas()->sync([$request->input('area')]);
+        // Eliminar as posições vazias do vetor de áreas de atuação e reindexar começando do 0
+
+        $areas_selecionadas = array_values(array_filter($request->input('area')));
+
+        // Realizar o cadastro das áreas apenas se ainda houver alguma posição no vetor
+
+        if(count($areas_selecionadas))
+
+            // Aqui é usado o método sync ao invés do attach, dessa maneira
+            // apenas os ID's fornecidos serão salvos no banco de dados,
+            // todos os outros serão excluídos
+
+            $curriculo->areas()->sync($areas_selecionadas);
 
         return redirect('curriculos/'.$id."/edit")->with('mensagem', 'Currículo alterado com sucesso.');
 
@@ -170,10 +236,89 @@ class CurriculosController extends Controller
 
         $curriculo = Curriculo::find($id);
 
+        // Gravar o ID do usuário que excluiu o currículo
+
+        $curriculo->quem_deletou()->associate(Auth::user());
+        $curriculo->save();
+
         // Destruí-lo
 
         $curriculo->delete();
+
+        // O redirect será feito via JavaScript
     }
+
+    /**
+     * Excluir permanentemente um curriculo que já está na lista de softDeletes
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+
+    public function excluir($id)
+    {
+        $curriculo = Curriculo::withTrashed()->find($id);
+
+        $curriculo->forceDelete();
+
+        // O redirect será feito via JavaScript
+    }
+
+    /**
+     * Encaminhar currículos para as empresas
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function encaminhar(Request $request)
+    {
+        $ids = $request->input('ids');
+        $desc_empresa = $request->input('empresa');
+
+        // Obter a empresa no banco de dados ou criar uma nova
+        // caso não exista
+
+        $empresa = Empresa::firstOrCreate(['descricao' => $desc_empresa]);
+
+        // Relacionar o currículo à empresa indicada
+
+        $teste = [];
+
+        foreach ($ids as $id) 
+        {
+            $curriculo = Curriculo::find($id);
+
+            $curriculo->empresa()->associate($empresa);
+            $curriculo->save();
+
+        }
+
+        return 1;
+    }
+
+    /**
+     * Eliminar o campo encaminhado, para que o currículo volte a aparecer na lista
+     * de currículos disponíveis
+     *
+     * @param  int $id
+     */
+
+    public function retornar($id)
+    {
+        $curriculo = Curriculo::find($id);
+        $curriculo->encaminhado = null;
+        $curriculo->save();
+
+        return redirect('/curriculos-encaminhados');
+    }
+
+    /**
+     * Criar um PDF para exibição / impressão do currículo
+     * 
+     * @param in $id
+     * @return Arquivo PDF
+     */
 
     public function pdf($id)
     {
@@ -182,5 +327,20 @@ class CurriculosController extends Controller
         $pdf = PDF::loadView('pdf.curriculo', compact('curriculo'));
 
         return $pdf->stream();
+    }
+
+    protected function calcularIdades($curriculos)
+    {
+        $idades = [];
+
+        foreach($curriculos as $curriculo)
+        {
+            $nascimento = date('Y', strtotime(implode(array_reverse(explode('/',$curriculo->nascimento)))));
+            $idade = date('Y') - $nascimento;
+
+            $idades[$curriculo->id] = $idade;
+        }
+
+        return $idades;
     }
 }

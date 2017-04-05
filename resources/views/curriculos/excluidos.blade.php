@@ -16,7 +16,7 @@
 
 @section('menu-superior')
 
-  <button class="btn btn-info btn-cadastrar-curriculo" onclick="location.href='{{ url('curriculos/create') }}'"> <i class="fa fa-id-card"></i> Cadastrar Currículo</button>
+  <button class="btn btn-info btn-cadastrar-curriculo" onclick="location.href='{{ url('curriculos/') }}'"> <i class="fa fa-id-card"></i> Lista de Currículos Ativos</button>
 
 @endsection
 
@@ -60,7 +60,7 @@
 		<div class="col-md-12 col-sm-12 col-xs-12">
           	<div class="x_panel">
 	            <div class="x_title">
-	              	<h2>Currículos <small>Utilize os comandos da tabela para reordenar e pesquisar</small></h2>
+	              	<h2>Currículos Excluídos <small>Utilize os comandos da tabela para reordenar e pesquisar</small></h2>
 	              	<div class="clearfix"></div>
 	            </div>
             	<div class="x_content">
@@ -70,11 +70,9 @@
                         	<tr>
                           		<th>Nome</th>
                           		<th>Idade</th>
-                          		<th>Bairro</th>
-                          		<th>Formação</th>
                               <th>Área de Atuação</th>
                               <th>Indicação</th>
-                              <th style="max-width: 80px;">Encaminhar?</th>
+                              <th>Quem Excluiu?</th>
                               <th style="min-width: 65px;">Ações</th>
                         	</tr>
                       	</thead>
@@ -84,27 +82,24 @@
 
                           {{-- Iterar pelos currículos para mostrar na tabela --}}
 
-                          @foreach($curriculos as $curriculo)
+                          @foreach($excluidos as $curriculo)
 
                           	<tr>
                             		<td class="bife">{{ $curriculo->nome }}</td>
                             		<td>{{ $idades[$curriculo->id] }}</td>
-                            		<td>{{ $curriculo->bairro }}</td>
-                            		<td>{{ $curriculo->formacao }}</td>
-                                <td>
-                                    @foreach($curriculo->areas as $area) {{ $area->descricao }} @endforeach
-                                </td>
-                            		<td>@if($curriculo->indicacao_politica) Sim @else Não @endif</td>
-                                <td style="text-align: center;"><input type="checkbox" class="flat chk-encaminhar" name="encaminhar" data-id="{{ $curriculo->id }}" data-nome="{{ $curriculo->nome }}"></td>
+                                <td></td>
+                            		<td>{{ $curriculo->indicacao_politica }}</td>
+                                <td>{{ $curriculo->quem_deletou->name }}</td>
                                 <td>
                                   
                                   {{-- Botão de visualizar, envia uma requisição GET com o id do currículo --}}
 
-                                  <a href="{{ url("curriculos/pdf/$curriculo->id") }}" target="_blank" class="btn btn-success btn-ver"   data-id="{{ $curriculo->id }}"><i class="fa fa-eye"></i></a>
-                                  
-                                  {{-- Botão Editar, leva para a tela de edição do currículo --}}
+                                  <button class="btn btn-success btn-restaurar" data-id="{{ $curriculo->id }}"><i class="fa fa-reply-all"></i></button>
 
-                                  <a href="{{ url("curriculos/$curriculo->id/edit") }}" class="btn btn-info btn-editar" data-id="{{ $curriculo->id }}"><i class="fa fa-edit"></i></a>
+                                  <form style="display: none;" id="{{ $curriculo->id }}" action="{{ url("curriculos/$curriculo->id/restaurar") }}" method="post">
+                                    {{ csrf_field() }}
+                                    <input type="hidden" value="{{ $curriculo->id }}" name="id">
+                                  </form>
                                     
                                   {{-- Botão de Exclusão --}}
 
@@ -116,26 +111,13 @@
                           @endforeach
 
                         </tbody>
-                    </table>
-
-                    {{-- Botão de Encaminhar Currículos --}}
-
-                    <div class="btn-encaminhar">
-                      
-                      <button class="btn btn-info btn-encaminhar disabled" data-toggle="modal" data-target=".modal-encaminhar"><i class="fa fa-share"></i> Encaminhar Currículo</button>
-                      
-                      {{-- Botão para selecionar todos currículos --}}
-                      
-                      <button class="btn btn-info btn-selecionar"><i class="fa fa-check"></i> <span class="acao">Marcar</span> Todos</button>
-
-                    </div>
-
+                    </table>              
             	</div>
           	</div>
         </div>
 	</div>
 
-  {{-- Modal Excluir --}}
+  {{-- Modal --}}
 
     <div class="modal fade bs-example-modal-sm modal-excluir-curriculo" tabindex="-1" role="dialog" aria-hidden="true">
       <div class="modal-dialog modal-sm">
@@ -159,53 +141,7 @@
       </div>
     </div>
 
-    {{-- /Modal Excluir --}}
-
-    {{-- Modal Encaminhar --}}
-
-      <div class="modal fade bs-example-modal-sm modal-encaminhar" tabindex="-1" role="dialog" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span>
-            </button>
-            <h4 class="modal-title">Encaminhar Currículos:</h4>
-          </div>
-          <div class="modal-body">
-
-          <div class="alert alert-success">
-            
-            <ul id="lista-curriculos">
-
-            </ul>
-
-          </div>
-
-            <div class="form-group">
-              <label for="empresa" class="col-md-3">Empresa</label>
-              <div class="col-md-9">
-                <input type="text" class="form-control col-md-12" name="empresa" id="empresa">
-              </div>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-          
-          <div class="modal-footer">
-
-            {{-- Nesta div serão inseridos vários inputs do tipo hidden, um para cada currículo encaminhado --}}
-
-            <div class="curriculos"></div>
-
-            <button type="button" class="btn btn-info" data-dismiss="modal">Fechar</button>
-            <button type="button" class="btn btn-success btn-confirmar-encaminhamento">Encaminhar</button>
-          </div>
-
-        </div>
-      </div>
-    </div>
-
-    {{-- /Modal Encaminhar --}}
+    {{-- /Modal --}}
 
 @endsection
 
@@ -229,10 +165,21 @@
     <script src="{{ asset('vendors/pdfmake/build/vfs_fonts.js') }}"></script>
 
     <script>
-
-      var todos_selecionados = false;
       
       $(function(){
+
+        // Botão Restaurar
+        // Submeter o formulário logo abaixo do botão via POST
+
+        $("button.btn-restaurar").click(function(){
+
+          // Obter o id do currículo à ser restaurado
+
+          var id = $(this).data('id');
+
+          $("form#"+id).submit();
+
+        });
 
         // Ativar o DataTables
 
@@ -288,133 +235,15 @@
 
           // Enviar a requisição DELETE para o Laravel, caso positivo
 
-          $.post("{{ url('curriculos/') }}/"+id, {
+          $.post("{{ url('curriculos-excluidos/') }}/"+id, {
             _token  : "{{ csrf_token() }}",
             _method : 'DELETE',
             id : id
           }, function(data){
 
-            window.location = "{{ url('curriculos/') }}";
+            window.location = "{{ url('curriculos-excluidos/') }}";
 
           });
-
-        });
-
-        // Evitar que o botão "Encaminhar currículos" continue abrindo o modal
-        // mesmo quando estiver desabilitado
-
-        $("button.btn-encaminhar").click(function(e){
-
-          if($(this).hasClass('disabled'))
-            e.stopPropagation();
-
-        });
-
-        // Popular o Modal com as informações do currículo à ser ENCAMINHADO
-
-        // Esse evento é disparado pela biblioteca iCheck, inputs com iCheck não
-        // disparam eventos padrão (infelizmente)
-
-        $('input.chk-encaminhar').on('ifChanged',function(){
-
-            // Toda vez que um checkbox for clicado, iterar por todos os checkboxes exibidos,
-            // apagar a lista de currículos no modal e então incluir apenas os nomes dos currículos
-            // selecionados
-
-            // Apagar todas as LI's
-
-            $("ul#lista-curriculos").empty();
-
-            // Apagar todos os campos hidden
-
-            $("div.modal-footer .curriculos").empty();
-
-            // Iterar pelos checkboxes clicados
-
-            $("input.chk-encaminhar:checked").each(function(index, element){
-
-                var nome = $(element).data('nome');
-                var id = $(element).data('id');
-
-                //Adicionar o nome à lista
-
-                $("ul#lista-curriculos").append($('<li>').html(nome));
-
-                // Adicionar o ID aos campos hidden
-
-                $("<input>").attr('type', 'hidden').attr('name', 'ids[]').val(id).appendTo('div.modal-footer .curriculos');
-
-            });
-
-            // Abilitar ou desabilitar o botão de encaminhar
-
-            if(!$("input.chk-encaminhar:checked").length)
-
-              $("button.btn-encaminhar").addClass('disabled');
-
-            else
-
-              $("button.btn-encaminhar").removeClass('disabled');
-
-        });
-
-        // Enviar a requsição POST para /curriculos/encaminhar quando o botão do modal for clicado
-
-        $("button.btn-confirmar-encaminhamento").click(function(){
-
-            var ids = [];
-            var empresa = $("input#empresa").val();
-
-            $("input.chk-encaminhar:checked").each(function(index, value){
-
-                ids.push($(value).data('id'));
-
-            });
-
-            // Enviar a requisição
-
-            $.post('{{ url('/curriculos/encaminhar') }}', {
-              _token  : "{{ csrf_token() }}",
-              ids     : ids,
-              empresa : empresa,
-            }, function(data){
-
-              $(".modal-encaminhar").modal('toggle');
-              $("input#empresa").val("");
-
-            })
-
-        });
-
-        // Selecionar ou apagar todos os checkboxes
-
-        $("button.btn-selecionar").click(function(){
-
-            if(!todos_selecionados){
-
-              $("input.chk-encaminhar").iCheck('check');
-
-              $("button.btn-selecionar i").removeClass('fa-check').addClass('fa-times');
-
-              $("button.btn-selecionar .acao").html("Desmarcar");
-
-              todos_selecionados = true;
-
-            }
-            else
-            {
-
-              $("input.chk-encaminhar").iCheck('uncheck');
-
-              $("button.btn-selecionar i").removeClass('fa-times').addClass('fa-check');
-
-              $("button.btn-selecionar .acao").html("Marcar");
-
-              todos_selecionados = false;
-
-            }
-
-              
 
         });
 

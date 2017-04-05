@@ -27,4 +27,11 @@ class User extends Authenticatable
     protected $hidden = [
         'password', 'remember_token',
     ];
+
+    // Retorna os currículos que foram deletados por este usuário
+
+    public function curriculos_deletados()
+    {
+        return $this->hasMany('App\Curriculo');
+    }
 }

@@ -53,7 +53,7 @@
 	<div class="col-md-12 col-sm-12 col-xs-12">
 		<div class="x_panel">
 			<div class="x_title">
-				<h2>Cadastrar Currículo <small>Atenção aos itens obrigatórios.</small></h2>
+				<h2>Editar Currículo de {{ $curriculo->nome }}</h2>
 				<div class="clearfix"></div>
 			</div>
 
@@ -261,28 +261,58 @@
 
 					{{-- Área de Atuação --}}
 
+					<?php $cont = 0; ?>
+
 					<div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Área de Atuação</label>
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                          <select id="area" name="area" class="select2_group col-md-7 col-xs-12 form-control">
-                          	<option value="">Selecione...</option>
+                        <div class="col-md-6 col-sm-6 col-xs-12 div-select">
+                        	
+							@forelse($curriculo->areas as $area_selecionada)
 
-                          		{{-- Iterar pelar áreas de atuação --}}
+	                          <select id="@if($cont == 0)area" @else{{ $cont - 1 }}" style="margin-top: 10px;" @endif name="area[]" class="select2_group col-md-7 col-xs-12 form-control">
+	                          	<option value="">-- EXCLUIR! --</option>
 
-								@foreach($areas as $area)
+	                          		{{-- Iterar pelar áreas de atuação --}}
 
-									<option value="{{ $area->id }}" @if ($curriculo->areas->contains($area->id)) selected="selected" @endif>{{ $area->descricao }}</option>
+									@foreach($areas as $area)
 
-								@endforeach
+										<option value="{{ $area->id }}" @if ($curriculo->areas[$cont]->id == $area->id) selected="selected" @endif>{{ $area->descricao }}</option>
 
-                          </select>
+									@endforeach
+
+	                          </select>
+
+	                          <?php $cont++; ?>
+
+	                        @empty
+
+								<select id="@if($cont == 0)area" @else{{ $cont - 1 }}" style="margin-top: 10px;" @endif name="area[]" class="select2_group col-md-7 col-xs-12 form-control">
+		                          	<option value="">Selecione...</option>
+
+		                          		{{-- Iterar pelar áreas de atuação --}}
+
+										@foreach($areas as $area)
+
+											<option value="{{ $area->id }}">{{ $area->descricao }}</option>
+
+										@endforeach
+
+		                          </select>
+
+	                        @endforelse
                         </div>
 
                         {{-- Botão para cadastro da área de atuação --}}
 
                         <div class="col-md-3">
-                        	<a href="#" data-toggle="modal" data-target=".modal-cadastra-area" class="btn btn-info"> <i class="fa fa-plus"></i> </a>
+                        	<a href="#" class="btn btn-info btn-nova-linha"> <i class="fa fa-plus"></i> </a>
                         </div>
+                    </div>
+
+                    {{-- Botão para inserir mais uma linha no formulario para cadastro de outra área de atuação --}}
+
+                    <div class="form-group" style="text-align: center;">
+                    	<a href="#" data-toggle="modal" data-target=".modal-cadastra-area" class="btn btn-info"> Nova Área de Atuação </a>
                     </div>
 
                     {{-- Comentários --}}
@@ -356,6 +386,8 @@
     <script src="{{ asset('vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
 
 	<script>
+
+	var incremento = 0;
 		
 	$(function(){
 
@@ -400,6 +432,23 @@
 				}
 			});
 
+			// Criar uma nova linha para cadastro de outra área de atuação
+
+			$("a.btn-nova-linha").click(function(e){
+
+				e.preventDefault();
+
+				// Clona o select, atribui um id começando com 0, coloca uma margem de 10 pixels e adiciona
+				// à div
+
+				$("select#area").clone().attr('id', incremento).css('margin-top', '10px').appendTo('div.div-select'); 
+
+				// Incrementa a variável utilizada para gerar os idsyyy
+
+				incremento++;
+
+			});
+
 			// Realizar o cadastro de área de atuação e atualizar o select com a opção que acabou de ser cadastrada
 
 			$(".btn-confirmar-modal").click(function(event){
@@ -427,12 +476,26 @@
 
 					$("select#area").find('option:selected').removeAttr('selected');
 
-					// Inserir a nova opção e selecioná-la
+					// Decidir em qual select será incluida a nova opção
 
-					$("select#area").append($('<option>', {
-						value : data.id,
-						text  : data.descricao
-					}).attr('selected', 'selected'));
+					if(incremento > 0)
+					{
+						// Inserir a nova opção e selecioná-la
+
+						$("select#"+(incremento-1)).append($('<option>', {
+							value : data.id,
+							text  : data.descricao
+						}).attr('selected', 'selected'));	
+					}
+					else
+					{
+						// Inserir a nova opção e selecioná-la
+
+						$("select#area").append($('<option>', {
+							value : data.id,
+							text  : data.descricao
+						}).attr('selected', 'selected'));
+					}
 
 				});
 

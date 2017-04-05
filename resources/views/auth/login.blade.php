@@ -20,6 +20,8 @@
 
     <!-- Custom Theme Style -->
     <link href="{{ asset('/css/custom.min.css') }}" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ asset('/css/styles.css') }}">
   </head>
 
   <body class="login">
@@ -27,7 +29,12 @@
       <a class="hiddenanchor" id="signup"></a>
       <a class="hiddenanchor" id="signin"></a>
 
+      <div class="logo-login">
+          <img src="{{ asset('img/logo-balcao.png') }}" alt="">
+        </div>
+
       <div class="login_wrapper">
+        
         <div class="animate form login_form">
           <section class="login_content">
             <form action="{{ route('login') }}" method="post">
@@ -64,7 +71,7 @@
 
               <div class="separator">
                 <div>
-                  <h1><i class="fa fa-suitcase"></i> Banco de Empregos</h1>
+                  {{-- <h1><i class="fa fa-suitcase"></i> Banco de Empregos</h1> --}}
                   <p>©2017 - Subsecretaria da Tecnologia da Informação</p>
                 </div>
               </div>
