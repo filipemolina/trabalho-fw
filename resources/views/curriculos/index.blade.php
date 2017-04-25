@@ -68,8 +68,9 @@
                   	<table id="datatable" class="table table-striped table-bordered">
                       	<thead>
                         	<tr>
-                          		<th>Nome</th>
+                          		<th style="max-width: 265px;">Nome</th>
                           		<th>Idade</th>
+                              <th>Sexo</th>
                           		<th>Bairro</th>
                           		<th>Formação</th>
                               <th>Área de Atuação</th>
@@ -78,9 +79,7 @@
                               <th style="min-width: 65px;">Ações</th>
                         	</tr>
                       	</thead>
-
-
-                      	<tbody>
+                        <tbody>
 
                           {{-- Iterar pelos currículos para mostrar na tabela --}}
 
@@ -89,6 +88,7 @@
                           	<tr>
                             		<td class="bife">{{ $curriculo->nome }}</td>
                             		<td>{{ $idades[$curriculo->id] }}</td>
+                                <td>@if($curriculo->sexo == 'M') Masculino @else Feminino @endif</td>
                             		<td>{{ $curriculo->bairro }}</td>
                             		<td>{{ $curriculo->formacao }}</td>
                                 <td>

@@ -60,6 +60,7 @@ Cadastrar Currículo
 
 			<div class="x_content">
 				<br>
+
 				<form action="{{ url('curriculos') }}" method="post" id="cadastro-curriculo" data-parsley-validate="" class="form-horizontal form-label-left" novalidate="">
 
 					{{ csrf_field() }}
