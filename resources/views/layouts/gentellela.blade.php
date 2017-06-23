@@ -138,6 +138,24 @@
 
                     @endif
 
+                    @if (Auth::user()->is_admin)
+
+                        <li>
+                          
+                          <a>
+                            <i class="fa fa-clipboard"></i> Relatório 
+                            <span class="fa fa-chevron-down"></span>
+                          </a>
+
+                          <ul class="nav child_menu">
+                            <li><a href="{{ url('usuarios/') }}">Teste 1</a></li>
+                            <li><a href="{{ url('usuarios/create') }}">Teste 2</a></li>
+                          </ul>
+
+                        </li>
+
+                    @endif
+
                   <li>
                     <a>
                       <i class="fa fa-bar-chart-o"></i> Opções 

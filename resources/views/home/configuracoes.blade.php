@@ -51,7 +51,7 @@
 	{{-- Fim das Mensagens --}}
 
 	<div class="col-md-5 col-sm-12 col-xs-12">
-		<div class="x_panel">
+		<div class="x_panel modal-content">
 			<div class="x_title">
 				<h2>Trocar Senha <small></small></h2>
 				<div class="clearfix"></div>
@@ -68,7 +68,7 @@
 						<label for="password" class="col-md-3 control-label">Senha: <span class="required">*</span></label>
 
 						<div class="col-md-6">
-							<input id="password" type="password" class="form-control" name="password" required>
+							<input id="password" type="password" class="form-control senha" name="password" required>
 						</div>
 
 					</div>
@@ -77,7 +77,7 @@
                         <label for="password-confirm" class="col-md-3 control-label">Repetir <span class="required">*</span></label>
 
                         <div class="col-md-6">
-                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                            <input id="password-confirm" type="password" class="form-control senha" name="password_confirmation" required>
                         </div>
                     </div>
 
