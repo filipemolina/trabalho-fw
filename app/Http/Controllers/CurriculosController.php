@@ -386,13 +386,15 @@ class CurriculosController extends Controller
             $acoes = "<a href='".url("curriculos/pdf/$curriculo->id")." target='_blank' class='btn btn-success btn-ver' data-id='$curriculo->id'><i class='fa fa-eye'></i></a>";
 
             $colecao->push([
-                'nome'      => $curriculo->nome,
-                'idade'     => $idades[$curriculo->id],
-                'sexo'      => $curriculo->sexo == "M" ? "Masculino" : "Feminino",
-                'bairro'    => $curriculo->bairro,
-                'formacao'  => $curriculo->formacao,
-                'area'      => $areas,
-                'indicacao' => $curriculo->indicacao_politica ? "Sim", "Não",
+                'nome'       => $curriculo->nome,
+                'idade'      => $idades[$curriculo->id],
+                'sexo'       => $curriculo->sexo == "M" ? "Masculino" : "Feminino",
+                'bairro'     => $curriculo->bairro,
+                'formacao'   => $curriculo->formacao,
+                'area'       => $areas,
+                'indicacao'  => $curriculo->indicacao_politica ? "Sim" : "Não",
+                'encaminhar' => $encaminhar,
+                'acoes'      => $acoes,
 
             ]);
         }
