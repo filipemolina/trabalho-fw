@@ -18,28 +18,28 @@ class UsersTableSeeder extends Seeder
                 'name'      =>  'Filipe Molina',
                 'email'     =>  'filipemolina@live.com',
                 'password'  =>  bcrypt('123456'),
-                'admin'     => "Master",
+                'is_admin'  => 1,
             ]);
 
             DB::table('users')->insert([
                 'name'      =>  'Luciano Teles',
                 'email'     =>  'luciano.junior@live.com',
                 'password'  =>  bcrypt('123456'),
-                'admin'     => "Master",
+                'is_admin'  => 1,
             ]);
 
              DB::table('users')->insert([
                 'name'      =>  'Leandro Accioly',
                 'email'     =>  'leandro.accioly@hotmail.com',
                 'password'  =>  bcrypt('123456'),
-                'admin'     => "Master",
+                'is_admin'  => 1,
             ]);
 
              DB::table('users')->insert([
                 'name'      =>  'Marcelo Milanda',
                 'email'     =>  'marcelo.miranda.pp@gmail.com',
                 'password'  =>  bcrypt('123456'),
-                'admin'     => "Master",
+                'is_admin'  => 1,
             ]);
         }
     }
