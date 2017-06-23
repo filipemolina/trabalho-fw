@@ -329,6 +329,10 @@ class CurriculosController extends Controller
         return $pdf->stream();
     }
 
+    /**
+     * Calcular a idade de cada inscrito
+     */
+
     protected function calcularIdades($curriculos)
     {
         $idades = [];
@@ -342,5 +346,55 @@ class CurriculosController extends Controller
         }
 
         return $idades;
+    }
+
+    /**
+     * Montar a tabela de currículos
+     */
+
+    public function dataTables()
+    {
+        // Obter todos os currículos com as áreas de atuação relacionadas
+
+        $curriculos = Curriculo::with('areas')->get();
+
+        // Calcular as idades de cada currículo
+
+        $idades = $this->calcularIdades($curriculos);
+
+        // Criar o objeto da coleção que será usado para o dataTables
+
+        $colecao = collect();
+
+        // Iterar pelos currículos e montar cada linha da tabela
+
+        foreach($curriculos as $curriculo)
+        {
+            // Concatenar as áreas de atuação
+
+            $areas = "";
+
+            foreach($curriculo->areas as $area)
+            {
+                $areas += $area." ";
+            }
+
+            // Colunas de HTML
+
+            $encaminhar = "<input type='checkbox' class='flat chk-encaminhar' name='encaminhar' data-id='$curriculo->id' data-nome='$curriculo->nome'>";
+
+            $acoes = "<a href='".url("curriculos/pdf/$curriculo->id")." target='_blank' class='btn btn-success btn-ver' data-id='$curriculo->id'><i class='fa fa-eye'></i></a>";
+
+            $colecao->push([
+                'nome'      => $curriculo->nome,
+                'idade'     => $idades[$curriculo->id],
+                'sexo'      => $curriculo->sexo == "M" ? "Masculino" : "Feminino",
+                'bairro'    => $curriculo->bairro,
+                'formacao'  => $curriculo->formacao,
+                'area'      => $areas,
+                'indicacao' => $curriculo->indicacao_politica ? "Sim", "Não",
+
+            ]);
+        }
     }
 }
