@@ -8,6 +8,7 @@ use PDF;
 use App\Curriculo;
 use App\Area;
 use App\Empresa;
+use Datatables;
 
 class CurriculosController extends Controller
 {
@@ -398,5 +399,11 @@ class CurriculosController extends Controller
 
             ]);
         }
+
+        // Retornar a tabela pronta
+
+        return Datatables::of($colecao)
+        ->rawColumns(['encaminhar', 'acoes'])
+        ->make(true);
     }
 }

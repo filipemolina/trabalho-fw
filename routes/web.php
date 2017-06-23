@@ -24,6 +24,10 @@ Route::post('/curriculos/encaminhar/', 'CurriculosController@encaminhar');
 Route::get('/curriculos-encaminhados', 'CurriculosController@encaminhados');
 Route::post('/curriculos/retornar/{id}', 'CurriculosController@retornar');
 
+///////////////////////////////////////////////////// Rotas para o DataTables Server Side
+
+Route::get('/curriculos/tabela', 'CurriculosController@dataTables');
+
 ///////////////////////////////////////////////////// Rotas para gerar PDF
 
 Route::get('curriculos/pdf/{id}', 'CurriculosController@pdf');

@@ -239,7 +239,24 @@
         var table = $('#datatable').DataTable({
           'language' : {
             'url' : '{{ asset('/js/portugues.json') }}'
-          }
+          },
+          processing: true,
+          serverSide: true,
+          ajax      : "{{ url('/pessoas/dados') }}",
+          columns   : [
+
+            { data : 'nome', name : 'nome' },
+            { data : 'idade', name : 'idade' },
+            { data : 'sexo', name : 'sexo' },
+            { data : 'cpf', name : 'cpf' },
+            { data : 'cpf_coparticipante', name : 'cpf_coparticipante' },
+            { data : 'bairro', name : 'bairro' },
+            { data : 'codigo', name : 'codigo' },
+            { data : 'acoes', name : 'acoes' },
+
+          ],
+          stateSave: true,
+          stateDuration: -1,
         });
 
         /* Função para incluir a busca pelos campos de Idade Mínima e Máxima */
