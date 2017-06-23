@@ -1,0 +1,17 @@
+/// Clarear levemente uma cor
+/// @access public
+/// @param {Color} $color - cor para clareal
+/// @param {Number} $percentage
+/// @return {Color}
+@function tint($color, $percentage) {
+  @return mix(#fff, $color, $percentage);
+}
+
+/// Escurecer levemente uma cor
+/// @access public
+/// @param {Color} $color - cor para escurecer
+/// @param {Number} $percentage
+/// @return {Color}
+@function shade($color, $percentage) {
+  @return mix(#000, $color, $percentage);
+}

@@ -1,0 +1,586 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"todo",
+				"todos_selecionados"
+			],
+			[
+				"todos",
+				"todos_selectionados"
+			],
+			[
+				"for",
+				"foreach\tforeach …"
+			],
+			[
+				"btn-confi",
+				"btn-confirmar-encaminhamento"
+			],
+			[
+				"json",
+				"json_encode"
+			],
+			[
+				"print",
+				"print_r"
+			],
+			[
+				"prin",
+				"print_r"
+			],
+			[
+				"areas",
+				"areas_selecionadas"
+			],
+			[
+				"pri",
+				"print_r"
+			],
+			[
+				"e",
+				"e"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/var/www/Laravel/fw_trabalho/app/Http/Controllers/CurriculosController.php",
+			"settings":
+			{
+				"buffer_size": 8676,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/var/www/Laravel/fw_trabalho/config/app.php",
+			"settings":
+			{
+				"buffer_size": 9295,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/var/www/Laravel/fw_trabalho/resources/views/curriculos/index.blade.php",
+			"settings":
+			{
+				"buffer_size": 15322,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		}
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 354.0,
+		"last_filter": "togle",
+		"selected_items":
+		[
+			[
+				"togle",
+				"View: Toggle Menu"
+			],
+			[
+				"toggle",
+				"View: Toggle Menu"
+			],
+			[
+				"instal",
+				"Package Control: Install Package"
+			],
+			[
+				"install",
+				"Package Control: Install Package"
+			],
+			[
+				"toggle ",
+				"View: Toggle Menu"
+			],
+			[
+				"syntax vu",
+				"Set Syntax: Vue Component"
+			],
+			[
+				"syntax sa",
+				"Set Syntax: Sass"
+			],
+			[
+				"syntax ph",
+				"Set Syntax: PHP"
+			],
+			[
+				"syntax bl",
+				"Set Syntax: Laravel Blade"
+			],
+			[
+				"mater",
+				"Material Theme: Activate theme"
+			],
+			[
+				"insta",
+				"Package Control: Install Package"
+			]
+		],
+		"width": 431.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/var/www/Laravel/fw_trabalho",
+		"/var/www/Laravel/fw_trabalho/config"
+	],
+	"file_history":
+	[
+		"/home/filipemolina/Documentos/Relatorio HTML.html",
+		"/home/filipemolina/Documentos/Exemplo",
+		"/var/www/Laravel/fw_trabalho/routes/web.php",
+		"/var/www/Laravel/fw_trabalho/resources/views/curriculos/create.blade.php",
+		"/var/www/Laravel/fw_trabalho/resources/views/curriculos/index.blade.php",
+		"/var/www/Laravel/fw_trabalho/app/Curriculo.php",
+		"/var/www/Laravel/fw_trabalho/resources/views/layouts/gentellela.blade.php",
+		"/var/www/html/trabalho/css/styles.scss",
+		"/var/www/html/trabalho/css/styles.css",
+		"/var/www/Laravel/fw_trabalho/resources/views/auth/login.blade.php",
+		"/var/www/Laravel/fw_trabalho/resources/views/curriculos/edit.blade.php",
+		"/var/www/Laravel/fw_trabalho/resources/views/curriculos/excluidos.blade.php",
+		"/var/www/Laravel/fw_trabalho/resources/views/curriculos/encaminhados.blade.php",
+		"/var/www/Laravel/fw_trabalho/resources/views/pdf/curriculo.blade.php",
+		"/var/www/Laravel/fw_trabalho/database/factories/ModelFactory.php",
+		"/var/www/Laravel/fw_trabalho/app/Http/Controllers/CurriculosController.php",
+		"/var/www/Laravel/fw_trabalho/app/Empresa.php",
+		"/var/www/Laravel/fw_trabalho/app/Http/Controllers/HomeController.php",
+		"/var/www/Laravel/fw_trabalho/database/migrations/2017_03_15_183044_add_encaminhado_field.php",
+		"/var/www/Laravel/fw_trabalho/database/migrations/2017_04_04_172720_add_empresas_table.php",
+		"/var/www/Laravel/fw_trabalho/resources/lang/en/validation.php",
+		"/var/www/Laravel/fw_trabalho/resources/views/areas/create.blade.php",
+		"/var/www/Laravel/fw_trabalho/app/User.php",
+		"/var/www/Laravel/fw_trabalho/resources/views/curriculos/vazio.blade.php",
+		"/home/filipemolina/Documentos/Utilidades/gentelella/production/form.html",
+		"/var/www/Laravel/fw_trabalho/database/migrations/2017_03_09_162152_create_curriculos_table.php",
+		"/var/www/Laravel/fw_trabalho/app/Providers/AppServiceProvider.php",
+		"/var/www/Laravel/fw_trabalho/resources/views/areas/index.blade.php",
+		"/home/filipemolina/Documentos/Projetos/Intranet/css/styles.css",
+		"/var/www/html/trabalho/scss/functions.scss",
+		"/var/www/Laravel/fw_trabalho/app/Console/Kernel.php",
+		"/var/www/html/trabalho/scss/variables.scss",
+		"/home/filipemolina/Documentos/Projetos/Intranet/index.html",
+		"/home/filipemolina/Documentos/Utilidades/gentelella/production/pricing_tables.html",
+		"/home/filipemolina/Documentos/Projetos/index.php",
+		"/var/www/Laravel/fw_trabalho/README.md",
+		"/var/www/html/trabalho/index.php",
+		"/var/www/Laravel/fw_trabalho/resources/views/users/index.blade.php",
+		"/home/filipemolina/Documentos/teste.html",
+		"/root/.config/sublime-text-3/Packages/User/html5.sublime-snippet",
+		"/var/www/html/trabalho/.gitignore"
+	],
+	"find":
+	{
+		"height": 70.0
+	},
+	"find_in_files":
+	{
+		"height": 158.0,
+		"where_history":
+		[
+			"/var/www/Laravel/fw_trabalho",
+			"/var/www/Laravel/fw_trabalho/resources/views"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"datatable",
+			"Currículos ",
+			"encaminhados",
+			"with",
+			"electiona",
+			"$c",
+			"$curriculo",
+			"curriculo",
+			"curriculos",
+			"btn-confirmar-modal",
+			"nome",
+			"$idade ",
+			"idade",
+			";\n",
+			"the :attribute must be",
+			"button",
+			"nome",
+			"selected",
+			"@if ($curriculo->formacao == '",
+			"$secundaria",
+			"$principal",
+			"principal",
+			"#BFA161",
+			"roxo",
+			"#3E276B",
+			"price element",
+			"/js/portugues.json",
+			"echo \"foi<br>\";"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"{{ asset('/js/portugues.json') }}"
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 0,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/var/www/Laravel/fw_trabalho/app/Http/Controllers/CurriculosController.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 8676,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8259,
+								8259
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1327.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/var/www/Laravel/fw_trabalho/config/app.php",
+					"semi_transient": true,
+					"settings":
+					{
+						"buffer_size": 9295,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6387,
+								6387
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/PHP/PHP.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2535.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/var/www/Laravel/fw_trabalho/resources/views/curriculos/index.blade.php",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 15322,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								10055,
+								10199
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Laravel Blade Highlighter/blade.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 2956.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 23.0
+	},
+	"input":
+	{
+		"height": 61.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": false,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "BalcaoDeEmpregos.sublime-project",
+	"replace":
+	{
+		"height": 42.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"style",
+				"trabalho/css/styles.css"
+			],
+			[
+				"curriculocre",
+				"fw_trabalho/resources/views/curriculos/create.blade.php"
+			],
+			[
+				"routeweb",
+				"fw_trabalho/routes/web.php"
+			],
+			[
+				"gentel",
+				"fw_trabalho/resources/views/layouts/gentellela.blade.php"
+			],
+			[
+				"gente",
+				"fw_trabalho/resources/views/layouts/gentellela.blade.php"
+			],
+			[
+				"styles.cs",
+				"trabalho/css/styles.css"
+			],
+			[
+				"homecon",
+				"fw_trabalho/app/Http/Controllers/HomeController.php"
+			],
+			[
+				"curriculoscon",
+				"fw_trabalho/app/Http/Controllers/CurriculosController.php"
+			],
+			[
+				"curriculosedit",
+				"fw_trabalho/resources/views/curriculos/edit.blade.php"
+			],
+			[
+				"routew",
+				"fw_trabalho/routes/web.php"
+			],
+			[
+				"curriccrea",
+				"fw_trabalho/resources/views/curriculos/create.blade.php"
+			],
+			[
+				"curriculoexclu",
+				"fw_trabalho/resources/views/curriculos/excluidos.blade.php"
+			],
+			[
+				"curriinde",
+				"fw_trabalho/resources/views/curriculos/index.blade.php"
+			],
+			[
+				"curricont",
+				"fw_trabalho/app/Http/Controllers/CurriculosController.php"
+			],
+			[
+				"curricre",
+				"fw_trabalho/resources/views/curriculos/create.blade.php"
+			],
+			[
+				"curredi",
+				"fw_trabalho/resources/views/curriculos/edit.blade.php"
+			],
+			[
+				"curriind",
+				"fw_trabalho/resources/views/curriculos/index.blade.php"
+			],
+			[
+				"curricul",
+				"fw_trabalho/app/Curriculo.php"
+			],
+			[
+				"currccontro",
+				"fw_trabalho/app/Http/Controllers/CurriculosController.php"
+			],
+			[
+				"curriculosin",
+				"fw_trabalho/resources/views/curriculos/index.blade.php"
+			],
+			[
+				"exclui",
+				"fw_trabalho/resources/views/curriculos/excluidos.blade.php"
+			],
+			[
+				"curriculosco",
+				"fw_trabalho/app/Http/Controllers/CurriculosController.php"
+			],
+			[
+				"curriculoin",
+				"fw_trabalho/resources/views/curriculos/index.blade.php"
+			],
+			[
+				"areascre",
+				"fw_trabalho/resources/views/areas/create.blade.php"
+			],
+			[
+				"vazi",
+				"fw_trabalho/resources/views/curriculos/vazio.blade.php"
+			],
+			[
+				"curriculoscontro",
+				"fw_trabalho/app/Http/Controllers/CurriculosController.php"
+			],
+			[
+				"curriculocrea",
+				"fw_trabalho/resources/views/curriculos/create.blade.php"
+			],
+			[
+				"gentelle",
+				"fw_trabalho/resources/views/layouts/gentellela.blade.php"
+			],
+			[
+				"appuser",
+				"fw_trabalho/app/User.php"
+			],
+			[
+				"appcurri",
+				"fw_trabalho/app/Curriculo.php"
+			],
+			[
+				"routewe",
+				"fw_trabalho/routes/web.php"
+			],
+			[
+				"gentele",
+				"fw_trabalho/resources/views/layouts/gentellela.blade.php"
+			],
+			[
+				"appuse",
+				"fw_trabalho/app/User.php"
+			],
+			[
+				"curriculosinde",
+				"fw_trabalho/resources/views/curriculos/index.blade.php"
+			],
+			[
+				"gentelel",
+				"fw_trabalho/resources/views/layouts/gentellela.blade.php"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 500.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"",
+				"/home/filipemolina/Documentos/Habitação.sublime-project"
+			]
+		],
+		"width": 380.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": true,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 227.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}
