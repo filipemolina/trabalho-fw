@@ -54,7 +54,7 @@
         
         <div class="x_content">
 
-          <form action="{{ url('/pessoas/imprimerelatorios') }}" method="POST" class="form-horizontal" id="form-cadastro-usuario">
+          <form action="{{ url('/curriculos/imprimerelatorios') }}" method="POST" class="form-horizontal" id="form-cadastro-usuario">
 
             {{ csrf_field() }}
 
@@ -69,14 +69,12 @@
                  <select name="ordem_relatorio" class="form-control" id="ordem_relatorio">
                   <option value="">Selecione</option>
                   <option value="geral">Por Nome</option>
-                  <option value="faixa">Por Faixa</option>
                   <option value="idade">Por Idade</option>
                   <option value="sexo">Por Sexo</option>
-                  <option value="dependentes">Por Dependentes</option>
                   <option value="bairro">Por Bairro</option>
-                  <option value="tipo_deficiencia">Por Tipo de Deficiência</option>
-                  <option value="idosos">Por Participantes Idosos</option>
-                  <option value="mulher_responsavel">Por Mulheres Chefes de Família</option>
+                  <option value="tipo_deficiencia">Por Formação</option>
+                  <option value="idosos">Por Área de Atuação</option>
+                  <option value="mulher_responsavel">Por Indicação Politica</option>
                 </select>
 
               </div>
@@ -139,25 +137,25 @@
 
                 <label>
                 
-                    <input value="Deficiência" name="cabecalhos[pne]" type="checkbox"> Deficiência
+                    <input value="Deficiência" name="cabecalhos[pne]" type="checkbox"> Indicação Politica
 
                 </label> <br>
 
                 <label>
                 
-                    <input value="Tipo de Deficiência" name="cabecalhos[tipo_deficiencia]" type="checkbox"> Tipo de Deficiência
+                    <input value="Tipo de Deficiência" name="cabecalhos[tipo_deficiencia]" type="checkbox"> Formação
 
                 </label> <br>
 
                 <label>
                 
-                    <input value="Coparticipante" name="cabecalhos[coparticipante]" type="checkbox"> Coparticipante
+                    <input value="Coparticipante" name="cabecalhos[coparticipante]" type="checkbox"> Telefone Fixo
 
                 </label> <br>
 
                 <label>
                 
-                    <input value="Dependentes" name="cabecalhos[dependentes]" type="checkbox"> Dependentes
+                    <input value="Dependentes" name="cabecalhos[dependentes]" type="checkbox"> Telefone Celular
 
                 </label> <br>
 
@@ -181,23 +179,11 @@
 
                 <label>
                 
-                    <input value="Telefone Fixo" name="cabecalhos[telefone_fixo]" type="checkbox"> Telefone Fixo
+                    <input value="Email" name="cabecalhos[email]" type="checkbox"> Área de Atuação
 
                 </label> <br>
 
-                <label>
-                
-                    <input value="Telefone Celular" name="cabecalhos[telefone_celular]" type="checkbox"> Telefone Celular
-
-                </label> <br>
-
-                <label>
-                
-                    <input value="Email" name="cabecalhos[email]" type="checkbox"> Email
-
-                </label> <br>
-
-                <label>
+                {{-- <label>
                 
                     <input value="Bolsa Familia" name="cabecalhos[bolsa_familia]" type="checkbox"> Bolsa Familia
 
@@ -219,7 +205,7 @@
                 
                     <input value="Tempo de Residência" name="cabecalhos[tempo_residencia]" type="checkbox"> Tempo de Residência
 
-                </label> <br>
+                </label> <br> --}}
 
                
               </div>
