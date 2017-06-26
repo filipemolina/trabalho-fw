@@ -20,7 +20,7 @@
     <link href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <script src="https://use.fontawesome.com/7576e7175b.js"></script>
+    <link href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     {{-- <link href="{{ asset('vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"> --}}
     <!-- NProgress -->
     <link href="{{ asset('vendors/nprogress/nprogress.css') }}" rel="stylesheet">
@@ -138,7 +138,7 @@
 
                     @endif
 
-                  <li>
+                    <li>
                     <a>
                       <i class="fa fa-bar-chart-o"></i> Opções 
                       <span class="fa fa-chevron-down"></span>

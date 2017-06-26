@@ -406,4 +406,13 @@ class CurriculosController extends Controller
         ->rawColumns(['encaminhar', 'acoes'])
         ->make(true);
     }
+
+    /**
+     * função para mostrar a tela de relatorio
+     */
+
+    public function relatorios(Request $request) {
+
+        return view ("curriculos.relatorio.geral");
+    }
 }
