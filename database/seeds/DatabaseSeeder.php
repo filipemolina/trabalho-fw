@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,12 +12,41 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        // Criar as áreas de atuação
 
-        factory(App\Curriculo::class, 50)->create()
+        $areas = [
+            'Auxiliar de Serviços Gerais',
+            'Atendente',
+            'Balconista',
+            'Bancário',
+            'Contador',
+            'Carteiro',
+            'Dentista',
+            'Enfermeira',
+            'Fisioterapeuta',
+            'Gerente de Vendas',
+            'Operador de Telemarketing',
+            'Técnico de Informática',
+            'Professor'
+        ];
+
+        $id_areas = [];
+
+        foreach($areas as $area)
+        {
+            $id_areas[] = factory(App\Area::class)->create(['descricao' => $area])->id;
+        }
+
+        factory(App\Curriculo::class, 2000)->create()
         ->each(function($curriculo){
 
-            $curriculo->areas()->attach(factory(App\Area::class)->create()->id);
+            $areas = DB::select("select id from areas");
+
+            $id_area = array_rand($areas);
+
+            echo $curriculo->id."\n";
+
+            $curriculo->areas()->attach($areas[$id_area]->id);
 
         });
 

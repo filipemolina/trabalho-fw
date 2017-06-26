@@ -381,7 +381,7 @@ class CurriculosController extends Controller
 
             foreach($curriculo->areas as $area)
             {
-                $areas += $area->descricao." ";
+                $areas .= $area->descricao." ";
             }
 
             // Colunas de HTML
@@ -417,7 +417,11 @@ class CurriculosController extends Controller
 
     public function relatorios()
     {
-        return view('curriculos.relatorios');
+        // Lista de áreas de atuação
+
+        $areas = Area::all();
+
+        return view('curriculos.relatorios', compact(['areas']));
     }
 
     /**
@@ -425,7 +429,7 @@ class CurriculosController extends Controller
      */
 
     public function imprimeRelatorio(Request $request)
-    {      
+    {
         // Validar
 
         $this->validate($request, [
@@ -448,7 +452,7 @@ class CurriculosController extends Controller
 
         $titulo = [
 
-            'geral'              => "EM ORDEM ALFABÉTICA",
+            'geral'              => "POr Nome",
             'idade'              => "POR IDADE'",
             'sexo'               => "POR SEXO",
             'bairro'             => "Por Bairro",
@@ -466,11 +470,12 @@ class CurriculosController extends Controller
 
         // Gerar o PDF        
 
-        $pdf = PDF::loadView('curriculos.relatorio.geral', compact(['curriculos', 'cabecalhos', 'nome_relatorio']));
+        // $pdf = PDF::loadView('curriculos.relatorio.geral', compact(['curriculos', 'cabecalhos', 'nome_relatorio']));
 
         // Enviar para o navegador
 
-        return $pdf->stream();
+        // return $pdf->inline();
+        return view ('curriculos.relatorio.geral', compact(['curriculos', 'cabecalhos', 'nome_relatorio']));
     }
 
     /**
@@ -489,19 +494,27 @@ class CurriculosController extends Controller
         // Idade
 
         if($request->ordem_relatorio == 'idade')
-            return $this->orderByRaw('YEAR(STR_TO_DATE(nascimento, "%Y-%m-%d")), nome ASC')->get();        
+            return $query->orderBy('nascimento')->get() ;        
 
         // Sexo
 
         if($request->ordem_relatorio == 'sexo')
-            return $this->orderByRaw('sexo ASC, nome ASC')->get();
+            return $query->orderByRaw('sexo ASC, nome ASC')->get();
 
         // Bairro
 
         if($request->ordem_relatorio == 'bairro')
-            return $this->get()->sortBy(function($participante){
-                return $participante->endereco->bairro;
-            });
+            return $query->orderBy('bairro', 'asc')->get();
+
+        // Formação
+
+        if($request->ordem_relatorio == 'formacao')
+            return $query->orderBy('formacao', 'asc')->get();
+
+        // Indicação Política
+
+        if($request->ordem_relatorio == 'indicacao_politica')
+            return $query->where("indicacao_politica", 1)->orderBy('nome')->get();
     }
 
     /**
@@ -573,12 +586,12 @@ class CurriculosController extends Controller
             $cadastro['bairro'] = $curriculo->bairro;
 
         // Telefone Fixo
-        if(array_key_exists('telefone_fixo', $cabecalhos) !== false)
-            $cadastro['telefone_fixo'] = $curriculo->telefone_1;
+        if(array_key_exists('telefone_1', $cabecalhos) !== false)
+            $cadastro['telefone_1'] = $curriculo->telefone_1;
 
         // Telefone Celular
-        if(array_key_exists('telefone_celular', $cabecalhos) !== false)
-            $cadastro['telefone_celular'] = $curriculo->telefone_2;
+        if(array_key_exists('telefone_2', $cabecalhos) !== false)
+            $cadastro['telefone_2'] = $curriculo->telefone_2;
 
         // Endereço
         if(array_key_exists('endereco', $cabecalhos) !== false)
@@ -606,7 +619,7 @@ class CurriculosController extends Controller
 
         // Indicação Política
         if(array_key_exists('indicacao_politica', $cabecalhos) !== false)
-            $cadastro['indicacao_politica'] = $curriculo->indicacao_politica;
+            $cadastro['indicacao_politica'] = $curriculo->indicacao_politica ? "Sim" : "Não";
 
         // Formação
         if(array_key_exists('formacao', $cabecalhos) !== false)

@@ -42,6 +42,8 @@
 
     @show
 
+    @stack('css')
+
     {{-- Css Customizado --}}
 
     <link rel="stylesheet" href="{{ asset('/css/styles.css') }}">
@@ -250,6 +252,8 @@
     @section('js')
 
     @show
+
+    @stack('scripts')
 
     <!-- Scripts Customizados do Tema -->
     <script src="{{ asset('js/custom.min.js') }}"></script>
