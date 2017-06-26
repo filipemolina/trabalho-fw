@@ -32,9 +32,10 @@ Route::get('/curriculos/tabela', 'CurriculosController@dataTables');
 
 Route::get('curriculos/pdf/{id}', 'CurriculosController@pdf');
 
-///////////////////////////////////////////////////// Rota para tela de relatorio
+///////////////////////////////////////////////////// Rotas para tela de relatorio
 
 Route::get('/curriculos/relatorios/', 'CurriculosController@relatorios');
+Route::post('/curriculos/imprimerelatorios', 'CurriculosController@imprimeRelatorio');
 
 ///////////////////////////////////////////////////// Registro de Resourceful Routes
 
