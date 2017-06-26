@@ -425,7 +425,7 @@ class CurriculosController extends Controller
      */
 
     public function imprimeRelatorio(Request $request)
-    {
+    {      
         
     }
 }

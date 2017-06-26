@@ -20,7 +20,7 @@
     <link href="{{ asset('vendors/bootstrap/dist/css/bootstrap.min.css') }}" rel="stylesheet">
 
     <!-- Font Awesome -->
-    <script src="https://use.fontawesome.com/7576e7175b.js"></script>
+    <link href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     {{-- <link href="{{ asset('vendors/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet"> --}}
     <!-- NProgress -->
     <link href="{{ asset('vendors/nprogress/nprogress.css') }}" rel="stylesheet">
@@ -100,6 +100,7 @@
 
                         <li><a href="{{ url('/curriculos-encaminhados') }}"> Encaminhados</a></li>
                         <li><a href="{{ url('/curriculos-excluidos') }}"> Excluídos</a></li>
+                        <li><a href="{{ url('/curriculos/relatorios') }}">Relatórios</a></li>
 
                       @endif
 
@@ -138,36 +139,25 @@
 
                     @endif
 
-                    @if (Auth::user()->is_admin)
 
+                    <li>
+                      <a>
+                        <i class="fa fa-bar-chart-o"></i> Opções 
+                        <span class="fa fa-chevron-down"></span>
+                      </a>
+
+                      <ul class="nav child_menu">
+                        <li><a href="{{ url('/configuracoes') }}">Configurações</a></li>
                         <li>
-                          
-                          <a href="{{ url('relatorio/') }}">
-                            <i class="fa fa-clipboard"></i> Relatório 
+                          <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  Sair
                           </a>
 
+                          <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
+                              {{ csrf_field() }}
+                          </form>
+                          
                         </li>
-
-                    @endif
-
-                  <li>
-                    <a>
-                      <i class="fa fa-bar-chart-o"></i> Opções 
-                      <span class="fa fa-chevron-down"></span>
-                    </a>
-
-                    <ul class="nav child_menu">
-                      <li><a href="{{ url('/configuracoes') }}">Configurações</a></li>
-                      <li>
-                        <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  Sair
-                        </a>
-
-                        <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                        
-                      </li>
-                    </ul>
+                      </ul>
 
                   </li>
                 </ul>
