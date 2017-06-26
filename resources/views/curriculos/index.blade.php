@@ -81,39 +81,7 @@
                       	</thead>
                         <tbody>
 
-                          {{-- Iterar pelos currículos para mostrar na tabela --}}
-
-                          @foreach($curriculos as $curriculo)
-
-                          	<tr>
-                            		<td class="bife">{{ $curriculo->nome }}</td>
-                            		<td>{{ $idades[$curriculo->id] }}</td>
-                                <td>@if($curriculo->sexo == 'M') Masculino @else Feminino @endif</td>
-                            		<td>{{ $curriculo->bairro }}</td>
-                            		<td>{{ $curriculo->formacao }}</td>
-                                <td>
-                                    @foreach($curriculo->areas as $area) {{ $area->descricao }} @endforeach
-                                </td>
-                            		<td>@if($curriculo->indicacao_politica) Sim @else Não @endif</td>
-                                <td style="text-align: center;"><input type="checkbox" class="flat chk-encaminhar" name="encaminhar" data-id="{{ $curriculo->id }}" data-nome="{{ $curriculo->nome }}"></td>
-                                <td>
-                                  
-                                  {{-- Botão de visualizar, envia uma requisição GET com o id do currículo --}}
-
-                                  <a href="{{ url("curriculos/pdf/$curriculo->id") }}" target="_blank" class="btn btn-success btn-ver"   data-id="{{ $curriculo->id }}"><i class="fa fa-eye"></i></a>
-                                  
-                                  {{-- Botão Editar, leva para a tela de edição do currículo --}}
-
-                                  <a href="{{ url("curriculos/$curriculo->id/edit") }}" class="btn btn-info btn-editar" data-id="{{ $curriculo->id }}"><i class="fa fa-edit"></i></a>
-                                    
-                                  {{-- Botão de Exclusão --}}
-
-                                  <a class="btn btn-danger btn-excluir" data-toggle="modal" data-target=".modal-excluir-curriculo" data-id="{{ $curriculo->id }}" data-nome="{{ $curriculo->nome }}"><i class="fa fa-remove"></i></a>
-
-                                </td>
-                          	</tr>
-
-                          @endforeach
+                          {{-- Tabela preenchida com dataTables Server Side --}}
 
                         </tbody>
                     </table>
@@ -242,17 +210,18 @@
           },
           processing: true,
           serverSide: true,
-          ajax      : "{{ url('/pessoas/dados') }}",
+          ajax      : "{{ url('/curriculos/tabela') }}",
           columns   : [
 
-            { data : 'nome', name : 'nome' },
-            { data : 'idade', name : 'idade' },
-            { data : 'sexo', name : 'sexo' },
-            { data : 'cpf', name : 'cpf' },
-            { data : 'cpf_coparticipante', name : 'cpf_coparticipante' },
-            { data : 'bairro', name : 'bairro' },
-            { data : 'codigo', name : 'codigo' },
-            { data : 'acoes', name : 'acoes' },
+            { data : 'nome',       name : 'nome' },
+            { data : 'idade',      name : 'idade' },
+            { data : 'sexo',       name : 'sexo' },
+            { data : 'bairro',     name : 'bairro' },
+            { data : 'formacao',   name : 'formacao' },
+            { data : 'area',       name : 'area' },
+            { data : 'indicacao',  name : 'indicacao' },
+            { data : 'encaminhar', name : 'encaminhar' },
+            { data : 'acoes',      name : 'acoes' },
 
           ],
           stateSave: true,
@@ -284,7 +253,7 @@
 
         // Popular o modal com as informações do currículo à ser excluído
 
-        $('.btn-excluir').click(function(){
+        $('body').on('click', '.btn-excluir', function(){
 
           var nome = $(this).data('nome');
 
@@ -311,7 +280,11 @@
             id : id
           }, function(data){
 
-            window.location = "{{ url('curriculos/') }}";
+            // window.location = "{{ url('curriculos/') }}";
+
+            $("a.btn-excluir[data-id="+id+"]").parents('tr').remove();
+
+            $(".modal-excluir-curriculo").modal('hide');
 
           });
 
