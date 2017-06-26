@@ -13,7 +13,7 @@
 	<div style="max-width: 100%">
 		
 		<div style="float: left;">
-			<img style="width: 100px;" src="{{url ("img/brasao.png")}}" alt="">
+			<img style="width: 100px;" src="img/brasao.png" alt="">
 		</div>
 
 		<div style="display: block; float: left; font-weight: bold; font-size: 25px; width: 86%; text-align: center; margin-left: -100px;">

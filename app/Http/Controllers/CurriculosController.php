@@ -425,7 +425,7 @@ class CurriculosController extends Controller
      */
 
     public function imprimeRelatorio(Request $request)
-    {      
+    {
         // Validar
 
         $this->validate($request, [
@@ -448,7 +448,7 @@ class CurriculosController extends Controller
 
         $titulo = [
 
-            'geral'              => "EM ORDEM ALFABÉTICA",
+            'geral'              => "POr Nome",
             'idade'              => "POR IDADE'",
             'sexo'               => "POR SEXO",
             'bairro'             => "Por Bairro",
@@ -489,19 +489,27 @@ class CurriculosController extends Controller
         // Idade
 
         if($request->ordem_relatorio == 'idade')
-            return $this->orderByRaw('YEAR(STR_TO_DATE(nascimento, "%Y-%m-%d")), nome ASC')->get();        
+            return $query->orderBy('nascimento')->get() ;        
 
         // Sexo
 
         if($request->ordem_relatorio == 'sexo')
-            return $this->orderByRaw('sexo ASC, nome ASC')->get();
+            return $query->orderByRaw('sexo ASC, nome ASC')->get();
 
         // Bairro
 
         if($request->ordem_relatorio == 'bairro')
-            return $this->get()->sortBy(function($participante){
-                return $participante->endereco->bairro;
-            });
+            return $query->orderBy('bairro', 'asc')->get();
+
+        // Formação
+
+        if($request->ordem_relatorio == 'formacao')
+            return $query->orderBy('formacao', 'asc')->get();
+
+        // Indicação Política
+
+        if($request->ordem_relatorio == 'indicacao_politica')
+            return $query->where("indicacao_politica", 1)->orderBy('nome')->get();
     }
 
     /**
@@ -606,7 +614,7 @@ class CurriculosController extends Controller
 
         // Indicação Política
         if(array_key_exists('indicacao_politica', $cabecalhos) !== false)
-            $cadastro['indicacao_politica'] = $curriculo->indicacao_politica;
+            $cadastro['indicacao_politica'] = $curriculo->indicacao_politica ? "Sim" : "Não";
 
         // Formação
         if(array_key_exists('formacao', $cabecalhos) !== false)
