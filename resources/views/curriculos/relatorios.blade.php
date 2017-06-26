@@ -72,9 +72,9 @@
                   <option value="idade">Por Idade</option>
                   <option value="sexo">Por Sexo</option>
                   <option value="bairro">Por Bairro</option>
-                  <option value="tipo_deficiencia">Por Formação</option>
-                  <option value="idosos">Por Área de Atuação</option>
-                  <option value="mulher_responsavel">Por Indicação Politica</option>
+                  <option value="formacao">Por Formação</option>
+                  <option value="area_atuacao">Por Área de Atuação</option>
+                  <option value="indicacao_politica">Por Indicação Politica</option>
                 </select>
 
               </div>
@@ -137,25 +137,13 @@
 
                 <label>
                 
-                    <input value="Deficiência" name="cabecalhos[pne]" type="checkbox"> Indicação Politica
+                    <input value="Telefone Fixo" name="cabecalhos[telefone_1]" type="checkbox"> Telefone Fixo
 
                 </label> <br>
 
                 <label>
                 
-                    <input value="Tipo de Deficiência" name="cabecalhos[tipo_deficiencia]" type="checkbox"> Formação
-
-                </label> <br>
-
-                <label>
-                
-                    <input value="Coparticipante" name="cabecalhos[coparticipante]" type="checkbox"> Telefone Fixo
-
-                </label> <br>
-
-                <label>
-                
-                    <input value="Dependentes" name="cabecalhos[dependentes]" type="checkbox"> Telefone Celular
+                    <input value="Telefone Celular" name="cabecalhos[telefone_2]" type="checkbox"> Telefone Celular
 
                 </label> <br>
 
@@ -179,35 +167,23 @@
 
                 <label>
                 
-                    <input value="Email" name="cabecalhos[email]" type="checkbox"> Área de Atuação
-
-                </label> <br>
-
-                {{-- <label>
-                
-                    <input value="Bolsa Familia" name="cabecalhos[bolsa_familia]" type="checkbox"> Bolsa Familia
+                    <input value="Formação" name="cabecalhos[formacao]" type="checkbox"> Formação
 
                 </label> <br>
 
                 <label>
                 
-                    <input value="Renda Familiar" name="cabecalhos[renda_familiar]" type="checkbox"> Renda Familiar
+                    <input value="Área de Atuação" name="cabecalhos[areas]" type="checkbox"> Área de Atuação
 
                 </label> <br>
 
                 <label>
                 
-                    <input value="Faixa" name="cabecalhos[faixa]" type="checkbox"> Faixa de Inscrição
+                    <input value="Indicação Politica" name="cabecalhos[indicacao_politica]" type="checkbox"> Indicação Politica
 
                 </label> <br>
 
-                <label>
-                
-                    <input value="Tempo de Residência" name="cabecalhos[tempo_residencia]" type="checkbox"> Tempo de Residência
-
-                </label> <br> --}}
-
-               
+                               
               </div>
 
             </div>
