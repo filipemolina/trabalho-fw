@@ -47,6 +47,42 @@
 
           </div>
           
+          <div class="row">
+            
+            <div class="col-md-6">
+              <label for="min">Informar opção <input type="number" id="min" class="form-control" /></label>  
+            </div>
+
+            <div class="col-md-6">
+              <label for="min">Informar opção <input type="number" id="max" class="form-control" /></label>  
+            </div>
+
+          </div>
+
+          <div class="row">
+            
+            <div class="col-md-6">
+              <label for="min">Informar opção <input type="number" id="min" class="form-control" /></label>  
+            </div>
+
+            <div class="col-md-6">
+              <label for="min">Informar opção <input type="number" id="max" class="form-control" /></label>  
+            </div>
+
+          </div>
+
+          <div class="row">
+            
+            <div class="col-md-6">
+              <label for="min">Informar opção <input type="number" id="min" class="form-control" /></label>  
+            </div>
+
+            <div class="col-md-6">
+              <label for="min">Informar opção <input type="number" id="max" class="form-control" /></label>  
+            </div>
+
+          </div>
+          
             
 
         </div>

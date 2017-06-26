@@ -143,7 +143,7 @@
                         <li>
                           
                           <a href="{{ url('relatorio/') }}">
-                            <i class="fa fa-clipboard"></i> Relatório 
+                            <i class="fa fa-clipboard"></i> Relatórios 
                           </a>
 
                         </li>
