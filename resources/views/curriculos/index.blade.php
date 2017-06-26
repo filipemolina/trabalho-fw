@@ -16,7 +16,7 @@
 
 @section('menu-superior')
 
-  <button class="btn btn-info btn-cadastrar-curriculo" onclick="location.href='{{ url('curriculos/create') }}'"> <i class="fa fa-id-card"></i> Cadastrar Currículo</button>
+  <button class="btn btn-info btn-cadastrar-curriculo btn-cor-padrao modal-content" onclick="location.href='{{ url('curriculos/create') }}'"> <i class="fa fa-id-card"></i> Cadastrar Currículo</button>
 
 @endsection
 
@@ -29,7 +29,8 @@
         <div class="x_title">
           <h2>Busca Avançada</h2>
           <ul class="nav navbar-right panel_toolbox" style="min-width: 0px;">
-            <li><a class="collapse-link"><i class="fa fa-chevron-down"></i></a></li>
+            <li><a class="collapse-link" data-toggle="tooltip" title="Reduzir / Expandir"><i class="fa fa-chevron-up btn btn-circulo-pn btn-cor-padrao"></i></a></li>
+            <li><a class="limpar1" data-toggle="tooltip" title="Limpar campos"><i class="fa fa-remove btn btn-circulo-pn btn-cor-perigo"></i></a></li>
           </ul>
           <div class="clearfix"></div>
         </div>
@@ -37,34 +38,36 @@
 
           <div class="row">
 
-            <div class="col-md-3">
-              <label for="nome">Nome <input type="text" id="nome" class="form-control" /></label>  
-            </div>
+            <div class="col-md-3 form-group has-feedback">
+              <label for="nome">Nome
+                  <div class="input-group has-clear">
+                      <input type="text" id="nome" class="form-control col-md-12">
 
-            <div class="col-md-2">
-              <label for="sexo">Sexo
+                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
-                <select type="text" id="sexo" class="form-control">
-
-                  <option> Masculino </option>
-                  <option> Feminino </option>
-                  <option> Ambos </option>
-                  
-                </select>
-              </label>  
+                  </div>
+              </label>
             </div>
 
             <div class="col-md-3">
+              <label for="sexo">
 
-              <label for="formacao">
+                Sexo
 
-                  Formação
-                  <select id="formacao" name="formacao" class="select2_group col-md-7 col-xs-12 form-control">
-                      <option value="">Selecione...</option>
-                      <option value="Fundamental" @if (old('formacao') == 'Fundamental') selecte="selected" @endif>Fundamental</option>
-                      <option value="Médio" @if (old('formacao') == 'Médio') selecte="selected" @endif>Médio</option>
-                      <option value="Superior" @if (old('formacao') == 'Superior') selecte="selected" @endif>Superior</option>
+                <div class="input-group has-clear">
+
+                  <select type="text" id="sexo" class="form-control">
+
+                    <option value=""> Selecione </option>
+                    <option> Masculino </option>
+                    <option> Feminino </option>
+                    <option> Ambos </option>
+                    
                   </select>
+
+                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+
+                </div>
               </label>  
             </div>
 
@@ -76,23 +79,15 @@
               <label for="min">Idade Máxima: <input type="number" id="max" class="form-control" /></label>  
             </div>
 
-          </div>
-          
-          <div class="row">
-
-          </div>
-
-          <div class="row">
-            
-            <div class="col-md-6">
+            <div class="col-md-3">
               <label for="bairro">Bairro <input type="text" id="bairro" class="form-control" /></label>  
             </div>
 
           </div>
 
           <div class="row">
-            
-            <div class="col-md-6">
+
+            <div class="col-md-3">
               <label for="atuacao">
 
                 Área de atuação
@@ -111,16 +106,26 @@
                 </select>
               </label>
             </div>
+            
+            <div class="col-md-3">
 
-            <div class="col-md-6">
+              <label for="formacao">
+
+                  Formação
+                  <select id="formacao" name="formacao" class="select2_group form-control">
+                      <option value="">Selecione...</option>
+                      <option value="Fundamental" @if (old('formacao') == 'Fundamental') selecte="selected" @endif>Fundamental</option>
+                      <option value="Médio" @if (old('formacao') == 'Médio') selecte="selected" @endif>Médio</option>
+                      <option value="Superior" @if (old('formacao') == 'Superior') selecte="selected" @endif>Superior</option>
+                  </select>
+              </label>  
+            </div>
+
+            <div class="col-md-3">
               <label for="indicacao">Indicação <input type="text" id="indicacao" class="form-control" /></label>  
             </div>
 
           </div>
-          
-            
-
-        </div>
       </div>
     </div>
 
@@ -479,6 +484,27 @@
               
 
         });
+
+      });
+
+      $('.has-clear input, .has-clear select').on('change propertychange', function() {
+          var $this = $(this);
+          var visible = Boolean($this.val());
+          $this.siblings('.span-clear').toggleClass('hidden', !visible);
+          $('input').css('border-top-right-radius', '0px');
+      }).trigger('propertychange');
+
+      $('.span-clear').click(function() {
+          $(this).siblings('input, select').val('')
+          .trigger('propertychange').focus();
+      });
+
+      // Limpar campo 
+      $(document).on("click", ".limpar1", function(e){
+
+          e.preventDefault();
+
+          $(this).parent().parent().parent().parent().find("input, select").val('');
 
       });
       
