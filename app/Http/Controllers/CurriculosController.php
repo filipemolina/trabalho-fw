@@ -380,10 +380,6 @@ class CurriculosController extends Controller
                 $areas += $area->descricao." ";
             }
 
-            echo "<pre>";
-            print_r($curriculo->areas);
-            exit;
-
             // Colunas de HTML
 
             $encaminhar = "<input type='checkbox' class='flat chk-encaminhar' name='encaminhar' data-id='$curriculo->id' data-nome='$curriculo->nome'>";
