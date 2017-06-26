@@ -50,16 +50,16 @@
 
 			</tr>
 
-			{{-- Iterar pela lista de pessoas --}}
+			{{-- Iterar pela lista de curriculos--}}
 
-			@foreach($pessoas as $pessoa)
+			@foreach($curriculos as $curriculo)
 
 				<tr>
 					{{-- Iterar pelos cabecalhos e preencher o valor correspondente --}}
 					
 					@foreach($cabecalhos as $indice => $valor)
 						
-						<td style="border: 1px solid black; text-align: center; text-transform: uppercase;">{{ $pessoa[$indice] }}</td>
+						<td style="border: 1px solid black; text-align: center; text-transform: uppercase;">{{ $curriculo[$indice] }}</td>
 
 					@endforeach
 
