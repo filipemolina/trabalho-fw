@@ -12,8 +12,8 @@
 
 	<div style="max-width: 100%">
 		
-		<div style="float: left;">
-			<img style="width: 100px;" src="{{url ("img/brasao.png")}}" alt="">
+		<div style="float: left; margin-bottom: 15px;">
+			<img style="width: 100px;" src="img/brasao.png" alt="">
 		</div>
 
 		<div style="display: block; float: left; font-weight: bold; font-size: 25px; width: 86%; text-align: center; margin-left: -100px;">
@@ -22,19 +22,19 @@
 
 		<br><br>
 
-		<div style="display: block; float: left; width: 86%; text-align: center; font-size: 20px; margin-left: -100px;">
+		<div style="display: block; float: left; width: 86%; text-align: center; font-size: 18px; margin-left: -110px;">
 			Secretaria de Trabalho, Desenvolvimento Economico e Agricultura
 		</div>
 
-		<div style="clear: both;"></div>
+	</div>
+
+	<div style="max-width: 90%;">
+
+		<h2 style="text-align: center; text-transform: uppercase; margin-bottom: -50px;"> RELATÓRIO {{$nome_relatorio}}<h2>
 
 	</div>
 
-	<div style="max-width: 100%">
-
-	</div>
-
-	<div style="max-width: 100%; font-size: 10px;">
+	<div style="max-width: 100%; font-size: 10px; ">
 
 		<table style=" width: 100%;">
 			

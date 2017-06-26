@@ -471,6 +471,7 @@ class CurriculosController extends Controller
         // Enviar para o navegador
 
         return $pdf->stream();
+        // return view ('curriculos.relatorio.geral', compact(['curriculos', 'cabecalhos', 'nome_relatorio']));
     }
 
     /**
