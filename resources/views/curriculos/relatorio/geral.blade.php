@@ -40,24 +40,32 @@
 			
 			<tr style="background: #3D276B; color: white; text-align: center">
 
+				{{-- Iterar pela lista de cabeçalhos e criar um para cada item enviado --}}
+
+				@foreach($cabecalhos as $cabecalho)
+
+					<th style="border: 1px solid black; text-transform: uppercase;">{{ $cabecalho }}</th>
+
+				@endforeach
+
 			</tr>
 
 			{{-- Iterar pela lista de pessoas --}}
 
-			{{-- @foreach($pessoas as $pessoa) --}}
+			@foreach($pessoas as $pessoa)
 
-				{{-- <tr> --}}
+				<tr>
 					{{-- Iterar pelos cabecalhos e preencher o valor correspondente --}}
 					
-					{{-- @foreach($cabecalhos as $indice => $valor) --}}
+					@foreach($cabecalhos as $indice => $valor)
 						
-						{{-- <td style="border: 1px solid black; text-align: center; text-transform: uppercase;">{{ $pessoa[$indice] }}</td> --}}
+						<td style="border: 1px solid black; text-align: center; text-transform: uppercase;">{{ $pessoa[$indice] }}</td>
 
-					{{-- @endforeach --}}
-{{-- 
+					@endforeach
+
 				</tr>
 			
-			@endforeach	 --}}		
+			@endforeach			
 
 		</table>
 

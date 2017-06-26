@@ -35,13 +35,17 @@ class CurriculosController extends Controller
         // Obter todos os curriculos cadastrados
 
         $curriculos = Curriculo::all()->load('areas');
+
+        // Obter todas as áreas de atuação
+
+        $aras = Area::all();
         
         // Criar um vetor associativo com o id do currículo e a idade da pessoa
         // Necessário para montar a tabela na view
 
         $idades = $this->calcularIdades($curriculos);
 
-        return view('curriculos.index', compact(['curriculos', 'idades']));
+        return view('curriculos.index', compact(['curriculos', 'idades'. 'areas']));
     }
 
     /**
@@ -422,6 +426,208 @@ class CurriculosController extends Controller
 
     public function imprimeRelatorio(Request $request)
     {      
-        
+        // Validar
+
+        $this->validate($request, [
+            'ordem_relatorio' => 'required',
+        ]);
+
+        // Obter todos os participantes
+
+        $query = Curriculo::with('areas');
+
+        // Modifica o agrupamento e ordenação da query de acordo com os dados selecionados pelo usuário
+
+        $cadastros = $this->modificaQuery($request, $query);
+
+        // Obter todos os cabeçalhos selecionado
+
+        $cabecalhos = $request->cabecalhos;
+
+        // Titulo
+
+        $titulo = [
+
+            'geral'              => "EM ORDEM ALFABÉTICA",
+            'idade'              => "POR IDADE'",
+            'sexo'               => "POR SEXO",
+            'bairro'             => "Por Bairro",
+            'formacao'           => "Por formação",
+            'area_atuacao'       => "Por Área de Atuação",
+            'indicacao_politica' => "Por Indicação Política",
+
+        ];
+
+        $nome_relatorio = $titulo[$request->ordem_relatorio];
+
+        // Coleção que será enviada para o PDF
+
+        $curriculos = $this->montaRelatorio($cadastros, $cabecalhos);
+
+        // Gerar o PDF        
+
+        $pdf = PDF::loadView('curriculos.relatorio.geral', compact(['curriculos', 'cabecalhos', 'nome_relatorio']));
+
+        // Enviar para o navegador
+
+        return $pdf->stream();
+    }
+
+    /**
+     * Modificar o agrupamento e ordenação da query
+     */
+
+    protected function modificaQuery($request, $query)
+    {
+        // Verifica qual é a ordem do relatório
+
+        // Geral, ordem alfabética dos nomes
+
+        if($request->ordem_relatorio == 'geral')
+            return $query->orderBy('nome', 'asc')->get();
+
+        // Idade
+
+        if($request->ordem_relatorio == 'idade')
+            return $this->orderByRaw('YEAR(STR_TO_DATE(nascimento, "%Y-%m-%d")), nome ASC')->get();        
+
+        // Sexo
+
+        if($request->ordem_relatorio == 'sexo')
+            return $this->orderByRaw('sexo ASC, nome ASC')->get();
+
+        // Bairro
+
+        if($request->ordem_relatorio == 'bairro')
+            return $this->get()->sortBy(function($participante){
+                return $participante->endereco->bairro;
+            });
+    }
+
+    /**
+     * Esta função chama a função montaLinhaDoRelatorio uma vez para cada
+     * currículo enviado e retorna uma coleção contendo os dados de acordo
+     * com os cabeçalhos escolhidos pelo usuário
+     */
+
+    protected function montaRelatorio($curriculos, $cabecalhos)
+    {
+        // Coleção que será enviada para o PDF
+
+        $cadastros = collect();
+
+        // Iterar pelos participantes e montar cada linha do relatório de acordo
+        // com os cabeçalhos escolhidos
+
+        foreach($curriculos as $curriculo)
+        {
+            $cadastros->push($this->montaLinhaDoRelatorio($curriculo, $cabecalhos));
+        }
+
+        return $cadastros;
+    }
+
+    /**
+     * Essa função monta uma linha do relatório filtrando os dados do currículo
+     * e fazendo ajustes de acordo com os cabeçalhos escolhidos
+     */
+
+    protected function montaLinhaDoRelatorio($curriculo, $cabecalhos)
+    {
+        $cadastro = [];
+
+        // Nome
+        if(array_key_exists('nome', $cabecalhos) !== false)
+            $cadastro['nome'] = $curriculo->nome;
+
+        // Idade
+        if(array_key_exists('idade', $cabecalhos) !== false)
+            $cadastro['idade'] = date('Y') - date('Y', strtotime($curriculo->nascimento)) ." Anos";
+
+        // Sexo
+        if(array_key_exists('sexo', $cabecalhos) !== false)
+            $cadastro['sexo'] = $curriculo->sexo == "M" ? "Masculino" : "Feminino";
+
+        // Nascimento
+        if(array_key_exists('nascimento', $cabecalhos) !== false)
+        {
+            //Explodir a data de nascimento
+
+            $data=explode("-", $curriculo->nascimento);
+
+            //Inverter
+
+            $data=array_reverse($data);
+
+            // Implodir
+
+            $data=implode("/", $data);
+
+            // Atribuir
+
+            $cadastro['nascimento'] = $data;
+        }
+
+        // Bairro
+        if(array_key_exists('bairro', $cabecalhos) !== false)
+            $cadastro['bairro'] = $curriculo->bairro;
+
+        // Telefone Fixo
+        if(array_key_exists('telefone_fixo', $cabecalhos) !== false)
+            $cadastro['telefone_fixo'] = $curriculo->telefone_1;
+
+        // Telefone Celular
+        if(array_key_exists('telefone_celular', $cabecalhos) !== false)
+            $cadastro['telefone_celular'] = $curriculo->telefone_2;
+
+        // Endereço
+        if(array_key_exists('endereco', $cabecalhos) !== false)
+            $cadastro['endereco'] = $curriculo->rua." nº ".$curriculo->numero." - ".$curriculo->complemento;
+
+        // CPF
+        if(array_key_exists('cpf', $cabecalhos) !== false)
+            $cadastro['cpf'] = $curriculo->cpf;
+
+        // CTPS
+        if(array_key_exists('ctps', $cabecalhos) !== false)
+            $cadastro['ctps'] = $curriculo->ctps;
+
+        // NIS
+        if(array_key_exists('pis', $cabecalhos) !== false)
+            $cadastro['pis'] = $curriculo->pis;
+
+        // RG
+        if(array_key_exists('rg', $cabecalhos) !== false)
+            $cadastro['rg'] = $curriculo->rg;
+
+        // Título Eleitoral
+        if(array_key_exists('titulo', $cabecalhos) !== false)
+            $cadastro['titulo'] = $curriculo->titulo;
+
+        // Indicação Política
+        if(array_key_exists('indicacao_politica', $cabecalhos) !== false)
+            $cadastro['indicacao_politica'] = $curriculo->indicacao_politica;
+
+        // Formação
+        if(array_key_exists('formacao', $cabecalhos) !== false)
+            $cadastro['formacao'] = $curriculo->formacao;
+
+        // CEP
+        if(array_key_exists('cep', $cabecalhos) !== false)
+            $cadastro['cep'] = $curriculo->cep;
+
+        // Áreas de Atuação
+        if(array_key_exists('areas', $cabecalhos) !== false)
+        {
+            $cadastro['areas'] = "";
+
+            foreach($curriculo->areas as $area)
+            {
+                $cadastro['areas'] += $area->descricao;
+            }
+        }
+
+
+        return $cadastro;
     }
 }
