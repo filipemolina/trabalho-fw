@@ -2,5 +2,5 @@ body {color:#6842b6;background-color:#3D276B}.nav_title{background:#3D276B}.left
 /*# sourceMappingURL=styles.css.map */
 .form-control:focus{-webkit-box-shadow:1px 1px 20px -3px #3D276B !important;-moz-box-shadow:1px 1px 20px -3px #3D276B !important;box-shadow:1px 1px 20px -3px #3D276B !important;}
 input,select,td{text-transform:uppercase;}
-input{border-radius:5px!important;}
+input,select{border-radius:5px!important;}
 .senha{text-transform:none!important;}

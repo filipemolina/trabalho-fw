@@ -377,14 +377,14 @@ class CurriculosController extends Controller
 
             foreach($curriculo->areas as $area)
             {
-                $areas += $area." ";
+                $areas += $area->descricao." ";
             }
 
             // Colunas de HTML
 
             $encaminhar = "<input type='checkbox' class='flat chk-encaminhar' name='encaminhar' data-id='$curriculo->id' data-nome='$curriculo->nome'>";
 
-            $acoes = "<a href='".url("curriculos/pdf/$curriculo->id")." target='_blank' class='btn btn-success btn-ver' data-id='$curriculo->id'><i class='fa fa-eye'></i></a>";
+            $acoes = "<a href='".url("curriculos/pdf/$curriculo->id")." target='_blank' class='btn btn-success btn-ver' data-id='$curriculo->id'><i class='fa fa-eye'></i></a><a href='".url("curriculos/$curriculo->id/edit")."' class='btn btn-info btn-editar' data-id='$curriculo->id'><i class='fa fa-edit'></i></a><a class='btn btn-danger btn-excluir' data-toggle='modal' data-target='.modal-excluir-curriculo' data-id='$curriculo->id' data-nome='$curriculo->nome'><i class='fa fa-remove'></i></a>";
 
             $colecao->push([
                 'nome'       => $curriculo->nome,
@@ -405,5 +405,23 @@ class CurriculosController extends Controller
         return Datatables::of($colecao)
         ->rawColumns(['encaminhar', 'acoes'])
         ->make(true);
+    }
+
+    /**
+     * Tela de Criação de Relatórios
+     */
+
+    public function relatorios()
+    {
+        return view('curriculos.relatorios');
+    }
+
+    /**
+     * Imprimir relatório
+     */
+
+    public function imprimeRelatorio(Request $request)
+    {      
+        
     }
 }

@@ -13,7 +13,12 @@ class DatabaseSeeder extends Seeder
     {
         // $this->call(UsersTableSeeder::class);
 
-        factory(App\Curriculo::class, 50)->create();
+        factory(App\Curriculo::class, 50)->create()
+        ->each(function($curriculo){
+
+            $curriculo->areas()->attach(factory(App\Area::class)->create()->id);
+
+        });
 
         $this->call(UsersTableSeeder::class);
     }
