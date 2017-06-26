@@ -381,7 +381,7 @@ class CurriculosController extends Controller
 
             foreach($curriculo->areas as $area)
             {
-                $areas += $area->descricao." ";
+                $areas .= $area->descricao." ";
             }
 
             // Colunas de HTML
@@ -417,7 +417,11 @@ class CurriculosController extends Controller
 
     public function relatorios()
     {
-        return view('curriculos.relatorios');
+        // Lista de áreas de atuação
+
+        $areas = Area::all();
+
+        return view('curriculos.relatorios', compact(['areas']));
     }
 
     /**
@@ -466,11 +470,12 @@ class CurriculosController extends Controller
 
         // Gerar o PDF        
 
-        $pdf = PDF::loadView('curriculos.relatorio.geral', compact(['curriculos', 'cabecalhos', 'nome_relatorio']));
+        // $pdf = PDF::loadView('curriculos.relatorio.geral', compact(['curriculos', 'cabecalhos', 'nome_relatorio']));
 
         // Enviar para o navegador
 
-        return $pdf->stream();
+        // return $pdf->inline();
+        return view ('curriculos.relatorio.geral', compact(['curriculos', 'cabecalhos', 'nome_relatorio']));
     }
 
     /**
@@ -581,12 +586,12 @@ class CurriculosController extends Controller
             $cadastro['bairro'] = $curriculo->bairro;
 
         // Telefone Fixo
-        if(array_key_exists('telefone_fixo', $cabecalhos) !== false)
-            $cadastro['telefone_fixo'] = $curriculo->telefone_1;
+        if(array_key_exists('telefone_1', $cabecalhos) !== false)
+            $cadastro['telefone_1'] = $curriculo->telefone_1;
 
         // Telefone Celular
-        if(array_key_exists('telefone_celular', $cabecalhos) !== false)
-            $cadastro['telefone_celular'] = $curriculo->telefone_2;
+        if(array_key_exists('telefone_2', $cabecalhos) !== false)
+            $cadastro['telefone_2'] = $curriculo->telefone_2;
 
         // Endereço
         if(array_key_exists('endereco', $cabecalhos) !== false)
