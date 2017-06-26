@@ -43,7 +43,7 @@
 
               <h1>Login</h1>
               <div>
-                <input id="email" name="email" value="{{ old('email') }}" type="text" class="form-control" placeholder="E-mail" required="" />
+                <input id="email" name="email" value="{{ old('email') }}" type="text" class="form-control senha" placeholder="E-mail" required="" />
 
                   @if ($errors->has('email'))
                       <span class="help-block">
@@ -52,7 +52,7 @@
                   @endif
               </div>
               <div>
-                <input type="password" id="password" name="password" class="form-control" placeholder="Senha" required="" />
+                <input type="password" id="password" name="password" class="form-control senha" placeholder="Senha" required="" />
 
                   @if ($errors->has('password'))
                       <span class="help-block">

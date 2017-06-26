@@ -138,6 +138,18 @@
 
                     @endif
 
+                    @if (Auth::user()->is_admin)
+
+                        <li>
+                          
+                          <a href="{{ url('relatorio/') }}">
+                            <i class="fa fa-clipboard"></i> Relatório 
+                          </a>
+
+                        </li>
+
+                    @endif
+
                   <li>
                     <a>
                       <i class="fa fa-bar-chart-o"></i> Opções 

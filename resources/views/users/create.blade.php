@@ -82,7 +82,7 @@
                             <label for="email" class="col-md-3 control-label">E-Mail <span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}" required>
+                                <input id="email" type="email" class="form-control senha" name="email" value="{{ old('email') }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">
@@ -109,7 +109,7 @@
                             <label for="password" class="col-md-3 control-label">Senha <span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control senha" name="password" required>
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -123,7 +123,7 @@
                             <label for="password-confirm" class="col-md-3 control-label">Confirmar Senha <span class="required">*</span></label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control senha" name="password_confirmation" required>
                             </div>
                         </div>
 
