@@ -25,12 +25,12 @@
   <div class="row">
     
     <div class="col-md-12 col-sm-12 col-xs-12">
-      <div class="x_panel" style="height: auto;">
+      <div class="x_panel modal-content" style="height: auto;">
         <div class="x_title">
           <h2>Busca Avançada</h2>
           <ul class="nav navbar-right panel_toolbox" style="min-width: 0px;">
-            <li><a class="collapse-link" data-toggle="tooltip" title="Reduzir / Expandir"><i class="fa fa-chevron-up btn btn-circulo-pn btn-cor-padrao"></i></a></li>
             <li><a class="limpar1" data-toggle="tooltip" title="Limpar campos"><i class="fa fa-remove btn btn-circulo-pn btn-cor-perigo"></i></a></li>
+            <li><a class="collapse-link" data-toggle="tooltip" title="Reduzir / Expandir"><i class="fa fa-chevron-up btn btn-circulo-pn btn-cor-padrao"></i></a></li>
           </ul>
           <div class="clearfix"></div>
         </div>
@@ -38,7 +38,7 @@
 
           <div class="row">
 
-            <div class="col-md-3 form-group has-feedback">
+            <div class="col-md-3 form-group">
               <label for="nome">Nome
                   <div class="input-group has-clear">
                       <input type="text" id="nome" class="form-control col-md-12">
@@ -72,15 +72,37 @@
             </div>
 
             <div class="col-md-2">
-              <label for="min">Idade Mínima: <input type="number" id="min" class="form-control" /></label>  
+              <label for="min">
+                Idade Mínima:
+                
+                <div class="input-group has-clear">
+                  <input type="number" id="min" class="form-control" />
+                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+
+                </div>
+              </label>  
             </div>
 
             <div class="col-md-2">
-              <label for="min">Idade Máxima: <input type="number" id="max" class="form-control" /></label>  
+              <label for="min">
+                  Idade Máxima:
+                  <div class="input-group has-clear">
+
+                      <input type="number" id="max" class="form-control" /></label>
+                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+
+                  </div>
+              </label>
             </div>
 
             <div class="col-md-3">
-              <label for="bairro">Bairro <input type="text" id="bairro" class="form-control" /></label>  
+              <label for="bairro">
+                  Bairro
+                  <div class="input-group has-clear">
+                      <input type="text" id="bairro" class="form-control" />
+                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                  </div>
+              </label>  
             </div>
 
           </div>
@@ -91,19 +113,24 @@
               <label for="atuacao">
 
                 Área de atuação
-                <select id="area" name="area[]" class="select2_group form-control">
-                            
-                            <option value="">Selecione...</option>
 
-                              {{-- Iterar pelar áreas de atuação --}}
+                <div class="input-group has-clear">
+                    <select id="area" name="area[]" class="select2_group form-control">
+                                
+                                <option value="">Selecione...</option>
 
-                            {{-- @foreach($areas as $area)
+                                  {{-- Iterar pelar áreas de atuação --}}
 
-                                <option value="{{ $area->id }}" @if (old('area') == $area->id) selected="selected" @endif>{{ $area->descricao }}</option>
+                                {{-- @foreach($areas as $area)
 
-                            @endforeach --}}
+                                    <option value="{{ $area->id }}" @if (old('area') == $area->id) selected="selected" @endif>{{ $area->descricao }}</option>
 
-                </select>
+                                @endforeach --}}
+
+                    </select>
+                    <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+
+                </div>
               </label>
             </div>
             
@@ -112,17 +139,30 @@
               <label for="formacao">
 
                   Formação
-                  <select id="formacao" name="formacao" class="select2_group form-control">
-                      <option value="">Selecione...</option>
-                      <option value="Fundamental" @if (old('formacao') == 'Fundamental') selecte="selected" @endif>Fundamental</option>
-                      <option value="Médio" @if (old('formacao') == 'Médio') selecte="selected" @endif>Médio</option>
-                      <option value="Superior" @if (old('formacao') == 'Superior') selecte="selected" @endif>Superior</option>
-                  </select>
+
+                  <div class="input-group has-clear">
+                      <select id="formacao" name="formacao" class="select2_group form-control">
+                          <option value="">Selecione...</option>
+                          <option value="Fundamental" @if (old('formacao') == 'Fundamental') selecte="selected" @endif>Fundamental</option>
+                          <option value="Médio" @if (old('formacao') == 'Médio') selecte="selected" @endif>Médio</option>
+                          <option value="Superior" @if (old('formacao') == 'Superior') selecte="selected" @endif>Superior</option>
+                      </select>
+                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+
+                  </div>
               </label>  
             </div>
 
             <div class="col-md-3">
-              <label for="indicacao">Indicação <input type="text" id="indicacao" class="form-control" /></label>  
+                <label for="indicacao">
+                    Indicação
+
+                    <div class="input-group has-clear">
+                        <input type="text" id="indicacao" class="form-control" />
+                        <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                        
+                    </div>
+                </label>
             </div>
 
           </div>
@@ -491,7 +531,6 @@
           var $this = $(this);
           var visible = Boolean($this.val());
           $this.siblings('.span-clear').toggleClass('hidden', !visible);
-          $('input').css('border-top-right-radius', '0px');
       }).trigger('propertychange');
 
       $('.span-clear').click(function() {
