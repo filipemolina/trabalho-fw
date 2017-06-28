@@ -43,3 +43,5 @@ input,select{border-radius:5px!important;}
 	top: -6px;
     left: 6px;
 }
+
+input, select { font-weight: 100; }
