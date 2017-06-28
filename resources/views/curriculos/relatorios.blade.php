@@ -25,7 +25,7 @@
       @if(count($errors) > 0)
 
         <div class="alert alert-roxo alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" >&times;</span></button>
 
           <strong>Atenção!</strong><br>
 
@@ -54,7 +54,7 @@
         
         <div class="x_content">
 
-          <form action="{{ url('/curriculos/imprimerelatorios') }}" method="POST" class="form-horizontal" id="form-cadastro-usuario">
+          <form target="_blank" action="{{ url('/curriculos/imprimerelatorios') }}" method="POST" class="form-horizontal" id="form-cadastro-usuario">
 
             {{ csrf_field() }}
 

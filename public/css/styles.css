@@ -4,3 +4,11 @@ body {color:#6842b6;background-color:#3D276B}.nav_title{background:#3D276B}.left
 input,select,td{text-transform:uppercase;}
 input{border-radius:5px!important;}
 .senha{text-transform:none!important;}
+.alert-roxo{
+	background: #3D276B;
+	color: #fff;
+}
+.close{
+	color: #fff !important;
+    opacity: 1;
+}
