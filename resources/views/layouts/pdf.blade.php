@@ -6,6 +6,21 @@
     
     <link rel="stylesheet" href="css/pdf.css">
 
+    <style>
+    	
+    	table.page
+		{
+		    page-break-after: always;
+		    page-break-inside: avoid;
+		}
+
+		page[size="A4"] {  
+		  width: 21cm;
+		  height: 29.7cm; 
+		}
+
+    </style>
+
   </head>
   <body>
     

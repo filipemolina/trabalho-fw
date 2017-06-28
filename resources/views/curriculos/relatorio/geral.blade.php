@@ -13,7 +13,7 @@
 	<div style="max-width: 100%">
 		
 		<div style="float: left; margin-bottom: 15px;">
-			<img style="width: 100px;" src="img/brasao.png" alt="">
+			<img style="width: 100px;" src="{{ url("img/brasao.png") }}" alt="">
 		</div>
 
 		<div style="display: block; float: left; font-weight: bold; font-size: 25px; width: 86%; text-align: center; margin-left: -100px;">
@@ -23,7 +23,7 @@
 		<br><br>
 
 		<div style="display: block; float: left; width: 86%; text-align: center; font-size: 18px; margin-left: -110px;">
-			Secretaria de Trabalho, Desenvolvimento Economico e Agricultura
+			Secretaria de Trabalho, Desenvolvimento Econômico e Agricultura
 		</div>
 
 	</div>
@@ -36,38 +36,66 @@
 
 	<div style="max-width: 100%; font-size: 10px; ">
 
-		<table style=" width: 100%;">
-			
-			<tr style="background: #3D276B; color: white; text-align: center">
+		{{-- Iterar pela lista de curriculos--}}
 
-				{{-- Iterar pela lista de cabeçalhos e criar um para cada item enviado --}}
+		{{-- Contador de linhas --}}
 
-				@foreach($cabecalhos as $cabecalho)
+		<?php $cont = 0; ?>
 
-					<th style="border: 1px solid black; text-transform: uppercase;">{{ $cabecalho }}</th>
+		@foreach($curriculos as $curriculo)
 
-				@endforeach
+			{{-- Iniciar uma página --}}
 
-			</tr>
+			@if($cont == 0)
 
-			{{-- Iterar pela lista de curriculos--}}
+				<page size="A4">
 
-			@foreach($curriculos as $curriculo)
+				{{--  Caso seja a primeira linha da página, incluir o cabeçalho --}}
 
-				<tr>
-					{{-- Iterar pelos cabecalhos e preencher o valor correspondente --}}
-					
-					@foreach($cabecalhos as $indice => $valor)
+				<table style=" width: 100%;" class="page">
+		
+					<tr style="background: #3D276B; color: white; text-align: center">
+
+						{{-- Iterar pela lista de cabeçalhos e criar um para cada item enviado --}}
+
+						@foreach($cabecalhos as $cabecalho)
+
+							<th style="border: 1px solid black; text-transform: uppercase;">{{ $cabecalho }}</th>
+
+						@endforeach
+
+					</tr>
+
+			@endif
+
+					<tr>
+						{{-- Iterar pelos cabecalhos e preencher o valor correspondente --}}
 						
-						<td style="border: 1px solid black; text-align: center; text-transform: uppercase;">{{ $curriculo[$indice] }}</td>
+						@foreach($cabecalhos as $indice => $valor)
+							
+							<td style="border: 1px solid black; text-align: center; text-transform: uppercase;">{{ $curriculo[$indice] }}</td>
 
-					@endforeach
+						@endforeach
 
-				</tr>
-			
-			@endforeach			
+					</tr>
 
-		</table>
+			{{-- Finalizar uma página após 48 linhas --}}
+
+			@if($cont == 51)
+
+				<?php $cont = 0; ?>
+
+				</table>
+
+				</page>
+
+			@else
+
+				<?php $cont++; ?>
+
+			@endif
+		
+		@endforeach
 
 	</div>
 

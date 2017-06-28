@@ -8,3 +8,9 @@ table {
 table, th, td {
     border: 1px solid black;
 }
+
+div.page
+{
+    page-break-after: always;
+    page-break-inside: avoid;
+}

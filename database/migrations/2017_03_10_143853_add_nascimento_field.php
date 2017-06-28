@@ -14,7 +14,7 @@ class AddNascimentoField extends Migration
     public function up()
     {
         Schema::table('curriculos', function (Blueprint $table) {
-            $table->string('nascimento')->nullable();
+            $table->date('nascimento')->nullable();
         });
     }
 

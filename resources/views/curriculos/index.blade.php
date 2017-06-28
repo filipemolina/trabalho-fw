@@ -199,6 +199,31 @@
     <script>
 
       var todos_selecionados = false;
+
+      var colunas = [];
+
+       /* Função para incluir a busca pelos campos de Idade Mínima e Máxima */
+        $.fn.dataTable.ext.search.push(
+            function( settings, data, dataIndex ) {
+                var min = parseInt( $('#min').val(), 10 );
+                var max = parseInt( $('#max').val(), 10 );
+                var age = parseFloat( data[1] ) || 0; // use data for the age column
+
+                console.log(min);
+                console.log(max);
+                console.log(age);
+                console.log(data[1]);
+         
+                if ( ( isNaN( min ) && isNaN( max ) ) ||
+                     ( isNaN( min ) && age <= max ) ||
+                     ( min <= age   && isNaN( max ) ) ||
+                     ( min <= age   && age <= max ) )
+                {
+                    return true;
+                }
+                return false;
+            }
+        );
       
       $(function(){
 
@@ -226,28 +251,33 @@
           ],
           stateSave: true,
           stateDuration: -1,
-        });
 
-        /* Função para incluir a busca pelos campos de Idade Mínima e Máxima */
-        $.fn.dataTable.ext.search.push(
-            function( settings, data, dataIndex ) {
-                var min = parseInt( $('#min').val(), 10 );
-                var max = parseInt( $('#max').val(), 10 );
-                var age = parseFloat( data[1] ) || 0; // use data for the age column
-         
-                if ( ( isNaN( min ) && isNaN( max ) ) ||
-                     ( isNaN( min ) && age <= max ) ||
-                     ( min <= age   && isNaN( max ) ) ||
-                     ( min <= age   && age <= max ) )
-                {
-                    return true;
-                }
-                return false;
-            }
-        );
+          // Implementar a busca avançada serverside
+
+          initComplete : function(){
+
+              // Iterar pelas colunas
+
+              this.api().columns().every(function(){
+
+                  // Popular uma array com todas as colunas da tabela
+
+                  colunas.push(this);
+
+                  // Criar um evento para cada input da busca avançada
+                  // usando a seguinte sintaxe:
+
+                  // coluna.search(valor, true, false).draw();
+
+
+              });
+
+          },
+        });
 
         // Event Listener para a função customizada criada acima
         $('#min, #max').keyup( function() {
+          console.log("chamou");
             table.draw();
         } );
 

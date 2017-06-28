@@ -78,6 +78,23 @@
                 </select>
 
               </div>
+
+              <div class="col-sm-4">
+                
+                {{-- Select de áreas de atuação para montar o relatório. Só é visível caso o tipo de relatório seja por
+                áres de atuação --}}
+
+                <select style="display: none;" disabled class="form-control" name="area_atuacao" id="area_atuacao">
+                    <option value="">Selecione</option>
+
+                    @foreach($areas as $area)
+
+                        <option value="{{ $area->id }}">{{ $area->descricao }}</option>
+
+                    @endforeach
+
+                </select>
+              </div>
             </div>
 
             {{-- Campo Campo do Relatório --}}
@@ -125,7 +142,7 @@
 
                 <label>
                 
-                    <input value="NIS" name="cabecalhos[nis]" type="checkbox"> NIS
+                    <input value="NIS" name="cabecalhos[pis]" type="checkbox"> NIS
 
                 </label> <br>
 
