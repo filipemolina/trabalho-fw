@@ -45,7 +45,7 @@ class CurriculosController extends Controller
 
         $idades = $this->calcularIdades($curriculos);
 
-        return view('curriculos.index', compact(['curriculos', 'idades'. 'areas']));
+        return view('curriculos.index', compact(['curriculos', 'idades', 'areas']));
     }
 
     /**

@@ -41,10 +41,12 @@
             <div class="col-md-3 form-group">
               <label for="nome">
                   Nome
+                  
                   <div class="input-group ">
-                      <input type="text" id="nome" class="form-control input-sm">
 
-                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                      <input type="text" id="nome" class="busca form-control col-md-12 input-sm" data-column="0">
+
+                      <a data-column="0" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                   </div>
               </label>
@@ -55,9 +57,8 @@
                     Bairro
 
                     <div class="input-group ">
-                        <input type="text" id="bairro" class="form-control input-sm" />
-                        <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
-                        
+                        <input type="text" id="bairro" data-column="3" class="busca form-control input-sm" />
+                        <a data-column="3" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>                        
                     </div>
                 </label>
             </div>
@@ -65,10 +66,10 @@
             <div class="col-md-3">
               <label for="min">
                 Idade Mínima:
-                
+
                 <div class="input-group ">
-                  <input type="number" id="min" class="form-control input-sm" />
-                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                  <input type="number" id="min" class="busca-idade form-control input-sm" />
+                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                 </div>
               </label>  
@@ -77,10 +78,10 @@
             <div class="col-md-3">
               <label for="min">
                   Idade Máxima:
-                  <div class="input-group ">
 
-                      <input type="number" id="max" class="form-control input-sm" /></label>
-                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                  <div class="input-group ">
+                      <input type="number" id="max" class="busca-idade form-control input-sm" /></label>
+                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                   </div>
               </label>
@@ -97,7 +98,7 @@
 
                 <div class="input-group ">
 
-                  <select type="text" id="sexo" class="select2_group form-control input-sm">
+                  <select type="text" id="sexo" data-column="2" class="busca form-control input-sm">
 
                     <option value=""> Selecione </option>
                     <option> Masculino </option>
@@ -106,7 +107,7 @@
                     
                   </select>
 
-                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                  <a data-column="2" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                 </div>
               </label> 
@@ -119,13 +120,17 @@
                   Formação
 
                   <div class="input-group ">
-                      <select id="formacao" name="formacao" class="select2_group form-control input-sm">
+
+                      <select id="formacao" name="formacao" data-column="4" class="busca select2_group form-control input-sm">
+
                           <option value="">Selecione...</option>
                           <option value="Fundamental" @if (old('formacao') == 'Fundamental') selecte="selected" @endif>Fundamental</option>
                           <option value="Médio" @if (old('formacao') == 'Médio') selecte="selected" @endif>Médio</option>
                           <option value="Superior" @if (old('formacao') == 'Superior') selecte="selected" @endif>Superior</option>
+
                       </select>
-                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+
+                      <a data-column="4" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                   </div>
               </label>  
@@ -137,20 +142,20 @@
                 Área de atuação
 
                 <div class="input-group ">
-                    <select id="area" name="area[]" class="select2_group form-control input-sm">
+                    <select id="area" name="areas" data-column="5" class="busca select2_group form-control input-sm">
                                 
                                 <option value="">Selecione...</option>
 
                                   {{-- Iterar pelar áreas de atuação --}}
 
-                                {{-- @foreach($areas as $area)
+                                @foreach($areas as $area)
 
-                                    <option value="{{ $area->id }}" @if (old('area') == $area->id) selected="selected" @endif>{{ $area->descricao }}</option>
+                                    <option value="{{ $area->descricao }}" @if (old('areas') == $area->id) selected="selected" @endif>{{ $area->descricao }}</option>
 
-                                @endforeach --}}
+                                @endforeach
 
                     </select>
-                    <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                    <a data-column="5" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                 </div>
               </label>
@@ -162,17 +167,17 @@
 
                     <div class="input-group ">
 
-                  <select type="text" id="indicacao" class="select2_group form-control input-sm">
+                      <select type="text" id="indicacao" data-column="6" class="busca select2_group form-control input-sm">
 
-                    <option value=""> Selecione... </option>
-                    <option> Sim </option>
-                    <option> Não </option>
-                    
-                  </select>
+                        <option value=""> Selecione... </option>
+                        <option value="Sim"> Sim </option>
+                        <option value="Não"> Não </option>
+                        
+                      </select>
 
-                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                      <a data-column="6" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
-                </div>
+                    </div>
                 </label>
             </div>
           </div>
@@ -322,6 +327,7 @@
     <script src="{{ asset('vendors/pdfmake/build/pdfmake.min.js') }}"></script>
     <script src="{{ asset('vendors/pdfmake/build/vfs_fonts.js') }}"></script>
 
+<<<<<<< HEAD
 
     <script>
 
@@ -538,5 +544,7 @@
       });
       
     </script>
+
+    @include("includes.curriculos.index.scripts")
 
 @endsection

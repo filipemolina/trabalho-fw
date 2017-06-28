@@ -57,7 +57,7 @@
                               <td>
                                   {{-- Botão de Exclusão --}}
 
-                                  <a class="btn btn-danger btn-excluir" data-toggle="modal" data-target=".modal-excluir-area" data-id="{{ $area->id }}" data-descricao="{{ $area->descricao }}"><i class="fa fa-remove"></i></a>
+                                  <a class="btn btn-pn btn-excluir btn-cor-perigo" data-toggle="modal" data-target=".modal-excluir-area" data-id="{{ $area->id }}" data-descricao="{{ $area->descricao }}"><i class="fa fa-remove"></i></a>
                               </td>
                           	</tr>
 
