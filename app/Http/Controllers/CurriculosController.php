@@ -38,7 +38,7 @@ class CurriculosController extends Controller
 
         // Obter todas as áreas de atuação
 
-        $aras = Area::all();
+        $areas = Area::all();
         
         // Criar um vetor associativo com o id do currículo e a idade da pessoa
         // Necessário para montar a tabela na view

@@ -167,6 +167,15 @@
 
 
      });
+
+      // Limpar campo 
+      $(document).on("click", ".limpar1", function(e){
+
+          e.preventDefault();
+
+          $(this).find("input, select").val('');
+
+        });
       
     </script>
 

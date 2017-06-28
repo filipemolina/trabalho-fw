@@ -30,12 +30,12 @@
     {{-- Total de Currículos Cadastrados --}}
 
     <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-        <span class="count_top"><i class="fa fa-user"></i> Currículos Cadastrados</span>
+        <span class="count_top"><i class="fa fa-user"></i> Currículos</span>
         <div class="count">{{ $resultados['curriculos'] }}</div>
 
         {{-- Testar se o sinal deve ser positivo ou negativo --}}
 
-        @if ($resultados['sinal-porcentagem-total'])
+        {{-- @if ($resultados['sinal-porcentagem-total'])
 
             <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>{{ $resultados['porcentagem-total'] }}% </i> </span>
 
@@ -43,7 +43,8 @@
 
             <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>{{ $resultados['porcentagem-total'] }}% </i>
             </span>
-        @endif
+        @endif --}}
+        <span class="count_bottom">Total de cadastros.</span>
     </div>
     
     {{-- Total de Mulheres --}}

@@ -150,7 +150,9 @@
 
                       <ul class="nav child_menu">
                         <li><a href="{{ url('/configuracoes') }}">Configurações</a></li>
+                        
                         <li>
+
                           <a href="{{ url('/logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">  Sair
                           </a>
 

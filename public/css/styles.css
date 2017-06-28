@@ -2,5 +2,44 @@ body {color:#6842b6;background-color:#3D276B}.nav_title{background:#3D276B}.left
 /*# sourceMappingURL=styles.css.map */
 .form-control:focus{-webkit-box-shadow:1px 1px 20px -3px #3D276B !important;-moz-box-shadow:1px 1px 20px -3px #3D276B !important;box-shadow:1px 1px 20px -3px #3D276B !important;}
 input,select,td{text-transform:uppercase;}
-input{border-radius:5px!important;}
+input,select{border-radius:5px!important;}
 .senha{text-transform:none!important;}
+/*Esconder clear button padrão do IE*/
+::-ms-clear{display: none;}
+/*Botão para limpar campo*/
+.span-clear{z-index:10;pointer-events:auto;cursor:pointer;display: table-cell;}
+.btn-circulo-pn {
+    width: 19px;
+    height: 19px;
+    text-align: center;
+    padding: 3px 0;
+    font-size: 10px;
+    line-height: 1,3;
+    border-radius: 11px;
+    border-width: 0;
+}
+
+.btn-cor-padrao {
+    background-image: linear-gradient(to bottom, #8241f9, #4e277b);
+	border: 0;
+    color: #fff !important;
+}
+
+.btn-cor-padrao:active {
+    background-image: linear-gradient(to top, #8241f9, #7038cd);
+}
+
+.btn-cor-perigo {
+    background-image: linear-gradient(to bottom, #f54a44, #a3190f);
+    border: 0;
+    color: #fff !important;
+}
+
+.btn-cor-perigo:active {
+    background-image: linear-gradient(to top, #f75a36, #db200f);
+}
+
+.span-alinhar{
+	top: -6px;
+    left: 6px;
+}
