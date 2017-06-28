@@ -15,7 +15,7 @@
 
 @section('menu-superior')
 
-  <button class="btn btn-info btn-cadastrar-curriculo" onclick="window.location='{{ url('areas/') }}'"><i class="fa fa-arrow-left"></i> Lista de Áreas de Atuação</button>
+  <button class="btn btn-info btn-cadastrar-curriculo btn-cor-padrao modal-content" onclick="window.location='{{ url('areas/') }}'"><i class="fa fa-arrow-left"></i> Lista de Áreas de Atuação</button>
 
 @endsection
 
@@ -52,7 +52,7 @@
 	{{-- Fim das Mensagens --}}
 
 	<div class="col-md-12 col-sm-12 col-xs-12">
-		<div class="x_panel">
+		<div class="x_panel modal-content">
 			<div class="x_title">
 				<h2>Cadastrar Área de Atuação <small></small></h2>
 				<div class="clearfix"></div>
@@ -78,7 +78,7 @@
 
 					<div class="form-group">
 						<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-							<button type="submit" class="btn btn-success">Enviar</button>
+							<button type="submit" class="btn btn-success btn-cor-neutra">Enviar</button>
 						</div>
 					</div>
 

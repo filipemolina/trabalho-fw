@@ -19,7 +19,7 @@
 
 @section('menu-superior')
 
-  <button class="btn btn-info btn-cadastrar-curriculo" onclick="location.href='{{ url('usuarios/create') }}'"> <i class="fa fa-user-circle"></i> Cadastrar Usuário</button>
+  <button class="btn btn-info btn-cadastrar-curriculo btn-cor-padrao modal-content" onclick="location.href='{{ url('usuarios/create') }}'"> <i class="fa fa-user-circle"></i> Cadastrar Usuário</button>
 
 @endsection
 
@@ -28,7 +28,7 @@
 	<div class="row curriculo-index">
 		
 		<div class="col-md-12 col-sm-12 col-xs-12">
-          	<div class="x_panel">
+          	<div class="x_panel modal-content">
 	            <div class="x_title">
 	              	<h2>Usuários <small>Utilize os comandos da tabela para reordenar e pesquisar</small></h2>
 	              	<div class="clearfix"></div>
@@ -68,11 +68,11 @@
 
             						{{-- Botão Editar, leva para a tela de edição do currículo --}}
 
-            						<a href="{{ url("usuarios/$user->id/edit") }}" class="btn btn-info btn-editar" data-id="{{ $user->id }}"><i class="fa fa-edit"></i></a>
+            						<a href="{{ url("usuarios/$user->id/edit") }}" class="btn btn-info btn-pn btn-cor-padrao" title="Editar" data-id="{{ $user->id }}"><i class="fa fa-edit"></i></a>
 
             						{{-- Botão de Exclusão --}}
 
-            						<a class="btn btn-danger btn-excluir" data-toggle="modal" data-target=".modal-excluir-curriculo" data-id="{{ $user->id }}" data-nome="{{ $user->name }}"><i class="fa fa-remove"></i></a>
+            						<a class="btn btn-pn btn-excluir btn-cor-perigo" data-toggle="modal" title="Excluir" data-target=".modal-excluir-curriculo" data-id="{{ $user->id }}" data-nome="{{ $user->name }}"><i class="fa fa-remove"></i></a>
 
             					</td>
             				</tr>

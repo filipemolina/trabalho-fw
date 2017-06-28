@@ -388,7 +388,7 @@ class CurriculosController extends Controller
 
             $encaminhar = "<input type='checkbox' class='flat chk-encaminhar' name='encaminhar' data-id='$curriculo->id' data-nome='$curriculo->nome'>";
 
-            $acoes = "<a href='".url("curriculos/pdf/$curriculo->id")." target='_blank' class='btn btn-success btn-ver' data-id='$curriculo->id'><i class='fa fa-eye'></i></a><a href='".url("curriculos/$curriculo->id/edit")."' class='btn btn-info btn-editar' data-id='$curriculo->id'><i class='fa fa-edit'></i></a><a class='btn btn-danger btn-excluir' data-toggle='modal' data-target='.modal-excluir-curriculo' data-id='$curriculo->id' data-nome='$curriculo->nome'><i class='fa fa-remove'></i></a>";
+            $acoes = "<a href='".url("curriculos/pdf/$curriculo->id")." target='_blank' class='btn btn-pn btn-ver btn-cor-neutra' data-id='$curriculo->id'><i class='fa fa-eye'></i></a><a href='".url("curriculos/$curriculo->id/edit")."' class='btn btn-pn btn-editar btn-cor-padrao' data-id='$curriculo->id'><i class='fa fa-edit'></i></a><a class='btn btn-pn btn-excluir btn-cor-perigo' data-toggle='modal' data-target='.modal-excluir-curriculo' data-id='$curriculo->id' data-nome='$curriculo->nome'><i class='fa fa-remove'></i></a>";
 
             $colecao->push([
                 'nome'       => $curriculo->nome,

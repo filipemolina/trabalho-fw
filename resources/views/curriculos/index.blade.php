@@ -29,8 +29,8 @@
         <div class="x_title">
           <h2>Busca Avançada</h2>
           <ul class="nav navbar-right panel_toolbox" style="min-width: 0px;">
-            <li><a class="limpar1" data-toggle="tooltip" title="Limpar campos"><i class="fa fa-remove btn btn-circulo-pn btn-cor-perigo"></i></a></li>
-            <li><a class="collapse-link" data-toggle="tooltip" title="Reduzir / Expandir"><i class="fa fa-chevron-up btn btn-circulo-pn btn-cor-padrao"></i></a></li>
+            <li><a class="limpar1 btn btn-pn btn-cor-perigo" data-toggle="tooltip" title="Limpar campos"><i class="fa fa-remove"></i></a></li>
+            <li><a class="collapse-link btn btn-pn btn-cor-padrao" data-toggle="tooltip" title="Expandir / Reduzir"><i class="fa fa-chevron-down"></i></a></li>
           </ul>
           <div class="clearfix"></div>
         </div>
@@ -41,11 +41,12 @@
             <div class="col-md-3 form-group">
               <label for="nome">
                   Nome
-                  <div class="input-group has-clear">
+                  
+                  <div class="input-group ">
 
                       <input type="text" id="nome" class="busca form-control col-md-12 input-sm" data-column="0">
 
-                      <a data-column="0" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                      <a data-column="0" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                   </div>
               </label>
@@ -55,10 +56,9 @@
                 <label for="indicacao">
                     Bairro
 
-                    <div class="input-group has-clear">
+                    <div class="input-group ">
                         <input type="text" id="bairro" data-column="3" class="busca form-control input-sm" />
-                        <a data-column="3" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
-                        
+                        <a data-column="3" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>                        
                     </div>
                 </label>
             </div>
@@ -66,10 +66,10 @@
             <div class="col-md-3">
               <label for="min">
                 Idade Mínima:
-                
-                <div class="input-group has-clear">
+
+                <div class="input-group ">
                   <input type="number" id="min" class="busca-idade form-control input-sm" />
-                  <a data-column="min" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                  <a data-column="min" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
 
                 </div>
               </label>  
@@ -78,9 +78,10 @@
             <div class="col-md-3">
               <label for="min">
                   Idade Máxima:
-                  <div class="input-group has-clear">
+
+                  <div class="input-group ">
                       <input type="number" id="max" class="busca-idade form-control input-sm" /></label>
-                      <a data-column="max" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                      <a data-column="max" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
 
                   </div>
               </label>
@@ -95,7 +96,7 @@
 
                 Sexo
 
-                <div class="input-group has-clear">
+                <div class="input-group ">
 
                   <select type="text" id="sexo" data-column="2" class="busca form-control input-sm">
 
@@ -106,7 +107,7 @@
                     
                   </select>
 
-                  <a data-column="2" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                  <a data-column="2" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                 </div>
               </label> 
@@ -118,7 +119,7 @@
 
                   Formação
 
-                  <div class="input-group has-clear">
+                  <div class="input-group ">
 
                       <select id="formacao" name="formacao" data-column="4" class="busca select2_group form-control input-sm">
 
@@ -129,7 +130,7 @@
 
                       </select>
 
-                      <a data-column="4" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                      <a data-column="4" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                   </div>
               </label>  
@@ -140,7 +141,7 @@
 
                 Área de atuação
 
-                <div class="input-group has-clear">
+                <div class="input-group ">
                     <select id="area" name="areas" data-column="5" class="busca select2_group form-control input-sm">
                                 
                                 <option value="">Selecione...</option>
@@ -154,7 +155,7 @@
                                 @endforeach
 
                     </select>
-                    <a data-column="5" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                    <a data-column="5" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                 </div>
               </label>
@@ -164,7 +165,7 @@
                 <label for="indicacao">
                     Indicação
 
-                    <div class="input-group has-clear">
+                    <div class="input-group ">
 
                       <select type="text" id="indicacao" data-column="6" class="busca select2_group form-control input-sm">
 
@@ -174,13 +175,12 @@
                         
                       </select>
 
-                      <a data-column="6" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                      <a data-column="6" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                     </div>
                 </label>
             </div>
           </div>
-          <div class="clearfix"></div>
       </div>
     </div>
 
@@ -189,7 +189,7 @@
 	<div class="row curriculo-index">
 		
 		<div class="col-md-12 col-sm-12 col-xs-12">
-          	<div class="x_panel">
+          	<div class="x_panel modal-content">
 	            <div class="x_title">
 	              	<h2>Currículos <small>Utilize os comandos da tabela para reordenar e pesquisar</small></h2>
 	              	<div class="clearfix"></div>

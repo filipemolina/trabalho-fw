@@ -14,7 +14,7 @@
 
 @section('menu-superior')
 
-	<button class="btn btn-info btn-cadastrar-curriculo" onclick="window.location = '{{ url('/') }}'"><i class="fa fa-arrow-left"></i> Dashboard</button>
+	<button class="btn btn-info btn-cadastrar-curriculo btn-cor-padrao modal-content" onclick="window.location = '{{ url('/') }}'"><i class="fa fa-arrow-left"></i> Dashboard</button>
 
 @endsection
 
@@ -82,7 +82,7 @@
                     </div>
 
                     <div class="form-group">
-                    	<button type="submit" class="btn btn-success"> Enviar </button>
+                    	<button type="submit" class="btn btn-success btn-cor-neutra"> Enviar </button>
                     </div>
 
 				</form>
