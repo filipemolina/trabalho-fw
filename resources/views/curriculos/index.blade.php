@@ -46,7 +46,7 @@
 
                       <input type="text" id="nome" class="busca form-control col-md-12 input-sm" data-column="0">
 
-                      <a data-column="0" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                      <a data-column="0" style="margin-right: 0; margin-bottom: 3px;" class="span-clear hide btn btn-pn btn-cor-perigo"><i class="glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
 
                   </div>
               </label>
@@ -58,7 +58,7 @@
 
                     <div class="input-group ">
                         <input type="text" id="bairro" data-column="3" class="busca form-control input-sm" />
-                        <a data-column="3" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>                        
+                        <a data-column="3" style="margin-right: 0; margin-bottom: 3px;" class="span-clear hide btn btn-pn btn-cor-perigo"><i class="glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>                        
                     </div>
                 </label>
             </div>
@@ -69,7 +69,7 @@
 
                 <div class="input-group ">
                   <input type="number" id="min" class="busca-idade form-control input-sm" />
-                  <a data-column="min" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
+                  <a data-column="min" style="margin-right: 0; margin-bottom: 3px;" class="span-clear hide btn btn-pn btn-cor-perigo"><i class=" glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
 
                 </div>
               </label>  
@@ -81,7 +81,7 @@
 
                   <div class="input-group ">
                       <input type="number" id="max" class="busca-idade form-control input-sm" /></label>
-                      <a data-column="max" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
+                      <a data-column="max" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide btn btn-pn btn-cor-perigo"><i class=" glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
 
                   </div>
               </label>
@@ -107,7 +107,7 @@
                     
                   </select>
 
-                  <a data-column="2" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                  <a data-column="2" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide btn btn-pn btn-cor-perigo"><i class=" glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
 
                 </div>
               </label> 
@@ -130,7 +130,7 @@
 
                       </select>
 
-                      <a data-column="4" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                      <a data-column="4" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide btn btn-pn btn-cor-perigo"><i class=" glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
 
                   </div>
               </label>  
@@ -155,7 +155,7 @@
                                 @endforeach
 
                     </select>
-                    <a data-column="5" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                    <a data-column="5" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide btn btn-pn btn-cor-perigo"><i class=" glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
 
                 </div>
               </label>
@@ -175,7 +175,7 @@
                         
                       </select>
 
-                      <a data-column="6" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                      <a data-column="6" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide btn btn-pn btn-cor-perigo"><i class=" glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
 
                     </div>
                 </label>

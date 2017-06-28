@@ -27,6 +27,18 @@
             }
         );
 
+      function mostrarBotao(seletor, mostrar)
+      {
+          if(mostrar)
+          {
+              $(seletor).removeClass("hide").parent().addClass("has-clear");
+          }
+          else
+          {
+              $(seletor).addClass("hide").parent().removeClass("has-clear"); 
+          }
+      }
+
       /////////////////////////////////////// Iterar por todas as colunas da tabela e mostrar ou esconder os botões de limpar
 
       function botaoLimpar(table)
@@ -50,7 +62,8 @@
             {
               // O botão de apagar...
 
-              $(".span-clear[data-column="+i+"]").removeClass("hide");
+              // $(".span-clear[data-column="+i+"]").removeClass("hide");
+              mostrarBotao(".span-clear[data-column="+i+"]", true);
 
               // E o botão de apagar geral
 
@@ -70,20 +83,23 @@
                 {
                     $("#min").val("");
 
-                    $("[data-column=min]").addClass("hide");
+                    // $("[data-column=min]").addClass("hide");
+                    mostrarBotao("[data-column=min]", false);
                 }
                 else if(max == 100)
                 {
                     $("#max").val("");
 
-                    $("[data-column=max]").addClass("hide"); 
+                    // $("[data-column=max]").addClass("hide"); 
+                    mostrarBotao("[data-column=max]", false);
                 }
                 else
                 {
                     $("#min").val(min);
                     $("#max").val(max);
 
-                    $("[data-column=min], [data-column=max]").removeClass("hide");
+                    // $("[data-column=min], [data-column=max]").removeClass("hide");
+                    mostrarBotao("[data-column=min], [data-column=max]", true);
                 }
               }
 
@@ -92,13 +108,15 @@
             {
               // Esconder o botão de apagar
 
-              $(".span-clear[data-column="+i+"]").addClass("hide");
+              // $(".span-clear[data-column="+i+"]").addClass("hide");
+              mostrarBotao(".span-clear[data-column="+i+"]", false);
 
               // Esconder os botões das idades mínima e máxima
 
               if(i == 1)          
               {
-                  $("[data-column=min], [data-column=max]").addClass("hide"); 
+                  // $("[data-column=min], [data-column=max]").addClass("hide"); 
+                  mostrarBotao("[data-column=min], [data-column=max]", false);
               }
             }
 
