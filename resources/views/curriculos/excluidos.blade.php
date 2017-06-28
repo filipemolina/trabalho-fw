@@ -29,8 +29,8 @@
         <div class="x_title">
           <h2>Busca Avançada</h2>
           <ul class="nav navbar-right panel_toolbox" style="min-width: 0px;">
-            <li><a class="limpar1" data-toggle="tooltip" title="Limpar campos"><i class="fa fa-remove btn btn-circulo-pn btn-cor-perigo"></i></a></li>
-            <li><a class="collapse-link" data-toggle="tooltip" title="Reduzir / Expandir"><i class="fa fa-chevron-up btn btn-circulo-pn btn-cor-padrao"></i></a></li>
+            <li><a class="limpar1 btn btn-pn btn-cor-perigo" data-toggle="tooltip" title="Limpar campos"><i class="fa fa-remove"></i></a></li>
+            <li><a class="collapse-link btn btn-pn btn-cor-padrao" data-toggle="tooltip" title="Reduzir / Expandir"><i class="fa fa-chevron-up"></i></a></li>
           </ul>
           <div class="clearfix"></div>
         </div>
@@ -44,7 +44,7 @@
                   <div class="input-group has-clear">
                       <input type="text" id="nome" class="form-control input-sm">
 
-                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                      <a  class=" span-clear btn btn-pn btn-cor-perigo"><i class="glyphicon glyphicon-remove" ></i></a>
 
                   </div>
               </label>
@@ -56,7 +56,7 @@
 
                     <div class="input-group has-clear">
                         <input type="text" id="bairro" class="form-control input-sm" />
-                        <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                        <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear btn btn-pn btn-cor-perigo"><i class="glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
                         
                     </div>
                 </label>
@@ -68,7 +68,7 @@
                 
                 <div class="input-group has-clear">
                   <input type="number" id="min" class="form-control input-sm" />
-                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear btn btn-pn btn-cor-perigo"><i class="glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
 
                 </div>
               </label>  
@@ -80,7 +80,7 @@
                   <div class="input-group has-clear">
 
                       <input type="number" id="max" class="form-control input-sm" /></label>
-                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear btn btn-pn btn-cor-perigo"><i class="glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
 
                   </div>
               </label>
@@ -106,7 +106,7 @@
                     
                   </select>
 
-                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear btn btn-pn btn-cor-perigo"><i class="glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
 
                 </div>
               </label> 
@@ -125,7 +125,7 @@
                           <option value="Médio" @if (old('formacao') == 'Médio') selecte="selected" @endif>Médio</option>
                           <option value="Superior" @if (old('formacao') == 'Superior') selecte="selected" @endif>Superior</option>
                       </select>
-                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear btn btn-pn btn-cor-perigo"><i class="glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
 
                   </div>
               </label>  
@@ -150,7 +150,7 @@
                                 @endforeach --}}
 
                     </select>
-                    <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                    <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear btn btn-pn btn-cor-perigo"><i class="glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
 
                 </div>
               </label>
@@ -170,7 +170,7 @@
                     
                   </select>
 
-                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear btn btn-pn btn-cor-perigo"><i class="glyphicon glyphicon-remove" style="margin-top: -10px;"></i></a>
 
                 </div>
                 </label>

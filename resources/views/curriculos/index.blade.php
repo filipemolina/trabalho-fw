@@ -29,8 +29,8 @@
         <div class="x_title">
           <h2>Busca Avançada</h2>
           <ul class="nav navbar-right panel_toolbox" style="min-width: 0px;">
-            <li><a class="limpar1" data-toggle="tooltip" title="Limpar campos"><i class="fa fa-remove btn btn-circulo-pn btn-cor-perigo"></i></a></li>
-            <li><a class="collapse-link" data-toggle="tooltip" title="Reduzir / Expandir"><i class="fa fa-chevron-up btn btn-circulo-pn btn-cor-padrao"></i></a></li>
+            <li><a class="limpar1 btn btn-pn btn-cor-perigo" data-toggle="tooltip" title="Limpar campos"><i class="fa fa-remove"></i></a></li>
+            <li><a class="collapse-link btn btn-pn btn-cor-padrao" data-toggle="tooltip" title="Expandir / Reduzir"><i class="fa fa-chevron-down"></i></a></li>
           </ul>
           <div class="clearfix"></div>
         </div>
@@ -41,7 +41,7 @@
             <div class="col-md-3 form-group">
               <label for="nome">
                   Nome
-                  <div class="input-group has-clear">
+                  <div class="input-group ">
                       <input type="text" id="nome" class="form-control input-sm">
 
                       <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
@@ -54,7 +54,7 @@
                 <label for="indicacao">
                     Bairro
 
-                    <div class="input-group has-clear">
+                    <div class="input-group ">
                         <input type="text" id="bairro" class="form-control input-sm" />
                         <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
                         
@@ -66,7 +66,7 @@
               <label for="min">
                 Idade Mínima:
                 
-                <div class="input-group has-clear">
+                <div class="input-group ">
                   <input type="number" id="min" class="form-control input-sm" />
                   <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
@@ -77,7 +77,7 @@
             <div class="col-md-3">
               <label for="min">
                   Idade Máxima:
-                  <div class="input-group has-clear">
+                  <div class="input-group ">
 
                       <input type="number" id="max" class="form-control input-sm" /></label>
                       <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
@@ -95,7 +95,7 @@
 
                 Sexo
 
-                <div class="input-group has-clear">
+                <div class="input-group ">
 
                   <select type="text" id="sexo" class="select2_group form-control input-sm">
 
@@ -118,7 +118,7 @@
 
                   Formação
 
-                  <div class="input-group has-clear">
+                  <div class="input-group ">
                       <select id="formacao" name="formacao" class="select2_group form-control input-sm">
                           <option value="">Selecione...</option>
                           <option value="Fundamental" @if (old('formacao') == 'Fundamental') selecte="selected" @endif>Fundamental</option>
@@ -136,7 +136,7 @@
 
                 Área de atuação
 
-                <div class="input-group has-clear">
+                <div class="input-group ">
                     <select id="area" name="area[]" class="select2_group form-control input-sm">
                                 
                                 <option value="">Selecione...</option>
@@ -160,7 +160,7 @@
                 <label for="indicacao">
                     Indicação
 
-                    <div class="input-group has-clear">
+                    <div class="input-group ">
 
                   <select type="text" id="indicacao" class="select2_group form-control input-sm">
 
@@ -176,7 +176,6 @@
                 </label>
             </div>
           </div>
-          <div class="clearfix"></div>
       </div>
     </div>
 
@@ -185,7 +184,7 @@
 	<div class="row curriculo-index">
 		
 		<div class="col-md-12 col-sm-12 col-xs-12">
-          	<div class="x_panel">
+          	<div class="x_panel modal-content">
 	            <div class="x_title">
 	              	<h2>Currículos <small>Utilize os comandos da tabela para reordenar e pesquisar</small></h2>
 	              	<div class="clearfix"></div>
@@ -535,27 +534,6 @@
               
 
         });
-
-      });
-      
-      // Limpar campo
-      $('.has-clear input, .has-clear select').on('change propertychange', function() {
-          var $this = $(this);
-          var visible = Boolean($this.val());
-          $this.siblings('.span-clear').toggleClass('hidden', !visible);
-      }).trigger('propertychange');
-
-      $('.span-clear').click(function() {
-          $(this).siblings('input, select').val('')
-          .trigger('propertychange').focus();
-      });
-
-      // Limpar todos os campos
-      $(document).on("click", ".limpar1", function(e){
-
-          e.preventDefault();
-
-          $(this).parent().parent().parent().parent().find("input, select").val('');
 
       });
       

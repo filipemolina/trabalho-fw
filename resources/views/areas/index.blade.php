@@ -19,7 +19,7 @@
 
 @section('menu-superior')
 
-  <button class="btn btn-info btn-cadastrar-curriculo" onclick="location.href='{{ url('areas/create') }}'"> <i class="fa fa-crosshairs"></i> Cadastrar Área de Atuação</button>
+  <button class="btn btn-info btn-cadastrar-curriculo btn-cor-padrao modal-content" onclick="location.href='{{ url('areas/create') }}'"> <i class="fa fa-crosshairs"></i> Cadastrar Área de Atuação</button>
 
 @endsection
 
@@ -28,7 +28,7 @@
 	<div class="row curriculo-index">
 		
 		<div class="col-md-12 col-sm-12 col-xs-12">
-          	<div class="x_panel">
+          	<div class="x_panel modal-content">
 	            <div class="x_title">
 	              	<h2>Áreas de Atuação <small>Utilize os comandos da tabela para reordenar e pesquisar</small></h2>
 	              	<div class="clearfix"></div>
