@@ -25,7 +25,7 @@
 
   
 <!-- top tiles -->
-<div class="row tile_count">
+<div class="row tile_count" style="margin-left: 110px; width: 110%;">
     
     {{-- Total de Currículos Cadastrados --}}
 
@@ -44,7 +44,7 @@
             <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>{{ $resultados['porcentagem-total'] }}% </i>
             </span>
         @endif --}}
-        <span class="count_bottom">Total de cadastros.</span>
+
     </div>
     
     {{-- Total de Mulheres --}}
@@ -74,11 +74,11 @@
 
     {{-- Currículos Cadastrados nesta semana --}}
 
-    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+{{--     <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
         <span class="count_top"><i class="fa fa-clock-o"></i> Nesta Semana</span>
         <div class="count">{{ $resultados['ultima-semana'] }}</div>
         <span class="count_bottom">Currículos cadastrados.</span>
-    </div>
+    </div> --}}
 </div>
 <!-- /top tiles -->
 {{-- <br>

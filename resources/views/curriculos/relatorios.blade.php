@@ -25,7 +25,7 @@
       @if(count($errors) > 0)
 
         <div class="alert alert-roxo alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true" >&times;</span></button>
 
           <strong>Atenção!</strong><br>
 
@@ -54,7 +54,7 @@
         
         <div class="x_content">
 
-          <form action="{{ url('/curriculos/imprimerelatorios') }}" method="POST" class="form-horizontal" id="form-cadastro-usuario">
+          <form target="_blank" action="{{ url('/curriculos/imprimerelatorios') }}" method="POST" class="form-horizontal" id="form-cadastro-usuario">
 
             {{ csrf_field() }}
 
@@ -217,6 +217,78 @@
         </div>
       </div>
     </div>
+
+
+@endsection
+
+@section("js")
+
+<script>
+  
+  $(function(){
+
+  // Selecionar campos do formulário de acordo com o tipo de formulário escolhido
+
+  $("select#ordem_relatorio").change(function(){
+
+    // Idade
+
+    if($(this).val() == "idade"){ //campo que vai ser escolhido
+
+      $("[name='cabecalhos\\[idade\\]']").prop('checked', true); //campo que vai ser selecionado
+
+    } 
+
+    // Sexo
+
+    if($(this).val() == "sexo"){ 
+
+      $("[name='cabecalhos\\[sexo\\]']").prop('checked', true); 
+
+    }
+
+    // Bairro
+
+    if($(this).val() == "bairro"){ 
+
+      $("[name='cabecalhos\\[bairro\\]']").prop('checked', true); 
+
+    } 
+
+    // Formação
+
+    if($(this).val() == "formacao"){ 
+
+      $("[name='cabecalhos\\[formacao\\]']").prop('checked', true); 
+      
+
+    } 
+
+    // Áera de Atuação
+
+    if($(this).val() == "area_atuacao"){ 
+
+      $("[name='cabecalhos\\[areas\\]']").prop('checked', true); 
+      
+
+    } 
+
+    // Indicação Politica
+
+    if($(this).val() == "indicacao_politica"){ 
+
+      $("[name='cabecalhos\\[indicacao_politica\\]']").prop('checked', true); 
+      
+
+    } 
+
+  });
+
+});
+
+</script>
+
+
 
 
 @endsection

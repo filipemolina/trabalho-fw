@@ -4,29 +4,6 @@
       var tabela;
       var colunas = [];
 
-       /* Função para incluir a busca pelos campos de Idade Mínima e Máxima */
-        $.fn.dataTable.ext.search.push(
-            function( settings, data, dataIndex ) {
-                var min = parseInt( $('#min').val(), 10 );
-                var max = parseInt( $('#max').val(), 10 );
-                var age = parseFloat( data[1] ) || 0; // use data for the age column
-
-                console.log(min);
-                console.log(max);
-                console.log(age);
-                console.log(data[1]);
-         
-                if ( ( isNaN( min ) && isNaN( max ) ) ||
-                     ( isNaN( min ) && age <= max ) ||
-                     ( min <= age   && isNaN( max ) ) ||
-                     ( min <= age   && age <= max ) )
-                {
-                    return true;
-                }
-                return false;
-            }
-        );
-
       function mostrarBotao(seletor, mostrar)
       {
           if(mostrar)
@@ -62,7 +39,6 @@
             {
               // O botão de apagar...
 
-              // $(".span-clear[data-column="+i+"]").removeClass("hide");
               mostrarBotao(".span-clear[data-column="+i+"]", true);
 
               // E o botão de apagar geral
@@ -83,23 +59,26 @@
                 {
                     $("#min").val("");
 
-                    // $("[data-column=min]").addClass("hide");
                     mostrarBotao("[data-column=min]", false);
-                }
-                else if(max == 100)
-                {
-                    $("#max").val("");
-
-                    // $("[data-column=max]").addClass("hide"); 
-                    mostrarBotao("[data-column=max]", false);
                 }
                 else
                 {
                     $("#min").val(min);
+
+                    mostrarBotao("[data-column=min]", true);
+                }
+
+                if(max == 100)
+                {
+                    $("#max").val("");
+
+                    mostrarBotao("[data-column=max]", false);
+                }
+                else
+                {
                     $("#max").val(max);
 
-                    // $("[data-column=min], [data-column=max]").removeClass("hide");
-                    mostrarBotao("[data-column=min], [data-column=max]", true);
+                    mostrarBotao("[data-column=max]", true);
                 }
               }
 
@@ -115,7 +94,6 @@
 
               if(i == 1)          
               {
-                  // $("[data-column=min], [data-column=max]").addClass("hide"); 
                   mostrarBotao("[data-column=min], [data-column=max]", false);
               }
             }
@@ -266,8 +244,13 @@
 
         $("#min, #max").change(function(){
 
-            var min = $("#min").val() ? $("#min").val() : 0;
-            var max = $("#max").val() ? $("#max").val() : 0;
+            console.log("chamou a função change");
+
+            var min = $("#min").val() ? parseInt($("#min").val()) : 0;
+            var max = $("#max").val() ? parseInt($("#max").val()) : 0;
+
+            console.log(min);
+            console.log(max);
 
             var idades = colunas[1];
 
@@ -277,6 +260,8 @@
 
             if(min > max && max != 0) 
             {
+              console.log("min > max e max não é 0");
+
                 idades.search("", true, false).draw();
 
                 botaoLimpar(colunas);
@@ -288,6 +273,7 @@
 
             if(max == 0 && min > 0)
             {
+                console.log("max é 0 e min é maior que 0");
                 // Criar um vetor com as idades a serem buscadas
 
                 for(i = min; i <= 100; i++)
@@ -314,6 +300,7 @@
 
             if(min == 0 && max > 0)
             {
+                console.log("min é 0 e max é maior que 0");
                 // Criar um vetor com as idades a serem buscadas
 
                 for(i = 0; i <= max; i++)
@@ -340,6 +327,7 @@
 
             if(min == max && max != 0)
             {
+                console.log("min é igual a max e max não é 0");
                 // Criar um vetor com as idades a serem buscadas
 
                 for(i = min; i <= 100; i++)
@@ -366,18 +354,19 @@
 
             if(min == max && min == 0)
             {
-               idades.search("", true, false).draw();
+                console.log("min é igual a max e min é igual a 0");
+                idades.search("", true, false).draw();
 
-               botaoLimpar(colunas);
+                botaoLimpar(colunas);
 
-               return false;
+                return false;
             }
 
             // Execução normal da busca
 
             if(max > min)
             {
-
+                console.log("max é maior que min");
                 // Criar um vetor com as idades a serem buscadas
 
                 for(i = min; i <= max; i++)
@@ -400,6 +389,8 @@
                 return false;
 
             }
+
+            console.log("não entrou em nada");
 
         });
 

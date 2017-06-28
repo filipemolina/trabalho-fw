@@ -14,3 +14,20 @@ div.page
     page-break-after: always;
     page-break-inside: avoid;
 }
+
+
+.btn_print {
+ 
+    background: #eacb85;
+    padding: 5px 5px;
+    border-radius: 20px;
+    color: #3d276b;
+    text-decoration: none;
+}
+
+@media print{
+
+	.btn_print {
+		display: none;
+	}
+}

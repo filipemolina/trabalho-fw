@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>Currículo</title>
     
-    <link rel="stylesheet" href="css/pdf.css">
+    <link rel="stylesheet" href=" {{ url("css/pdf.css") }}">
 
     <style>
     	
@@ -21,6 +21,9 @@
 
     </style>
 
+      <!-- Font Awesome -->
+    <link href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
+    
   </head>
   <body>
     
