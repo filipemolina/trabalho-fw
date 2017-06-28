@@ -69,7 +69,7 @@
                 
                 <div class="input-group has-clear">
                   <input type="number" id="min" class="busca-idade form-control input-sm" />
-                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                  <a data-column="min" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                 </div>
               </label>  
@@ -80,7 +80,7 @@
                   Idade Máxima:
                   <div class="input-group has-clear">
                       <input type="number" id="max" class="busca-idade form-control input-sm" /></label>
-                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                      <a data-column="max" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                   </div>
               </label>

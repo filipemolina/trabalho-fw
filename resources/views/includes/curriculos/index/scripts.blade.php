@@ -55,12 +55,51 @@
               // E o botão de apagar geral
 
               mostrar = true;
+
+              // Tratar a busca por idades separadamente
+
+              if(i == 1)
+              {
+                var busca_idade = table[i].search();
+                busca_idade = busca_idade.replace("^(", "").replace(")$", "").split("|");
+
+                var min = busca_idade[0];
+                var max = busca_idade[busca_idade.length - 1];
+
+                if(min == 0)
+                {
+                    $("#min").val("");
+
+                    $("[data-column=min]").addClass("hide");
+                }
+                else if(max == 100)
+                {
+                    $("#max").val("");
+
+                    $("[data-column=max]").addClass("hide"); 
+                }
+                else
+                {
+                    $("#min").val(min);
+                    $("#max").val(max);
+
+                    $("[data-column=min], [data-column=max]").removeClass("hide");
+                }
+              }
+
             }
             else
             {
               // Esconder o botão de apagar
 
-              $(".span-clear[data-column="+i+"]").addClass("hide");              
+              $(".span-clear[data-column="+i+"]").addClass("hide");
+
+              // Esconder os botões das idades mínima e máxima
+
+              if(i == 1)          
+              {
+                  $("[data-column=min], [data-column=max]").addClass("hide"); 
+              }
             }
 
           }
@@ -172,7 +211,14 @@
 
             // Zerar a pesquisa...
 
-            colunas[coluna].search("", true, false).draw();
+            if(coluna == "min" || coluna == "max")
+            {
+                $("input#"+coluna).val("").trigger("change");
+            }
+            else
+            {
+                colunas[coluna].search("", true, false).draw();
+            }
 
             // Reorganizar os botões e os inputs da busca avançada
 
@@ -209,6 +255,17 @@
 
             var busca = "";
 
+            // Cancelar a execução caso a idade máxima seja menor que a idade mínima
+
+            if(min > max && max != 0) 
+            {
+                idades.search("", true, false).draw();
+
+                botaoLimpar(colunas);
+
+                return false;
+            }
+
             // Caso a idade máxima seja 0, executar a pesquisa de "min" até 100
 
             if(max == 0 && min > 0)
@@ -217,7 +274,7 @@
 
                 for(i = min; i <= 100; i++)
                 {
-                  busca = busca+i;
+                  busca = busca + i;
 
                   if(i < 100)
                     busca = busca+"|";
@@ -226,14 +283,16 @@
 
                 // Executar a busca utilizando esse 
 
-                idades.search(busca, true, false).draw();
+                idades.search("^("+ busca + ")$", true, false).draw();
 
                 // Terminar a execuação
+
+                botaoLimpar(colunas)
 
                 return false;
             }
 
-            // Caso a idade máxima seja 0, executar a pesquisa de "min" até 100
+            // Caso a idade mínima seja 0, executar a pesquisa de 0 até max
 
             if(min == 0 && max > 0)
             {
@@ -241,7 +300,7 @@
 
                 for(i = 0; i <= max; i++)
                 {
-                  busca = busca+i;
+                  busca = busca + i;
 
                   if(i < max)
                     busca = busca+"|";
@@ -250,21 +309,77 @@
 
                 // Executar a busca utilizando esse 
 
-                idades.search(busca, true, false).draw();
+                idades.search("^("+ busca + ")$", true, false).draw();
 
                 // Terminar a execuação
+
+                botaoLimpar(colunas)
 
                 return false;
             }
 
-            // Cancelar a execuação caso a idade máxima seja menor que a idade mínima
+            // Caso as duas variáveis sejam iguais e diferentes de 0, executar a busca usando apenas uma delas
 
-            if(min > max) return false;
-
-            // Caso as duas variáveis sejam iguais, executar a busca usando apenas uma delas
-
-            if(min == max)
+            if(min == max && max != 0)
             {
+                // Criar um vetor com as idades a serem buscadas
+
+                for(i = min; i <= 100; i++)
+                {
+                  busca = busca + i;
+
+                  if(i < 100)
+                    busca = busca+"|";
+
+                }
+
+                // Executar a busca utilizando esse 
+
+                idades.search("^("+ busca + ")$", true, false).draw();
+
+                // Terminar a execuação
+
+                botaoLimpar(colunas)
+
+                return false;
+            }
+
+            // Caso as duas variáveis sejam 0
+
+            if(min == max && min == 0)
+            {
+               idades.search("", true, false).draw();
+
+               botaoLimpar(colunas);
+
+               return false;
+            }
+
+            // Execução normal da busca
+
+            if(max > min)
+            {
+
+                // Criar um vetor com as idades a serem buscadas
+
+                for(i = min; i <= max; i++)
+                {
+                  busca = busca + i;
+
+                  if(i < max)
+                    busca = busca+"|";
+
+                }
+
+                // Executar a busca utilizando esse 
+
+                idades.search("^("+ busca + ")$", true, false).draw();
+
+                // Terminar a execuação
+
+                botaoLimpar(colunas)
+
+                return false;
 
             }
 
