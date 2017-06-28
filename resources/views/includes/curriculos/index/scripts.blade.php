@@ -113,6 +113,7 @@
         // Ativar o DataTables
 
         tabela = $('#datatable').DataTable({
+          responsive : true,
           'language' : {
             'url' : '{{ asset('/js/portugues.json') }}'
           },

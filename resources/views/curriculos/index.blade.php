@@ -196,7 +196,7 @@
 	            </div>
             	<div class="x_content">
 
-                  	<table id="datatable" class="table table-striped table-bordered">
+                  	<table id="datatable" width="100%" class="table table-striped table-bordered">
                       	<thead>
                         	<tr>
                           		<th style="max-width: 265px;">Nome</th>
