@@ -221,4 +221,76 @@
 
 @endsection
 
+@section("js")
+
+<script>
+  
+  $(function(){
+
+  // Selecionar campos do formulário de acordo com o tipo de formulário escolhido
+
+  $("select#ordem_relatorio").change(function(){
+
+    // Idade
+
+    if($(this).val() == "idade"){ //campo que vai ser escolhido
+
+      $("[name='cabecalhos\\[idade\\]']").prop('checked', true); //campo que vai ser selecionado
+
+    } 
+
+    // Sexo
+
+    if($(this).val() == "sexo"){ 
+
+      $("[name='cabecalhos\\[sexo\\]']").prop('checked', true); 
+
+    }
+
+    // Bairro
+
+    if($(this).val() == "bairro"){ 
+
+      $("[name='cabecalhos\\[bairro\\]']").prop('checked', true); 
+
+    } 
+
+    // Formação
+
+    if($(this).val() == "formacao"){ 
+
+      $("[name='cabecalhos\\[formacao\\]']").prop('checked', true); 
+      
+
+    } 
+
+    // Áera de Atuação
+
+    if($(this).val() == "area_atuacao"){ 
+
+      $("[name='cabecalhos\\[areas\\]']").prop('checked', true); 
+      
+
+    } 
+
+    // Indicação Politica
+
+    if($(this).val() == "indicacao_politica"){ 
+
+      $("[name='cabecalhos\\[indicacao_politica\\]']").prop('checked', true); 
+      
+
+    } 
+
+  });
+
+});
+
+</script>
+
+
+
+
+@endsection
+
 
