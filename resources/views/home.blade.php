@@ -14,10 +14,10 @@
 
 @section('menu-superior')
 
-    <button class="btn-cadastrar-curriculo btn btn-danger" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fa fa-close"></i> Sair </button>
-    <button class="btn-cadastrar-curriculo btn btn-info" onclick="window.location='{{ url('/configuracoes') }}'"> <i class="fa fa-key"></i> Alterar Senha </button>
-    <button class="btn-cadastrar-curriculo btn btn-info" onclick="window.location='{{ url('areas/create') }}'"> <i class="fa fa-crosshairs"></i> Cadastrar Área de Atuação </button>
-    <button class="btn-cadastrar-curriculo btn btn-info" onclick="window.location='{{ url('curriculos/create') }}'"> <i class="fa fa-id-card"></i> Cadastrar Currículo </button>
+    <button class="btn-cadastrar-curriculo btn btn-cor-perigo modal-content" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fa fa-close"></i> Sair </button>
+    <button class="btn-cadastrar-curriculo btn btn-cor-padrao modal-content" onclick="window.location='{{ url('/configuracoes') }}'"> <i class="fa fa-key"></i> Alterar Senha </button>
+    <button class="btn-cadastrar-curriculo btn btn-cor-padrao modal-content" onclick="window.location='{{ url('areas/create') }}'"> <i class="fa fa-crosshairs"></i> Cadastrar Área de Atuação </button>
+    <button class="btn-cadastrar-curriculo btn btn-cor-padrao modal-content" onclick="window.location='{{ url('curriculos/create') }}'"> <i class="fa fa-id-card"></i> Cadastrar Currículo </button>
 
 @endsection
 
@@ -116,14 +116,14 @@
 
 <br> --}}
 
-<div class="row">
-    <div class="col-md-12 col-sm-12 col-xs-12">
+<div class="row x_panel modal-content">
+    <div class="col-md-12 col-sm-12 col-xs-12 ">
         <div class="dashboard_graph">
-
             <div class="row x_title">
                 <div class="col-md-6">
                     <h3>Últimas Semanas <small></small></h3>
                 </div>
+                <div class="clearfix"></div>
                 
                 {{-- Calendário para selecionar a data do gráfico --}}
 
