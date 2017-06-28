@@ -8,6 +8,16 @@ input,select{border-radius:5px!important;}
 ::-ms-clear{display: none;}
 /*Botão para limpar campo*/
 .span-clear{z-index:10;pointer-events:auto;cursor:pointer;display: table-cell;}
+.btn-circulo {
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    padding: 6px 0;
+    font-size: 12px;
+    line-height: 1.428571428;
+    border-radius: 15px;
+    border-width: 0;
+}
 .btn-circulo-pn {
     width: 19px;
     height: 19px;
@@ -37,6 +47,16 @@ input,select{border-radius:5px!important;}
 
 .btn-cor-perigo:active {
     background-image: linear-gradient(to top, #f75a36, #db200f);
+}
+
+.btn-cor-neutra {
+    background-image: linear-gradient(to bottom, #d8c18e, #a38e60);
+    border: 0;
+    color: #fff !important;
+}
+
+.btn-cor-neutra:active {
+    background-image: linear-gradient(to top, #8c7f63, #d8c18e);
 }
 
 .span-alinhar{

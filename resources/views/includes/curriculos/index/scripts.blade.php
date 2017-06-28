@@ -1,7 +1,7 @@
 <script>
 
       var todos_selecionados = false;
-
+      var tabela;
       var colunas = [];
 
        /* Função para incluir a busca pelos campos de Idade Mínima e Máxima */
@@ -26,12 +26,58 @@
                 return false;
             }
         );
+
+      /////////////////////////////////////// Iterar por todas as colunas da tabela e mostrar ou esconder os botões de limpar
+
+      function botaoLimpar(table)
+      {
+          // Mostrar ou não o botão de limpar pesquisa
+
+          var mostrar = false;
+
+          // Iterar pelas colunas
+
+          for (var i = table.length - 1; i >= 0; i--) {
+
+            // Mostrar o termo sendo pesquisado...
+
+            $("input[data-column="+i+"]").val(table[i].search());
+            $("select[data-column="+i+"]").val(table[i].search());
+
+            // Caso a pesquisa aplicada à coluna não esteja vazia, mostrar o botão
+            
+            if(table[i].search() != "")
+            {
+              // O botão de apagar...
+
+              $(".span-clear[data-column="+i+"]").removeClass("hide");
+
+              // E o botão de apagar geral
+
+              mostrar = true;
+            }
+            else
+            {
+              // Esconder o botão de apagar
+
+              $(".span-clear[data-column="+i+"]").addClass("hide");              
+            }
+
+          }
+
+          // Aplicar a classe hide dependendo da variável "mostrar"
+
+          if(mostrar)
+            $(".limpar1").removeClass("hide");
+          else
+            $(".limpar1").addClass("hide");
+      }
       
       $(function(){
 
         // Ativar o DataTables
 
-        var table = $('#datatable').DataTable({
+        tabela = $('#datatable').DataTable({
           'language' : {
             'url' : '{{ asset('/js/portugues.json') }}'
           },
@@ -67,6 +113,10 @@
 
                   colunas.push(this);
 
+                  // Testar logo no carregamento da tabela se o botão de limpar a pesquisa deve estar ativo
+
+                  botaoLimpar(colunas);
+
               });
 
           },
@@ -74,21 +124,153 @@
 
         ///////////////////////////////////////////////////////////////// Busca Avançada
 
-        $(".busca").change(function(){
+        // Método KeyUp para inputs...
+
+        $("input.busca").keyup(function(){
 
             // Obter o valor do campo e a coluna à qual ele se refere
 
             var valor = $(this).val();
             var coluna = $(this).data('column');
 
-            console.log(valor);
-            console.log(coluna);
+            // Chamar a função de busca e redesenho da tabela
+
+            colunas[coluna].search(valor, true, false).draw();
+
+            // Mostrar ou esconder o botão de limpar
+
+            botaoLimpar(colunas);
+
+        });
+
+        // ... E Change para selects.
+
+        $("select.busca").change(function(){
+
+            // Obter o valor do campo e a coluna à qual ele se refere
+
+            var valor = $(this).val();
+            var coluna = $(this).data('column');
 
             // Chamar a função de busca e redesenho da tabela
 
             colunas[coluna].search(valor, true, false).draw();
 
+            // Mostrar ou esconder o botão de limpar
+
+            botaoLimpar(colunas);
+
         });
+
+        // Botão de limpar cada campo da busca avançada...
+
+        $("a.span-clear").click(function(e){
+
+            e.preventDefault();
+
+            var coluna = $(this).data('column');
+
+            // Zerar a pesquisa...
+
+            colunas[coluna].search("", true, false).draw();
+
+            // Reorganizar os botões e os inputs da busca avançada
+
+            botaoLimpar(colunas);
+
+        });
+
+        // E botão para limpar todos os campos
+
+        $("a.limpar1").click(function(e){
+
+            // Iterar pelas colunas da tabela limpando suas pesquisas
+
+            for (var i = colunas.length - 1; i >= 0; i--) {
+              colunas[i].search("", true, false);
+            }
+
+            // Redesenhar a tabela
+
+            tabela.draw();
+
+            botaoLimpar(colunas);
+
+        });
+
+        // Idades mínima e máxima
+
+        $("#min, #max").change(function(){
+
+            var min = $("#min").val() ? $("#min").val() : 0;
+            var max = $("#max").val() ? $("#max").val() : 0;
+
+            var idades = colunas[1];
+
+            var busca = "";
+
+            // Caso a idade máxima seja 0, executar a pesquisa de "min" até 100
+
+            if(max == 0 && min > 0)
+            {
+                // Criar um vetor com as idades a serem buscadas
+
+                for(i = min; i <= 100; i++)
+                {
+                  busca = busca+i;
+
+                  if(i < 100)
+                    busca = busca+"|";
+
+                }
+
+                // Executar a busca utilizando esse 
+
+                idades.search(busca, true, false).draw();
+
+                // Terminar a execuação
+
+                return false;
+            }
+
+            // Caso a idade máxima seja 0, executar a pesquisa de "min" até 100
+
+            if(min == 0 && max > 0)
+            {
+                // Criar um vetor com as idades a serem buscadas
+
+                for(i = 0; i <= max; i++)
+                {
+                  busca = busca+i;
+
+                  if(i < max)
+                    busca = busca+"|";
+
+                }
+
+                // Executar a busca utilizando esse 
+
+                idades.search(busca, true, false).draw();
+
+                // Terminar a execuação
+
+                return false;
+            }
+
+            // Cancelar a execuação caso a idade máxima seja menor que a idade mínima
+
+            if(min > max) return false;
+
+            // Caso as duas variáveis sejam iguais, executar a busca usando apenas uma delas
+
+            if(min == max)
+            {
+
+            }
+
+        });
+
+        /////////////////////////////////////////////////////////////////// Fim da Busca Avançada
 
         // Popular o modal com as informações do currículo à ser excluído
 
@@ -247,17 +429,6 @@
 
         });
 
-      });
-
-      $('.has-clear input, .has-clear select').on('change propertychange', function() {
-          var $this = $(this);
-          var visible = Boolean($this.val());
-          $this.siblings('.span-clear').toggleClass('hidden', !visible);
-      }).trigger('propertychange');
-
-      $('.span-clear').click(function() {
-          $(this).siblings('input, select').val('')
-          .trigger('propertychange').focus();
       });
 
       // Limpar campo 

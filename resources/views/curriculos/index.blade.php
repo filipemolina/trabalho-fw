@@ -39,16 +39,57 @@
           <div class="row">
 
             <div class="col-md-3 form-group">
-              <label for="nome">Nome
+              <label for="nome">
+                  Nome
                   <div class="input-group has-clear">
-                      <input type="text" id="nome" class="busca form-control col-md-12" data-column="0">
 
-                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                      <input type="text" id="nome" class="busca form-control col-md-12 input-sm" data-column="0">
+
+                      <a data-column="0" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                   </div>
               </label>
             </div>
 
+            <div class="col-md-3">
+                <label for="indicacao">
+                    Bairro
+
+                    <div class="input-group has-clear">
+                        <input type="text" id="bairro" data-column="3" class="busca form-control input-sm" />
+                        <a data-column="3" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                        
+                    </div>
+                </label>
+            </div>
+
+            <div class="col-md-3">
+              <label for="min">
+                Idade Mínima:
+                
+                <div class="input-group has-clear">
+                  <input type="number" id="min" class="busca-idade form-control input-sm" />
+                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+
+                </div>
+              </label>  
+            </div>
+
+            <div class="col-md-3">
+              <label for="min">
+                  Idade Máxima:
+                  <div class="input-group has-clear">
+                      <input type="number" id="max" class="busca-idade form-control input-sm" /></label>
+                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+
+                  </div>
+              </label>
+            </div>
+
+          </div>
+
+          <div class="row">
+            
             <div class="col-md-3">
               <label for="sexo">
 
@@ -56,7 +97,7 @@
 
                 <div class="input-group has-clear">
 
-                  <select type="text" id="sexo" data-column="2" class="busca form-control">
+                  <select type="text" id="sexo" data-column="2" class="busca form-control input-sm">
 
                     <option value=""> Selecione </option>
                     <option> Masculino </option>
@@ -65,75 +106,12 @@
                     
                   </select>
 
-                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+                  <a data-column="2" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                 </div>
-              </label>  
+              </label> 
             </div>
 
-            <div class="col-md-2">
-              <label for="min">
-                Idade Mínima:
-                
-                <div class="input-group has-clear">
-                  <input type="number" id="min" class="busca-idade form-control" />
-                  <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
-
-                </div>
-              </label>  
-            </div>
-
-            <div class="col-md-2">
-              <label for="min">
-                  Idade Máxima:
-                  <div class="input-group has-clear">
-
-                      <input type="number" id="max" class="busca-idade form-control" /></label>
-                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
-
-                  </div>
-              </label>
-            </div>
-
-            <div class="col-md-3">
-              <label for="bairro">
-                  Bairro
-                  <div class="input-group has-clear">
-                      <input type="text" id="bairro" data-column="3" class="busca form-control" />
-                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
-                  </div>
-              </label>  
-            </div>
-
-          </div>
-
-          <div class="row">
-
-            <div class="col-md-3">
-              <label for="atuacao">
-
-                Área de atuação
-
-                <div class="input-group has-clear">
-                    <select id="area" name="areas" data-column="5" class="busca select2_group form-control">
-                                
-                                <option value="">Selecione...</option>
-
-                                  {{-- Iterar pelar áreas de atuação --}}
-
-                                @foreach($areas as $area)
-
-                                    <option value="{{ $area->id }}" @if (old('areas') == $area->id) selected="selected" @endif>{{ $area->descricao }}</option>
-
-                                @endforeach
-
-                    </select>
-                    <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
-
-                </div>
-              </label>
-            </div>
-            
             <div class="col-md-3">
 
               <label for="formacao">
@@ -141,16 +119,45 @@
                   Formação
 
                   <div class="input-group has-clear">
-                      <select id="formacao" name="formacao" data-column="4" class="busca select2_group form-control">
+
+                      <select id="formacao" name="formacao" data-column="4" class="busca select2_group form-control input-sm">
+
                           <option value="">Selecione...</option>
                           <option value="Fundamental" @if (old('formacao') == 'Fundamental') selecte="selected" @endif>Fundamental</option>
                           <option value="Médio" @if (old('formacao') == 'Médio') selecte="selected" @endif>Médio</option>
                           <option value="Superior" @if (old('formacao') == 'Superior') selecte="selected" @endif>Superior</option>
+
                       </select>
-                      <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+
+                      <a data-column="4" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
 
                   </div>
               </label>  
+            </div>
+
+            <div class="col-md-3">
+              <label for="atuacao">
+
+                Área de atuação
+
+                <div class="input-group has-clear">
+                    <select id="area" name="areas" data-column="5" class="busca select2_group form-control input-sm">
+                                
+                                <option value="">Selecione...</option>
+
+                                  {{-- Iterar pelar áreas de atuação --}}
+
+                                @foreach($areas as $area)
+
+                                    <option value="{{ $area->descricao }}" @if (old('areas') == $area->id) selected="selected" @endif>{{ $area->descricao }}</option>
+
+                                @endforeach
+
+                    </select>
+                    <a data-column="5" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+
+                </div>
+              </label>
             </div>
 
             <div class="col-md-3">
@@ -158,14 +165,22 @@
                     Indicação
 
                     <div class="input-group has-clear">
-                        <input type="text" id="indicacao" data-column="6" class="busca form-control" />
-                        <a style="margin-right: 0; margin-bottom: 3px;" class=" span-clear"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+
+                      <select type="text" id="indicacao" data-column="6" class="busca select2_group form-control input-sm">
+
+                        <option value=""> Selecione... </option>
+                        <option value="Sim"> Sim </option>
+                        <option value="Não"> Não </option>
                         
+                      </select>
+
+                      <a data-column="6" style="margin-right: 0; margin-bottom: 3px;" class=" span-clear hide"><i class="btn btn-circulo-pn btn-cor-perigo glyphicon glyphicon-remove span-alinhar" style="margin-top: -10px;"></i></a>
+
                     </div>
                 </label>
             </div>
-
           </div>
+          <div class="clearfix"></div>
       </div>
     </div>
 
@@ -206,11 +221,11 @@
 
                     <div class="btn-encaminhar">
                       
-                      <button class="btn btn-info btn-encaminhar disabled" data-toggle="modal" data-target=".modal-encaminhar"><i class="fa fa-share"></i> Encaminhar Currículo</button>
+                      <button class="btn btn-info btn-encaminhar btn-cor-padrao disabled" data-toggle="modal" data-target=".modal-encaminhar"><i class="fa fa-share"></i> Encaminhar Currículo</button>
                       
                       {{-- Botão para selecionar todos currículos --}}
                       
-                      <button class="btn btn-info btn-selecionar"><i class="fa fa-check"></i> <span class="acao">Marcar</span> Todos</button>
+                      <button class="btn btn-info btn-selecionar btn-cor-padrao"><i class="fa fa-check"></i> <span class="acao">Marcar</span> Todos</button>
 
                     </div>
 

@@ -15,7 +15,7 @@ Cadastrar Currículo
 
 @section('menu-superior')
 
-  <button class="btn btn-info btn-cadastrar-curriculo" onclick="window.location='{{ url('curriculos/') }}'"><i class="fa fa-arrow-left"></i> Lista de Currículos</button>
+  <button class="btn btn-info btn-cadastrar-curriculo btn-cor-padrao modal-content" onclick="window.location='{{ url('curriculos/') }}'"><i class="fa fa-arrow-left"></i> Lista de Currículos</button>
 
 @endsection
 
@@ -52,7 +52,7 @@ Cadastrar Currículo
 	{{-- Fim das Mensagens --}}
 
 	<div class="col-md-12 col-sm-12 col-xs-12">
-		<div class="x_panel">
+		<div class="x_panel modal-content">
 			<div class="x_title">
 				<h2>Cadastrar Currículo <small>Atenção aos itens obrigatórios.</small></h2>
 				<div class="clearfix"></div>
@@ -278,14 +278,14 @@ Cadastrar Currículo
 						{{-- Botão para cadastro da área de atuação --}}
 
                         <div class="col-md-3">
-                        	<a href="#" class="btn btn-info btn-nova-linha"> <i class="fa fa-plus"></i> </a>
+                        	<a href="#" class="btn btn-info btn-nova-linha btn-cor-padrao"> <i class="fa fa-plus"></i> </a>
                         </div>
                     </div>
 
                     {{-- Botão para inserir mais uma linha no formulario para cadastro de outra área de atuação --}}
 
                     <div class="form-group" style="text-align: center;">
-                    	<a href="#" data-toggle="modal" data-target=".modal-cadastra-area" class="btn btn-info"> Nova Área de Atuação </a>
+                    	<a href="#" data-toggle="modal" data-target=".modal-cadastra-area" class="btn btn-info btn-cor-padrao"> Nova Área de Atuação </a>
                     </div>
 
                     {{-- Comentários --}}
@@ -301,7 +301,7 @@ Cadastrar Currículo
 
 					<div class="form-group">
 						<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-							<button type="submit" class="btn btn-success">Enviar</button>
+							<button type="submit" class="btn btn-success btn-cor-neutra">Enviar</button>
 						</div>
 					</div>
 
