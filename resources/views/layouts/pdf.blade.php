@@ -24,6 +24,7 @@
 
       body{
             width: 21cm;
+            min-height: 29.7cm;
             margin: 0 auto;
             background-color: #fff;
             padding: 2cm;
