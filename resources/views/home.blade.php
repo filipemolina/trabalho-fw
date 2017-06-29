@@ -16,7 +16,7 @@
 
     <button class="btn-cadastrar-curriculo btn btn-cor-perigo modal-content" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"> <i class="fa fa-close"></i> Sair </button>
     <button class="btn-cadastrar-curriculo btn btn-cor-padrao modal-content" onclick="window.location='{{ url('/configuracoes') }}'"> <i class="fa fa-key"></i> Alterar Senha </button>
-    <button class="btn-cadastrar-curriculo btn btn-cor-padrao modal-content" onclick="window.location='{{ url('areas/create') }}'"> <i class="fa fa-crosshairs"></i> Cadastrar Área de Atuação </button>
+    <button class="btn-cadastrar-curriculo btn btn-cor-padrao modal-content" onclick="window.location='{{ url('areas/create') }}'"> <i class="fa fa-suitcase"></i> Cadastrar Área de Atuação </button>
     <button class="btn-cadastrar-curriculo btn btn-cor-padrao modal-content" onclick="window.location='{{ url('curriculos/create') }}'"> <i class="fa fa-id-card"></i> Cadastrar Currículo </button>
 
 @endsection
@@ -30,7 +30,7 @@
     {{-- Total de Currículos Cadastrados --}}
 
     <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-        <span class="count_top"><i class="fa fa-user"></i> Currículos</span>
+        <span class="count_top"><i class="fa fa-id-card"></i> Currículos</span>
         <div class="count">{{ $resultados['curriculos'] }}</div>
 
         {{-- Testar se o sinal deve ser positivo ou negativo --}}
@@ -75,8 +75,8 @@
     {{-- Currículos Cadastrados nesta semana --}}
 
     <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
-        <span class="count_top"><i class="fa fa-clock-o"></i> Bairros Atendidos</span>
-        <div class="count">8</div>
+        <span class="count_top"><i class="fa fa-map-marker"></i> Bairros Atendidos</span>
+        <div class="count">{{ $resultados['bairros']->qtd }}</div>
         <span class="count_bottom"></span>
     </div>
 

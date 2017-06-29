@@ -1,4 +1,4 @@
-@extends('layouts.pdf')
+@extends('layouts.curriculo')
 
 @section('conteudo')
 
@@ -7,16 +7,16 @@
 	<div style="max-width: 100%">
 		
 		<div style="float: left;">
-			<img style="width: 100px;" src="img/brasao.png" alt="">
+			<img style="width: 100px;" src="{{ url("img/brasao.png") }}" alt="">
 		</div>
 
-		<div style="display: block; float: left; font-weight: bold; font-size: 25px; width: 86%; text-align: center; margin-left: -100px;">
+		<div style="display: block; float: left; font-weight: bold; font-size: 25px; width: 100%; text-align: center; margin-left: -100px;">
 			Prefeitura Municipal de Mesquita
 		</div>
 
 		<br><br>
 
-		<div style="display: block; float: left; width: 86%; text-align: center; font-size: 20px; margin-left: -100px;">
+		<div style="display: block; float: left; width: 100%; text-align: center; font-size: 20px; margin-left: -100px;">
 			Secretaria Municipal de Trabalho, Desenvolvimento<br> Econômico e Agricultura
 		</div>
 
@@ -30,11 +30,11 @@
 
 	{{-- Nome --}}
 
-	<h2 style="text-align: center;">{{ $curriculo->nome }}</h2>
+	<h2 style="text-align: center;">{{ strtoupper($curriculo->nome) }}</h2>
 
 	{{-- Endereço --}}
 
-	<p style="text-align: center;">{{ $curriculo->rua }} nº {{ $curriculo->numero }} {{ $curriculo->complemento }}, {{ $curriculo->bairro }} - Mesquita - RJ. CEP: {{ $curriculo->cep }}</p>
+	<p style="text-align: center;">{{ strtoupper($curriculo->rua) }} Nº {{ strtoupper($curriculo->numero) }} {{ strtoupper($curriculo->complemento) }}, {{ strtoupper($curriculo->bairro) }} - MESQUITA - RJ. CEP: {{ strtoupper($curriculo->cep) }}</p>
 
 	{{-- Telefones --}}
 
@@ -50,7 +50,7 @@
 
 	<br>
 
-		<table style="width: 100%;">
+		<table cellpadding="0" cellspacing="0" style="width: 100%;">
 				
 			{{-- CPF --}}
 
@@ -96,7 +96,7 @@
 
 		<p> <span style="font-weight: bold; margin-right: 10px;">Sexo: </span> @if($curriculo->sexo == "M") Masculino @else Feminino @endif </p>
 
-		<p> <span style="font-weight: bold; margin-right: 10px;">Data de Nascimento: </span> {{ $curriculo->nascimento }} </p>
+		<p> <span style="font-weight: bold; margin-right: 10px;">Data de Nascimento: </span> {{ $curriculo->nascimento->format('d/m/Y') }} </p>
 
 		<p> <span style="font-weight: bold; margin-right: 10px;">Formação: </span> {{ $curriculo->formacao }} </p>
 

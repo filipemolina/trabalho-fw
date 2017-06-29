@@ -70,7 +70,7 @@ return [
     'present'              => 'The :attribute field must be present.',
     'regex'                => 'The :attribute format is invalid.',
     'required'             => 'O campo :attribute é obrigatório',
-    'required_if'          => 'The :attribute field is required when :other is :value.',
+    'required_if'          => 'O campo :attribute é obrigatório quando o campo :other possui o valor :value.',
     'required_unless'      => 'The :attribute field is required unless :other is in :values.',
     'required_with'        => 'The :attribute field is required when :values is present.',
     'required_with_all'    => 'The :attribute field is required when :values is present.',
@@ -129,7 +129,8 @@ return [
         'rg'     => 'RG',
         'pis'    => 'PIS/PASEP',
         'ctps'   => 'CTPS',
-        'ordem_relatorio' => "Relatório"
+        'ordem_relatorio' => "Ordem do Relatório",
+        'area_atuacao'    => "Área de Atuação",
     ],
 
 ];

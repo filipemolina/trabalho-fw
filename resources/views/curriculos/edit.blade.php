@@ -94,7 +94,7 @@
 						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nascimento">Nascimento <span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<input value="{{ $curriculo->nascimento }}" type="text" id="nascimento" name="nascimento" required="required" class="date-picker form-control col-md-7 col-xs-12">
+							<input value="{{ $curriculo->nascimento->format("d/m/Y") }}" type="text" id="nascimento" name="nascimento" required="required" class="date-picker form-control col-md-7 col-xs-12">
 						</div>
 					</div>
 

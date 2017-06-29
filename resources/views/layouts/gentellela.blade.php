@@ -112,7 +112,7 @@
 
                   <li>
                     <a>
-                      <i class="fa fa-crosshairs"></i> Áreas de Atuação
+                      <i class="fa fa-suitcase"></i> Áreas de Atuação
                       <span class="fa fa-chevron-down"></span>
                     </a>
                     <ul class="nav child_menu">

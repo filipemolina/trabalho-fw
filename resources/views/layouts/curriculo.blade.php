@@ -2,27 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Relatório</title>
+    <title>Currículo</title>
     
-    <link rel="stylesheet" href="{{ url("css/pdf.css") }}">
+    <link rel="stylesheet" href="css/pdf.css">
 
     <style>
-    	
-    	table.page
-		{
-		    page-break-after: always;
-		    page-break-inside: avoid;
-		}
-
-		page[size="A4"] {  
-		  width: 21cm;
-		  height: 29.7cm; 
-		}
-
-    @media screen
-    {
-
-      body{
+      
+        body{
             width: 21cm;
             margin: 0 auto;
             background-color: #fff;
@@ -35,25 +21,17 @@
             margin-bottom: 1cm;
         }
 
-      html { background-color: #ccc; }
+        html { background-color: #ccc; }
 
-    }
-
-    @media print
-    {
-      th, th td { background: #3D276B !important; }
-    }
+        td, th { border: 1px solid black; }
 
     </style>
-
-      <!-- Font Awesome -->
-    <link href="{{ asset('css/font-awesome/css/font-awesome.min.css') }}" rel="stylesheet">
     
   </head>
   <body>
     
     <!-- Conteúdo -->
-	@yield('conteudo')
+	 @yield('conteudo')
 
   </body>
 </html>

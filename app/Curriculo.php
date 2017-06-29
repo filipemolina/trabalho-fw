@@ -13,6 +13,7 @@ class Curriculo extends Model
 
     protected $dates = [
         'deleted_at',
+        'nascimento'
     ];
 
     //

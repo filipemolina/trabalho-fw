@@ -62,7 +62,23 @@ class CurriculosController extends Controller
         $excluidos = Curriculo::onlyTrashed()->get();
         $idades = $this->calcularIdades($excluidos);
 
-        return view('curriculos.excluidos', compact(['excluidos', 'idades']));
+        $areas = [];
+
+        // Areas de atuação
+
+        foreach($excluidos as $excluido)
+        {
+            $concat = "";
+
+            foreach($excluido->areas as $area)
+            {
+                $concat .= $area->descricao;
+            }
+
+            $areas[$excluido->id] = $concat;
+        }
+
+        return view('curriculos.excluidos', compact(['excluidos', 'idades', 'areas']));
     }
 
     /**
@@ -329,9 +345,11 @@ class CurriculosController extends Controller
     {
         $curriculo = Curriculo::find($id);
 
-        $pdf = PDF::loadView('pdf.curriculo', compact('curriculo'));
+        // $pdf = PDF::loadView('pdf.curriculo', compact('curriculo'));
 
-        return $pdf->stream();
+        // return $pdf->stream();
+
+        return view('pdf.curriculo', compact('curriculo'));
     }
 
     /**
@@ -434,6 +452,7 @@ class CurriculosController extends Controller
 
         $this->validate($request, [
             'ordem_relatorio' => 'required',
+            'area_atuacao'    => 'required_if:ordem_relatorio,area_atuacao',
         ]);
 
         // Obter todos os participantes
@@ -515,6 +534,20 @@ class CurriculosController extends Controller
 
         if($request->ordem_relatorio == 'indicacao_politica')
             return $query->where("indicacao_politica", 1)->orderBy('nome')->get();
+
+        // Área de atuação
+
+        if($request->ordem_relatorio == 'area_atuacao')
+        {
+            $area_id = $request->area_atuacao;
+
+            return $query->select('curriculos.*')
+                            ->join('area_curriculo', 'curriculos.id', '=', 'area_curriculo.curriculo_id')
+                            ->join('areas', 'area_curriculo.area_id', '=', 'areas.id')
+                            ->where('areas.id', $area_id)
+                            ->orderBy('nome')
+                            ->get();
+        }
     }
 
     /**
@@ -636,7 +669,7 @@ class CurriculosController extends Controller
 
             foreach($curriculo->areas as $area)
             {
-                $cadastro['areas'] += $area->descricao;
+                $cadastro['areas'] .= $area->descricao;
             }
         }
 

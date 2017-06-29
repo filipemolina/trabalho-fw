@@ -151,9 +151,16 @@
 
                   // Testar logo no carregamento da tabela se o botão de limpar a pesquisa deve estar ativo
 
-                  botaoLimpar(colunas);
+                  botaoLimpar(colunas);    
 
               });
+
+          },
+          drawCallback : function(){
+
+              // Ativar o iCheck
+
+              $("input").iCheck({ checkboxClass: 'icheckbox_flat-purple' });
 
           },
         });
@@ -437,7 +444,7 @@
         // Esse evento é disparado pela biblioteca iCheck, inputs com iCheck não
         // disparam eventos padrão (infelizmente)
 
-        $('input.chk-encaminhar').on('ifChanged',function(){
+        $("body").on('ifChanged', 'input.chk-encaminhar',function(){
 
             // Toda vez que um checkbox for clicado, iterar por todos os checkboxes exibidos,
             // apagar a lista de currículos no modal e então incluir apenas os nomes dos currículos

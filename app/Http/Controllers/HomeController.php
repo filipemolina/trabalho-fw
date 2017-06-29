@@ -62,6 +62,10 @@ class HomeController extends Controller
 
         $resultados['top_areas'] = $this->topAreas();
 
+        $resultados['bairros'] = DB::table('curriculos')->select(DB::raw("count(distinct(upper(bairro))) as qtd"))->get()->first();
+
+        
+
         return view('home', compact('resultados'));
     }
 

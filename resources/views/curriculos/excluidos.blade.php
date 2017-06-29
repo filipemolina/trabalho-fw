@@ -58,8 +58,8 @@
                           	<tr>
                             		<td class="bife">{{ $curriculo->nome }}</td>
                             		<td>{{ $idades[$curriculo->id] }}</td>
-                                <td></td>
-                            		<td>{{ $curriculo->indicacao_politica }}</td>
+                                <td>{{ $areas[$curriculo->id] }}</td>
+                            		<td>{{ $curriculo->indicacao_politica ? "Sim" : "Não" }}</td>
                                 <td>{{ $curriculo->quem_deletou->name }}</td>
                                 <td>
                                   
@@ -136,6 +136,24 @@
     <script src="{{ asset('vendors/pdfmake/build/vfs_fonts.js') }}"></script>
 
     <script>
+
+    /* Função para incluir a busca pelos campos de Idade Mínima e Máxima */
+        $.fn.dataTable.ext.search.push(
+            function( settings, data, dataIndex ) {
+                var min = parseInt( $('#min').val(), 10 );
+                var max = parseInt( $('#max').val(), 10 );
+                var age = parseFloat( data[1] ) || 0; // use data for the age column
+         
+                if ( ( isNaN( min ) && isNaN( max ) ) ||
+                     ( isNaN( min ) && age <= max ) ||
+                     ( min <= age   && isNaN( max ) ) ||
+                     ( min <= age   && age <= max ) )
+                {
+                    return true;
+                }
+                return false;
+            }
+        );
       
       $(function(){
 
@@ -159,24 +177,6 @@
             'url' : '{{ asset('/js/portugues.json') }}'
           }
         });
-
-        /* Função para incluir a busca pelos campos de Idade Mínima e Máxima */
-        $.fn.dataTable.ext.search.push(
-            function( settings, data, dataIndex ) {
-                var min = parseInt( $('#min').val(), 10 );
-                var max = parseInt( $('#max').val(), 10 );
-                var age = parseFloat( data[1] ) || 0; // use data for the age column
-         
-                if ( ( isNaN( min ) && isNaN( max ) ) ||
-                     ( isNaN( min ) && age <= max ) ||
-                     ( min <= age   && isNaN( max ) ) ||
-                     ( min <= age   && age <= max ) )
-                {
-                    return true;
-                }
-                return false;
-            }
-        );
 
         // Event Listener para a função customizada criada acima
         $('#min, #max').keyup( function() {
@@ -222,6 +222,6 @@
       
     </script>
 
-    @include("includes.curriculos.excluidos.scripts")
+    {{-- @include("includes.curriculos.excluidos.scripts") --}}
 
 @endsection

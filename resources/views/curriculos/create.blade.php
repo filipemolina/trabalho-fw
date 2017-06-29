@@ -94,7 +94,7 @@ Cadastrar Currículo
 						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nascimento">Nascimento <span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<input value="{{ old('nascimento') }}" type="text" id="nascimento" name="nascimento" required="required" class="date-picker form-control col-md-7 col-xs-12">
+							<input value="{{ old('nascimento') }}" type="date" id="nascimento" name="nascimento" required="required" class="form-control col-md-7 col-xs-12">
 						</div>
 					</div>
 
@@ -160,7 +160,11 @@ Cadastrar Currículo
 					<div class="form-group">
                         <label class="control-label col-md-3 col-sm-3 col-xs-12">Indicação Política</label>
                         <div class="col-md-6 col-sm-6 col-xs-12">
-                          <input type="text" class="form-control col-md-7 col-xs-12" name="indicacao_politica" id="indicacao_politica" value="{{ old('indicacao_politica') }}">
+                          <select id="indicacao_politica" name="indicacao_politica" class="select2_group col-md-7 col-xs-12 form-control">
+                          	<option value="">Selecione...</option>
+                            <option value="0" @if (old('indicacao_politica') == "0") selected="selected" @endif>Não</option>
+                            <option value="1" @if (old('indicacao_politica') == "1") selected="selected" @endif>Sim</option>
+                          </select>
                         </div>
                      </div>
 

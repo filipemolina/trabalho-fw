@@ -93,7 +93,7 @@
 
 			{{-- Finalizar uma página após 48 linhas --}}
 
-			@if($cont == 50)
+			@if($cont == 60)
 
 				<?php $cont = 0; ?>
 
