@@ -1,6 +1,11 @@
 /* Esse arquivo deve permanecer com o menor tamanho possível para evitar lentidão
 no momento em que o PDF é gerado. */
 
+body {
+    background: none;
+    color: #000;
+}
+
 table {
     border-collapse: collapse;
 }
@@ -15,14 +20,40 @@ div.page
     page-break-inside: avoid;
 }
 
-
-.btn_print {
- 
-    background: #eacb85;
-    padding: 5px 5px;
-    border-radius: 20px;
-    color: #3d276b;
+.btn {
+    border-radius: 3px;
+    margin-bottom: 5px;
+    margin-right: 5px;
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    background-image: none;
+    border: 1px solid transparent;
+    border-radius: 4px;
     text-decoration: none;
+}
+
+.btn-cor-padrao {
+    background-image: linear-gradient(to bottom, #8241f9, #4e277b);
+    border: 0 !important;
+    color: #fff !important;
+}
+
+.btn-cor-padrao:active {
+    background-image: linear-gradient(to top, #8241f9, #7038cd);
 }
 
 @media print{

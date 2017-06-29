@@ -38,7 +38,7 @@
 		</div>
 
 			<div style="width: 20%; float: right; ">
-				<a href="javascript:window.print()" style="float: right; margin-bottom: 15px;" class="btn_print" > <i class="fa fa-print"> </i> Imprimir</a>
+				<a href="javascript:window.print()" style="float: right; margin-bottom: 15px;" class="btn btn-info btn-cor-padrao" > <i class="fa fa-print"> </i> Imprimir</a>
 			</div>
 
 		<div style="clear: both"></div>
