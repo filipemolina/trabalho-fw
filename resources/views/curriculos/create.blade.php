@@ -242,7 +242,32 @@ Cadastrar Currículo
 						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="bairro">Bairro <span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<input value="{{ old('bairro') }}" type="text" required="required" id="bairro" name="bairro" class="form-control col-md-7 col-xs-12">
+							{{-- <input value="{{ old('bairro') }}" type="text" required="required" id="bairro" name="bairro" class="form-control col-md-7 col-xs-12"> --}}
+							<select name="bairro" id="bairro" required="required" class="form-control col-md-7 col-xs-12">
+
+								<option value="">Selecione...</option>
+								
+								<option @if(old('bairro') == "Alto Uruguai") selected @endif value="Alto Uruguai">Alto Uruguai</option>
+								<option @if(old('bairro') == "Areia Branca") selected @endif value="Areia Branca">Areia Branca</option>
+								<option @if(old('bairro') == "Banco de Areia") selected @endif value="Banco de Areia">Banco de Areia</option>
+								<option @if(old('bairro') == "BNH") selected @endif value="BNH">BNH</option>
+								<option @if(old('bairro') == "Centro") selected @endif value="Centro">Centro</option>
+								<option @if(old('bairro') == "Chatuba") selected @endif value="Chatuba">Chatuba</option>
+								<option @if(old('bairro') == "Coréia") selected @endif value="Coréia">Coréia</option>
+								<option @if(old('bairro') == "Cosmorama") selected @endif value="Cosmorama">Cosmorama</option>
+								<option @if(old('bairro') == "Cruzeiro Do Sul") selected @endif value="Cruzeiro Do Sul">Cruzeiro Do Sul</option>
+								<option @if(old('bairro') == "Edson Passos") selected @endif value="Edson Passos">Edson Passos</option>
+								<option @if(old('bairro') == "Industrial") selected @endif value="Industrial">Industrial</option>
+								<option @if(old('bairro') == "Jacutinga") selected @endif value="Jacutinga">Jacutinga</option>
+								<option @if(old('bairro') == "Jardim Delamare") selected @endif value="Jardim Delamare">Jardim Delamare</option>
+								<option @if(old('bairro') == "Juscelino") selected @endif value="Juscelino">Juscelino</option>
+								<option @if(old('bairro') == "Rocha Sobrinho") selected @endif value="Rocha Sobrinho">Rocha Sobrinho</option>
+								<option @if(old('bairro') == "Santa Terezinha") selected @endif value="Santa Terezinha">Santa Terezinha</option>
+								<option @if(old('bairro') == "Santo Elias") selected @endif value="Santo Elias">Santo Elias</option>
+								<option @if(old('bairro') == "Vila Norma") selected @endif value="Vila Norma">Vila Norma</option>
+								<option @if(old('bairro') == "Vila Emil") selected @endif value="Vila Emil">Vila Emil</option>
+
+							</select>
 						</div>
 					</div>
 
