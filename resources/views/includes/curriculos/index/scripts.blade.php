@@ -245,13 +245,8 @@
 
         $("#min, #max").change(function(){
 
-            console.log("chamou a função change");
-
             var min = $("#min").val() ? parseInt($("#min").val()) : 0;
             var max = $("#max").val() ? parseInt($("#max").val()) : 0;
-
-            console.log(min);
-            console.log(max);
 
             var idades = colunas[1];
 
@@ -261,8 +256,6 @@
 
             if(min > max && max != 0) 
             {
-              console.log("min > max e max não é 0");
-
                 idades.search("", true, false).draw();
 
                 botaoLimpar(colunas);
@@ -274,7 +267,6 @@
 
             if(max == 0 && min > 0)
             {
-                console.log("max é 0 e min é maior que 0");
                 // Criar um vetor com as idades a serem buscadas
 
                 for(i = min; i <= 100; i++)
@@ -301,7 +293,6 @@
 
             if(min == 0 && max > 0)
             {
-                console.log("min é 0 e max é maior que 0");
                 // Criar um vetor com as idades a serem buscadas
 
                 for(i = 0; i <= max; i++)
@@ -328,7 +319,6 @@
 
             if(min == max && max != 0)
             {
-                console.log("min é igual a max e max não é 0");
                 // Criar um vetor com as idades a serem buscadas
 
                 for(i = min; i <= 100; i++)
@@ -355,7 +345,6 @@
 
             if(min == max && min == 0)
             {
-                console.log("min é igual a max e min é igual a 0");
                 idades.search("", true, false).draw();
 
                 botaoLimpar(colunas);
@@ -367,7 +356,6 @@
 
             if(max > min)
             {
-                console.log("max é maior que min");
                 // Criar um vetor com as idades a serem buscadas
 
                 for(i = min; i <= max; i++)
@@ -390,8 +378,6 @@
                 return false;
 
             }
-
-            console.log("não entrou em nada");
 
         });
 
