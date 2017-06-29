@@ -669,7 +669,7 @@ class CurriculosController extends Controller
 
             foreach($curriculo->areas as $area)
             {
-                $cadastro['areas'] .= $area->descricao;
+                $cadastro['areas'] .= $area->descricao." ";
             }
         }
 
