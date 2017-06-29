@@ -72,7 +72,7 @@ class CurriculosController extends Controller
 
             foreach($excluido->areas as $area)
             {
-                $concat .= $area->descricao;
+                $concat .= $area->descricao." ";
             }
 
             $areas[$excluido->id] = $concat;
