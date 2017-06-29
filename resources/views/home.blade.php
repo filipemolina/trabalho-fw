@@ -74,11 +74,11 @@
 
     {{-- Currículos Cadastrados nesta semana --}}
 
-    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+    {{-- <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
         <span class="count_top"><i class="fa fa-map-marker"></i> Bairros Atendidos</span>
         <div class="count">{{ $resultados['bairros']->qtd }}</div>
         <span class="count_bottom"></span>
-    </div>
+    </div> --}}
 
     <div style="clear: both;"></div>
 </div>
