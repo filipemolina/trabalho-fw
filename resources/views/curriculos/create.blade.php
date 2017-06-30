@@ -8,8 +8,8 @@ Cadastrar Currículo
 
 @section('css')
 
-	<!-- bootstrap-daterangepicker -->
-    <link href="{{ asset('vendors/bootstrap-daterangepicker/daterangepicker.css') }}" rel="stylesheet">
+	{{-- Select2 --}}
+    <link href="{{ asset('vendors/select2/dist/css/select2.min.css') }}" rel="stylesheet">
 
 @endsection
 
@@ -243,7 +243,7 @@ Cadastrar Currículo
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
 							{{-- <input value="{{ old('bairro') }}" type="text" required="required" id="bairro" name="bairro" class="form-control col-md-7 col-xs-12"> --}}
-							<select name="bairro" id="bairro" required="required" class="form-control col-md-7 col-xs-12">
+							<select name="bairro" id="bairro" required="required" class="select2 form-control col-md-7 col-xs-12">
 
 								<option value="">Selecione...</option>
 								
@@ -383,8 +383,7 @@ Cadastrar Currículo
 @section('js')
 
 	{{-- DateRangePicker --}}
-	<script src="{{ asset('vendors/moment/min/moment.min.js') }}"></script>
-    <script src="{{ asset('vendors/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+	<script src="{{ asset('vendors/select2/dist/js/select2.min.js') }}"></script>
 
 	<script>
 
@@ -394,44 +393,7 @@ Cadastrar Currículo
 
 			$(":input").inputmask();
 
-			$(".date-picker").daterangepicker({
-				"showDropdowns": true,
-				"singleDatePicker": true,
-				"locale": {
-					"format": "DD/MM/YYYY",
-					"separator": " - ",
-					"applyLabel": "Apply",
-					"cancelLabel": "Cancel",
-					"fromLabel": "From",
-					"toLabel": "To",
-					"customRangeLabel": "Custom",
-					"weekLabel": "W",
-					"daysOfWeek": [
-					"Dom",
-					"Seg",
-					"Ter",
-					"Qua",
-					"Qui",
-					"Sex",
-					"Sab"
-					],
-					"monthNames": [
-					"Janeiro",
-					"Fevereiro",
-					"Março",
-					"Abril",
-					"Maio",
-					"Junho",
-					"Julho",
-					"Agosto",
-					"Setembro",
-					"Outubro",
-					"Novembro",
-					"Dezembro"
-					],
-					"firstDay": 1
-				}
-			});
+			$(".select2").select2({});
 
 			// Criar uma nova linha para cadastro de outra área de atuação
 
