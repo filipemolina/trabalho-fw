@@ -62,11 +62,15 @@ class HomeController extends Controller
 
         $resultados['top_areas'] = $this->topAreas();
 
-        $resultados['bairros'] = DB::table('curriculos')->select(DB::raw("count(distinct(upper(bairro))) as qtd"))->get()->first();
+        // Calcular Bairros
 
-        
+        $resultados['bairros'] = $this->calculaBairros($resultados['curriculos']);
 
-        return view('home', compact('resultados'));
+        // Calcular Áreas de Atuação
+
+        $areas = $this->calculaAreas();
+
+        return view('home', compact(['resultados', 'areas']));
     }
 
     public function configuracoes()
@@ -262,5 +266,78 @@ class HomeController extends Controller
 
         return $resposta;
 
+    }
+
+    /**
+     * Gerar uma cor hexadecimal aleatória
+     */
+
+    public function corAleatoria()
+    {
+        return "#".sprintf("%06x", mt_rand(0, 0xffffff));
+    }
+
+    /**
+     * Calcular as incrições por bairro
+     */
+
+    protected function calculaBairros($numero)
+    {
+        $lista['nomes'] = DB::table('curriculos')->select(DB::raw("distinct(upper(bairro)) as nome"))->get();
+
+        foreach($lista['nomes'] as $bairro)
+        {
+            $curriculos = Curriculo::where('bairro', $bairro->nome)->get()->count();
+
+            $lista[$bairro->nome]['porcentagem'] = number_format($curriculos * 100 / $numero, 1);
+            $lista[$bairro->nome]['cor'] = $this->corAleatoria();
+        }
+
+        return $lista;
+    }
+
+    /**
+     * Calcular as inscrições por área de atuação
+     */
+
+    protected function calculaAreas()
+    {
+        $areas = Area::with('curriculos')->get()->sortByDesc(function($area){
+
+            return $area->curriculos->count();
+
+        })->take(5);
+
+        $lista = [];
+
+        // Iterar por todas as áreas
+
+        foreach($areas as $area)
+        {
+            // Criar uma posição no vetor para cada área e somar o número de currículos de homens e 
+            // mulheres nessa área
+
+            $lista[$area->id] = [
+                'homens' => 0,
+                'mulheres' => 0,
+                'nome' => "\n".str_replace(" ", "\n", $area->descricao),
+            ];
+
+            // Iterar por todos os currículos de cada área
+
+            foreach($area->curriculos as $curriculo)
+            {
+                if($curriculo->sexo == "M")
+                {
+                    $lista[$area->id]['homens']++;
+                }
+                else
+                {
+                    $lista[$area->id]['mulheres']++;
+                }
+            }
+        }
+
+        return $lista;
     }
 }

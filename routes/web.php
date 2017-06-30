@@ -37,6 +37,10 @@ Route::get('curriculos/pdf/{id}', 'CurriculosController@pdf');
 Route::get('/curriculos/relatorios/', 'CurriculosController@relatorios');
 Route::post('/curriculos/imprimerelatorios', 'CurriculosController@imprimeRelatorio');
 
+///////////////////////////////////////////////////// Cor aleatória
+
+Route::get('/coraleatoria', 'HomeController@corAleatoria');
+
 ///////////////////////////////////////////////////// Registro de Resourceful Routes
 
 Route::resource('curriculos', 'CurriculosController');
