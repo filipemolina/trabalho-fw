@@ -40,7 +40,7 @@
                 labels: [
                   @foreach($resultados['bairros']['nomes'] as $bairro)
 
-                    "{{ $bairro->nome }}",
+                    "{{ $bairro }}",
 
                   @endforeach
                 ],
@@ -48,14 +48,14 @@
                   data: [
                     @foreach($resultados['bairros']['nomes'] as $bairro)
 
-                        "{{ $resultados['bairros'][$bairro->nome]['porcentagem'] }}",
+                        "{{ $resultados['bairros'][$bairro]['porcentagem'] }}",
 
                     @endforeach
                     ],
                   backgroundColor: [
                     @foreach($resultados['bairros']['nomes'] as $bairro)
 
-                        "{{ $resultados['bairros'][$bairro->nome]['cor'] }}",
+                        "{{ $resultados['bairros'][$bairro]['cor'] }}",
 
                     @endforeach
                   ],

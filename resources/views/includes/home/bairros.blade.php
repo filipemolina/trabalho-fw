@@ -36,9 +36,9 @@
                             @foreach($resultados['bairros']['nomes'] as $bairro)
                                 <tr>
                                     <td>
-                                        <p><i class="fa fa-square" style="color: {{ $resultados['bairros'][$bairro->nome]['cor'] }}"></i>{{ $bairro->nome }}</p>
+                                        <p><i class="fa fa-square" style="color: {{ $resultados['bairros'][$bairro]['cor'] }}"></i>{{ $bairro }}</p>
                                     </td>
-                                    <td>{{ $resultados['bairros'][$bairro->nome]['porcentagem'] }}%</td>
+                                    <td>{{ $resultados['bairros'][$bairro]['porcentagem'] }}%</td>
                                 </tr>
                             @endforeach
                         </table>

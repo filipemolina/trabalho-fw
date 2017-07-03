@@ -95,22 +95,6 @@ class HomeController extends Controller
         return redirect('/configuracoes')->with('mensagem', 'Senha alterada com sucesso!');
     }
 
-    // Popular o banco de dados com exemplos
-
-    public function fabrica()
-    {
-        $fabricas = factory(Curriculo::class, 50)
-            ->create()
-            ->each(function($c){
-                $c->areas()->save(Area::inRandomOrder()->first());
-            });
-
-        echo "<pre>";
-        echo "<h1>Teste</h1>";
-        print_r($fabricas);
-        exit;
-    }
-
     // Obter os dados das últimas 4 semanas para montar o gráfico e mostrar as taxas de aumento ou diminuição
     // de cadastros na tela principal do site.
 
@@ -283,14 +267,26 @@ class HomeController extends Controller
 
     protected function calculaBairros($numero)
     {
-        $lista['nomes'] = DB::table('curriculos')->select(DB::raw("distinct(upper(bairro)) as nome"))->get();
+        $nomes = DB::table('curriculos')->select(DB::raw("distinct(upper(bairro)) as nome"))->get();
+        $lista = [];
 
-        foreach($lista['nomes'] as $bairro)
+        foreach($nomes as $bairro)
         {
             $curriculos = Curriculo::where('bairro', $bairro->nome)->get()->count();
 
             $lista[$bairro->nome]['porcentagem'] = number_format($curriculos * 100 / $numero, 1);
             $lista[$bairro->nome]['cor'] = $this->corAleatoria();
+        }
+
+        // Ordernar o array de bairros pelo subarray "porcentagem" mantendo os índices
+
+        uasort($lista, array($this, "ordenaLista"));
+
+        // Criar uma sublista com nomes dos bairros
+
+        foreach($lista as $bairro => $info)
+        {
+            $lista['nomes'][] = $bairro;
         }
 
         return $lista;
@@ -339,5 +335,16 @@ class HomeController extends Controller
         }
 
         return $lista;
+    }
+
+    // FUnção para ordenar listas utilizando "uasort" retirada da documentação do php na página da função "usort"
+
+    public static function ordenaLista($a, $b)
+    {
+         if ($a['porcentagem'] == $b['porcentagem']) {
+            return 0;
+         }
+        
+        return ($a['porcentagem'] < $b['porcentagem']) ? -1 : 1;
     }
 }
