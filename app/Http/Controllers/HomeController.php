@@ -345,6 +345,6 @@ class HomeController extends Controller
             return 0;
          }
         
-        return ($a['porcentagem'] < $b['porcentagem']) ? -1 : 1;
+        return ($a['porcentagem'] > $b['porcentagem']) ? -1 : 1;
     }
 }
