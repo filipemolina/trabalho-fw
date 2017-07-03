@@ -1,7 +1,7 @@
 <div class="col-md-6 col-sm-6 col-xs-12">
     <div class="x_panel tile fixed_height_320 overflow_hidden modal-content">
         <div class="x_title">
-            <h2>Top 5 Áreas de Atuação</h2>
+            <h2>Top 5 Áreas de Atuação <small>Divididos por sexo</small> </h2>
             <ul style="min-width: 0;" class="nav navbar-right panel_toolbox">
                 
                 <li>

@@ -12,7 +12,7 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            <table class="" style="width:100%">
+            <table class="" style="width:100%; overflow-y: scroll; height: 210px; display: block;">
                 <tr>
                     <th style="width:37%;">
                         <p>Visão Geral</p>

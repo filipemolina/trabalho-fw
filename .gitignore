@@ -8,3 +8,5 @@ Homestead.json
 Homestead.yaml
 .env
 readme.md
+*.sublime-project
+*.sublime-workspace
