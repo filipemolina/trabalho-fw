@@ -12,7 +12,7 @@
             <div class="clearfix"></div>
         </div>
         <div class="x_content">
-            <table class="" style="width:100%; overflow-y: scroll; height: 210px; display: block;">
+            <table class="" style="width:100%;">
                 <tr>
                     <th style="width:37%;">
                         <p>Visão Geral</p>
@@ -31,7 +31,7 @@
                         <canvas id="canvas1" height="140" width="140" style="margin: 15px 10px 10px 0"></canvas>
                     </td>
                     <td>
-                        <table class="tile_info bairros">
+                        <table class="tile_info bairros" style="overflow-y: scroll; height: 210px; display: block;">
 
                             @foreach($resultados['bairros']['nomes'] as $bairro)
                                 <tr>
