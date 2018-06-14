@@ -137,6 +137,11 @@ class CurriculosController extends Controller
             'bairro' => 'required',
         ], $this->mensagens);
 
+         // Modificar formato de data
+        $data = str_replace("/", "-", $request->nascimento);
+
+        $request->merge(['nascimento' => date("Y-m-d H:i:s", strtotime($data))]);
+
         $curriculo = new Curriculo($request->all());
 
         // Relacionar à área de atuação
@@ -224,6 +229,13 @@ class CurriculosController extends Controller
             // 'area' => 'required',
             'sexo' => 'required',
         ], $this->mensagens);
+
+        // Modificar formato de data
+        $data = str_replace("/", "-", $request->nascimento);
+
+        $request->merge(['nascimento' => date("Y-m-d H:i:s", strtotime($data))]);
+
+        // Alterar os dados no banco
 
         $curriculo->update($request->all());
 
@@ -416,7 +428,7 @@ class CurriculosController extends Controller
                 'formacao'   => $curriculo->formacao,
                 'area'       => $areas,
                 'indicacao'  => $curriculo->indicacao_politica ? "Sim" : "Não",
-                'encaminhar' => $encaminhar,
+                'pcd'        => $curriculo->pcd ? "Sim" : "Não",
                 'acoes'      => $acoes,
 
             ]);
@@ -471,7 +483,8 @@ class CurriculosController extends Controller
 
         $titulo = [
 
-            'geral'              => "POr Nome",
+            'pcd'                => "Pessoas Com Deficiência",
+            'geral'              => "Por Nome",
             'idade'              => "POR IDADE'",
             'sexo'               => "POR SEXO",
             'bairro'             => "Por Bairro",
@@ -534,6 +547,11 @@ class CurriculosController extends Controller
 
         if($request->ordem_relatorio == 'indicacao_politica')
             return $query->where("indicacao_politica", 1)->orderBy('nome')->get();
+
+        // Pessoas com Deficiência
+
+        if($request->ordem_relatorio == 'pcd')
+            return $query->where('pcd', 1)->orderBy('nome')->get();
 
         // Área de atuação
 
@@ -661,6 +679,10 @@ class CurriculosController extends Controller
         // CEP
         if(array_key_exists('cep', $cabecalhos) !== false)
             $cadastro['cep'] = $curriculo->cep;
+
+        // Pessoa com Deficiência
+        if(array_key_exists('pcd', $cabecalhos) !== false)
+            $cadastro['pcd'] = $curriculo->pcd ? "Sim" : "Não";
 
         // Áreas de Atuação
         if(array_key_exists('areas', $cabecalhos) !== false)

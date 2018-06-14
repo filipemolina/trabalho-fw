@@ -94,7 +94,7 @@ Cadastrar Currículo
 						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nascimento">Nascimento <span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<input value="{{ old('nascimento') }}" type="date" id="nascimento" name="nascimento" required="required" class="form-control col-md-7 col-xs-12">
+							<input value="{{ old('nascimento') }}" data-inputmask="'mask':'99/99/9999'" type="text" id="nascimento" name="nascimento" required="required" class="form-control col-md-7 col-xs-12">
 						</div>
 					</div>
 
@@ -175,12 +175,24 @@ Cadastrar Currículo
                         <div class="col-md-6 col-sm-6 col-xs-12">
                           <select id="formacao" name="formacao" class="select2_group col-md-7 col-xs-12 form-control">
                           	<option value="">Selecione...</option>
-                            <option value="Fundamental" @if (old('formacao') == 'Fundamental') selecte="selected" @endif>Fundamental</option>
-                            <option value="Médio" @if (old('formacao') == 'Médio') selecte="selected" @endif>Médio</option>
-                            <option value="Superior" @if (old('formacao') == 'Superior') selecte="selected" @endif>Superior</option>
+                            <option value="Fundamental" @if (old('formacao') == 'Fundamental') selected="selected" @endif>Fundamental</option>
+                            <option value="Médio" @if (old('formacao') == 'Médio') selected="selected" @endif>Médio</option>
+                            <option value="Superior" @if (old('formacao') == 'Superior') selected="selected" @endif>Superior</option>
                           </select>
                         </div>
                     </div>
+					
+					{{-- Pessoa Com Deficiência --}}
+
+          <div class="form-group">
+          	<label class="control-label col-md-3 col-sm-3 col-xs-12">PCD</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <select id="pcd" name="pcd" class="select2_group col-md-7 col-xs-12 form-control">
+                <option value="0" @if (old('pcd') == '0') selecte="selected" @endif>Não</option>
+                <option value="1" @if (old('pcd') == '1') selecte="selected" @endif>Sim</option>
+              </select>
+            </div>
+          </div>
 
                     {{------------------------------------------ Endereço ------------------------------------------}}
 

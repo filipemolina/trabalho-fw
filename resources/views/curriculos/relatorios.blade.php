@@ -75,6 +75,7 @@
                   <option value="formacao">Por Formação</option>
                   <option value="area_atuacao">Por Área de Atuação</option>
                   <option value="indicacao_politica">Por Indicação Politica</option>
+                  <option value="pcd">Pessoas Com Deficiência</option>
                 </select>
 
               </div>
@@ -197,6 +198,12 @@
                 <label>
                 
                     <input value="Indicação Politica" name="cabecalhos[indicacao_politica]" type="checkbox"> Indicação Politica
+
+                </label> <br>
+
+                <label>
+                
+                    <input value="Pessoa Com Deficiência" name="cabecalhos[pcd]" type="checkbox"> Pessoa Com Deficiência
 
                 </label> <br>
 

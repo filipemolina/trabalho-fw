@@ -129,7 +129,7 @@
             { data : 'formacao',   name : 'formacao' },
             { data : 'area',       name : 'area' },
             { data : 'indicacao',  name : 'indicacao' },
-            { data : 'encaminhar', name : 'encaminhar' },
+            { data : 'pcd',        name : 'pcd' },
             { data : 'acoes',      name : 'acoes' },
 
           ],

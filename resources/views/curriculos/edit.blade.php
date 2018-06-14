@@ -94,7 +94,7 @@
 						<label class="control-label col-md-3 col-sm-3 col-xs-12" for="nascimento">Nascimento <span class="required">*</span>
 						</label>
 						<div class="col-md-6 col-sm-6 col-xs-12">
-							<input value="{{ $curriculo->nascimento->format("d/m/Y") }}" type="text" id="nascimento" name="nascimento" required="required" class="date-picker form-control col-md-7 col-xs-12">
+							<input value="{{ $curriculo->nascimento->format("d/m/Y") }}" data-inputmask="'mask':'99/99/9999'" type="text" id="nascimento" name="nascimento" required="required" class="form-control col-md-7 col-xs-12">
 						</div>
 					</div>
 
@@ -180,6 +180,18 @@
                           </select>
                         </div>
                     </div>
+
+          {{-- Pessoa Com Deficiência --}}
+
+          <div class="form-group">
+          	<label class="control-label col-md-3 col-sm-3 col-xs-12">PCD</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <select id="pcd" name="pcd" class="select2_group col-md-7 col-xs-12 form-control">
+                <option value="1" @if ($curriculo->pcd == 1) selected="selected" @endif>Sim</option>
+                <option value="0" @if (is_null($curriculo->pcd) || $curriculo->pcd == 0) selected="selected" @endif>Não</option>
+              </select>
+            </div>
+          </div>
 
                     {{------------------------------------------ Endereço ------------------------------------------}}
 

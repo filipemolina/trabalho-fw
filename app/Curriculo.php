@@ -22,6 +22,7 @@ class Curriculo extends Model
     	'nome',
     	'nascimento',
     	'cpf',
+        'pcd',
     	'rg',
     	'pis',
     	'ctps',

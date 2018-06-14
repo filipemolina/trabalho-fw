@@ -91,7 +91,7 @@
 
           <div class="row">
             
-            <div class="col-md-3">
+            <div class="col-md-2">
               <label for="sexo">
 
                 Sexo
@@ -113,7 +113,7 @@
               </label> 
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-2">
 
               <label for="formacao">
 
@@ -161,7 +161,7 @@
               </label>
             </div>
 
-            <div class="col-md-3">
+            <div class="col-md-2">
                 <label for="indicacao">
                     Indicação
 
@@ -179,6 +179,19 @@
 
                     </div>
                 </label>
+            </div>
+
+            <div class="col-md-2">
+              <label for="pcd">
+                PCD
+                <div class="input-group">
+                  <select name="pcd" id="pcd" data-column="7" class="busca select2_group form-control input-sm">
+                    <option value=""> Selecione... </option>
+                    <option value="Sim"> Sim </option>
+                    <option value="Não"> Não </option>
+                  </select>
+                </div>
+              </label>
             </div>
           </div>
       </div>
@@ -206,7 +219,7 @@
                           		<th>Formação</th>
                               <th>Área de Atuação</th>
                               <th>Indicação</th>
-                              <th style="max-width: 80px;">Encaminhar?</th>
+                              <th style="max-width: 80px;">PCD</th>
                               <th style="min-width: 65px;">Ações</th>
                         	</tr>
                       	</thead>
