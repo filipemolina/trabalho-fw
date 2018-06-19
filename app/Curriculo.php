@@ -23,6 +23,7 @@ class Curriculo extends Model
     	'nascimento',
     	'cpf',
         'pcd',
+        'tipo_deficiencia',
     	'rg',
     	'pis',
     	'ctps',

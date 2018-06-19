@@ -193,6 +193,22 @@
             </div>
           </div>
 
+          {{-- Tipo de Deficiência --}}
+
+          <div class="form-group">
+          	<label class="control-label col-md-3 col-sm-3 col-xs-12">Tipo de Deficiência</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <select id="tipo_deficiencia" name="tipo_deficiencia" class="select2_group col-md-7 col-xs-12 form-control">
+              	<option value=""        @if ($curriculo->tipo_deficiencia == '0') selected="selected" @endif>Selecione...</option>
+              	<option value="visual"   @if ($curriculo->tipo_deficiencia == 'visual') selected="selected" @endif>Visual</option>
+              	<option value="auditiva" @if ($curriculo->tipo_deficiencia == 'auditiva') selected="selected" @endif>Auditiva</option>
+              	<option value="física"   @if ($curriculo->tipo_deficiencia == 'fisica') selected="selected" @endif>Física</option>
+              	<option value="mental"   @if ($curriculo->tipo_deficiencia == 'mental') selected="selected" @endif>Mental</option>
+              	<option value="multipla" @if ($curriculo->tipo_deficiencia == 'multipla') selected="selected" @endif>Múltipla</option>
+              </select>
+            </div>
+          </div>
+
                     {{------------------------------------------ Endereço ------------------------------------------}}
 
                     {{-- Linha Divisória --}}

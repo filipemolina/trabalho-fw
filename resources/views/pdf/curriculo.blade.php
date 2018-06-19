@@ -108,6 +108,15 @@
 
 		@endif
 
+		@if($curriculo->pcd)
+
+			<p>
+				<span style="font-weight: bold; margin-right: 1-px">Pessoa com Deficiência: </span>
+				{{ ucfirst($curriculo->tipo_deficiencia) }}
+			</p> 
+
+		@endif
+
 		<p> <span style="font-weight: bold; margin-right: 10px;"> Comentários: </span></p>
 
 		<p>{{ $curriculo->comentarios }}</p>
