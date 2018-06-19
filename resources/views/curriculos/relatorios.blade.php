@@ -207,6 +207,12 @@
 
                 </label> <br>
 
+                <label>
+                
+                    <input value="Tipo de Deficiência" name="cabecalhos[tipo_deficiencia]" type="checkbox"> Tipo de Deficiência
+
+                </label> <br>
+
                                
               </div>
 

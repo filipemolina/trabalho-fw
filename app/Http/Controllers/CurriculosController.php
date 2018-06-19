@@ -684,6 +684,10 @@ class CurriculosController extends Controller
         if(array_key_exists('pcd', $cabecalhos) !== false)
             $cadastro['pcd'] = $curriculo->pcd ? "Sim" : "Não";
 
+        // Tipo de Deficiência
+        if(array_key_exists('tipo_deficiencia', $cabecalhos) !== false)
+            $cadastro['tipo_deficiencia'] = $curriculo->tipo_deficiencia;
+
         // Áreas de Atuação
         if(array_key_exists('areas', $cabecalhos) !== false)
         {
