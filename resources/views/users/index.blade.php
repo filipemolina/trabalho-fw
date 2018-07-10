@@ -179,7 +179,7 @@
             id : id
           }, function(data){
 
-            window.location = "/usuarios";
+            window.location = "/trabalho/usuarios";
 
           });
 
