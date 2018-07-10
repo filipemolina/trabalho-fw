@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
     {
         // Criar as áreas de atuação
 
-        $areas = [
+       /* $areas = [
             'Auxiliar de Serviços Gerais',
             'Atendente',
             'Balconista',
@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
 
             $curriculo->areas()->attach($areas[$id_area]->id);
 
-        });
+        });*/
 
         $this->call(UsersTableSeeder::class);
     }

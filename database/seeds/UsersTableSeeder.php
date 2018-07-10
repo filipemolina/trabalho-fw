@@ -12,7 +12,7 @@ class UsersTableSeeder extends Seeder
     public function run()
     {
         //DB::table('users')->truncate();
-        if  (! DB::table('users')->find(1)) {
+        /*if  (! DB::table('users')->find(1)) {
            
             DB::table('users')->insert([
                 'name'      =>  'Filipe Molina',
@@ -41,6 +41,12 @@ class UsersTableSeeder extends Seeder
                 'password'  =>  bcrypt('123456'),
                 'is_admin'  => 1,
             ]);
-        }
+        }*/
+
+        DB::table('users')->insert([
+                'name'      =>  'Marcelo Miranda',
+                'email'     =>  'marcelo.miranda.pp@gmail.com',
+                'password'  =>  bcrypt('123456'),
+                'is_admin'  => 1]);
     }
 }
