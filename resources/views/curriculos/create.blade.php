@@ -425,6 +425,7 @@ Cadastrar Currículo
 
 			$("#btn_enviar").click(function(){
 				$(this).attr("disabled","disabled");
+				$("#cadastro-curriculo").submit();
 			})
 
 			// Criar uma nova linha para cadastro de outra área de atuação
