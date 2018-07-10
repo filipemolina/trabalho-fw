@@ -135,6 +135,7 @@ class CurriculosController extends Controller
             'rua' => 'required',
             'numero' => 'required',
             'bairro' => 'required',
+            'sexo'  => 'required'
         ], $this->mensagens);
 
          // Modificar formato de data
