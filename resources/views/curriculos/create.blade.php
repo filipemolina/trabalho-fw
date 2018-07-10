@@ -358,7 +358,7 @@ Cadastrar Currículo
 
 					<div class="form-group">
 						<div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-							<button type="submit" class="btn btn-success btn-cor-neutra">Enviar</button>
+							<button id="btn_enviar" type="submit" class="btn btn-success btn-cor-neutra">Enviar</button>
 						</div>
 					</div>
 
@@ -422,6 +422,10 @@ Cadastrar Currículo
 			$(":input").inputmask();
 
 			$(".select2").select2({});
+
+			$("#btn_enviar").click(function(){
+				$(this).attr("disabled","disabled");
+			})
 
 			// Criar uma nova linha para cadastro de outra área de atuação
 
